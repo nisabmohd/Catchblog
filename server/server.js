@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv').config()
 const authRouter = require('./routes/auth')
+const postRouter = require('./routes/post')
 
 const app = express()
 app.use(express.json())
@@ -15,6 +16,8 @@ mongoose.connect(process.env.mongouri, () => {
 app.get('/test', (req, res) => {
     res.send("hello from other side")
 })
+
+app.use('/post', postRouter)
 
 app.use('/auth', authRouter)
 
