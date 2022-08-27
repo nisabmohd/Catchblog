@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         unique:true,
         require:true
+    },
+    list:{
+        type:Array,
+        default:[]
     }
 })
 
