@@ -11,7 +11,7 @@ router.post('/login', async (req, res, next) => {
         finduser.password = undefined
         res.send(finduser)
     } else {
-        next(handleErr(res,createErr(401,"Wrong Password")))
+        next(handleErr(res,createErr(401,"Wrong password")))
     }
 })
 
