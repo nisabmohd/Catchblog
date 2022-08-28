@@ -21,7 +21,7 @@ export const Login = () => {
             <div className="rightlogin">
                 <input type="email" placeholder='Enter email' style={{background:context.dark?'rgb(66 66 66)':'rgb(248 248 248)',height:'47px',outline:'none',border:'none',borderRadius:'5px',color:'inherit',width:'325px',marginTop:'20px',paddingLeft:'14px'}} />
                 <input type="password" placeholder='Enter password' style={{background:context.dark?'rgb(66 66 66)':'rgb(248 248 248)',height:'47px',outline:'none',border:'none',borderRadius:'5px',color:'inherit',width:'325px',marginTop:'20px',paddingLeft:'14px'}}/>
-                <button style={{ fontFamily: 'Poppins', width: '320px', color: context.dark?'black':'white', border: 'none', outline: 'none', background: context.dark?'white':'rgb(66 66 66)', height: '47px', borderRadius: '5px', cursor: 'pointer',marginTop:'20px',fontWeight:'bold' }} variant="outlined">Login</button>
+                <button style={{ fontFamily: 'Poppins', width: '320px', color: context.dark?'black':'white', border: 'none', outline: 'none', background: context.dark?'white':'rgb(66 66 66)', height: '44px', borderRadius: '5px', cursor: 'pointer',marginTop:'20px',fontWeight:'bold' }} variant="outlined">Login</button>
             </div>
         </div>
     )
