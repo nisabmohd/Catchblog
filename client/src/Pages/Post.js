@@ -4,6 +4,10 @@ import { useEffect, useState } from "react"
 import { Syntax } from "../components/Syntax"
 import { UserCard } from "../components/UserCard"
 import md from '../default.md'
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ShareIcon from '@mui/icons-material/Share';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import { MoreFrom } from "../components/MoreFrom"
 
 export const Post = () => {
   const [content, setContent] = useState('')
@@ -17,6 +21,13 @@ export const Post = () => {
 
   return (
     <Box style={{ backgroundColor: 'palette.text.primary' }} className="container">
+      <div className="complete-left">
+      <div className="posthandle" style={{padding:'20px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'19.5%',marginTop:'11px',width:'10%'}}>
+          <ThumbUpOffAltIcon />
+          <ShareIcon />
+          <BookmarkBorderIcon />
+        </div>
+      </div>
       <div className="container-left">
         <div className="markdown">
           <Markdown options={{
@@ -38,10 +49,8 @@ export const Post = () => {
         </div>
       </div>
       <div className="container-right">
-        <div className="posthandle">
-
-        </div>
         <UserCard />
+        <MoreFrom/>
       </div>
     </Box>
   )
