@@ -3,7 +3,7 @@
 export const UserCard = () => {
     return (
         <div className="user-card" style={{ marginTop: '12px',width:'297px',borderRadius:'10px',padding:'20px',}}>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:'space-between',width:'80%'}} className="userdetails">
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:'space-between',width:'90%'}} className="userdetails">
                 <img style={{ width: '40px', borderRadius: '50%' }} src="https://firebasestorage.googleapis.com/v0/b/upload-pics-e599e.appspot.com/o/images%2F76525761.jpg?alt=media&token=dbc95980-be1d-4f16-ae70-24ee874cd885" alt="" />
                 <div className="name">
                     <p style={{

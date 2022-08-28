@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, IconButton } from "@mui/material"
 import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import { Syntax } from "../components/Syntax"
@@ -20,12 +20,12 @@ export const Post = () => {
   }, [])
 
   return (
-    <Box style={{ backgroundColor: 'palette.text.primary' }} className="container">
+    <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
       <div className="complete-left">
-      <div className="posthandle" style={{padding:'20px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'19.5%',marginTop:'11px',width:'10%'}}>
-          <ThumbUpOffAltIcon />
-          <ShareIcon />
-          <BookmarkBorderIcon />
+        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '207px', marginTop: '5px', width: '10%' }}>
+          <IconButton><ThumbUpOffAltIcon /></IconButton>
+          <IconButton><ShareIcon /></IconButton>
+          <IconButton> <BookmarkBorderIcon /></IconButton>
         </div>
       </div>
       <div className="container-left">
@@ -50,8 +50,9 @@ export const Post = () => {
       </div>
       <div className="container-right">
         <UserCard />
-        <MoreFrom/>
+        <MoreFrom />
       </div>
+
     </Box>
   )
 }

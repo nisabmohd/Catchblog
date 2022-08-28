@@ -1,12 +1,12 @@
-import { IconButton } from '@mui/material'
+import { Badge, IconButton } from '@mui/material'
 import '../css/Navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { AppContext } from "../App";
 import { useContext } from 'react';
-import PersonIcon from '@mui/icons-material/Person';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import logo from '../assets/blogger.png'
 
 export const Navbar = () => {
@@ -28,10 +28,12 @@ export const Navbar = () => {
                 </div>
                 <div className="right">
                     <div className="tags">
-                        <IconButton onClick={() => { context.setDark(!context.dark) }} sx={{margin:'0 15px'}}><Brightness4Icon sx={{ color: context.dark ? 'white' : 'black', width: '21px' }} /></IconButton>
-                        <IconButton  sx={{margin:'0 15px'}}><BookmarkIcon sx={{ color: context.dark ? 'white' : 'black', width: '23px' }} /></IconButton>
-                        <IconButton  sx={{margin:'0 15px'}}><NotificationsIcon sx={{ color: context.dark ? 'white' : 'black', width: '23px' }} /></IconButton>
-                        <IconButton sx={{margin:'0 15px'}}><PersonIcon sx={{ color: context.dark ? 'white' : 'black', width: '23px' }} /></IconButton>
+                        <IconButton onClick={() => { context.setDark(!context.dark) }} sx={{ margin: '0 15px' }}><Brightness4Icon /></IconButton>
+                        <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton>
+                        <Badge sx={{ margin: '0 15px' }} color="error" overlap="circular" >
+                            <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
+                        </Badge>
+                        <IconButton sx={{ margin: '0 15px' }}><PermIdentityIcon /></IconButton>
                     </div>
                 </div>
 
