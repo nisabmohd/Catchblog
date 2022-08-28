@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import loginimg from '../assets/login.png'
 import '../css/login.css'
 import { AppContext } from '../App'
@@ -8,6 +8,13 @@ import toast, { Toaster } from 'react-hot-toast';
 
 export const Login = () => {
     const context = useContext(AppContext)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (context.auth) {
+            navigate('/')
+        }
+    }, [context.auth, navigate])
+
     const [email, setemail] = useState('')
     const [password, setPassword] = useState('')
     const [{ post }] = useFetch()

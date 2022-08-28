@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import loginimg from '../assets/blog.png'
 import '../css/login.css'
 import { AppContext } from '../App'
@@ -8,6 +8,12 @@ import { useFetch } from '../hooks/Fetch'
 
 export const Signup = () => {
   const context = useContext(AppContext)
+  const navigate = useNavigate()
+  useEffect(() => {
+      if (context.auth) {
+          navigate('/')
+      }
+  }, [context.auth, navigate])
   const [email, setemail] = useState('')
   const [username, setusername] = useState('')
   const [password, setPassword] = useState('')
