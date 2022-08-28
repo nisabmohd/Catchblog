@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import loginimg from '../assets/blog.png'
 import '../css/login.css'
@@ -9,11 +9,6 @@ import { useFetch } from '../hooks/Fetch'
 export const Signup = () => {
   const context = useContext(AppContext)
   const navigate = useNavigate()
-  useEffect(() => {
-      if (context.auth) {
-          navigate('/')
-      }
-  }, [context.auth, navigate])
   const [email, setemail] = useState('')
   const [username, setusername] = useState('')
   const [password, setPassword] = useState('')
@@ -36,9 +31,10 @@ export const Signup = () => {
       return;
     }
     try {
-      const resp = await post({ email, password,username }, 'auth/signup')
-      context.setAuth(resp)
+      const resp = await post({ email, password, username }, 'auth/signup')
       localStorage.setItem('auth', JSON.stringify(resp))
+      navigate('/')
+      context.setAuth(resp)
     }
     catch (err) {
       toast.error(err.response.data.message, {
