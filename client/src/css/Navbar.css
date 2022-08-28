@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 25px;
 }
 .left{
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 2vw;
 }
 .right{
     width: 25%;
@@ -20,7 +20,7 @@
     justify-content: center;
 }
 .middle{
-    width: 50%;
+    width: 55%;
     display: flex;
     flex-direction: row;
     align-items: center;
