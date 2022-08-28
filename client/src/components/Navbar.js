@@ -8,6 +8,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import logo from '../assets/blogger.png'
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
@@ -15,10 +16,10 @@ export const Navbar = () => {
         <div className="container">
             <div className="navbar">
                 <div className="left">
-                    <div className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',color:'inherit',textDecoration:'none' }}>
                         <img style={{ width: '36.5px', marginRight: '9px' }} src={logo} alt="" />
                         <h2>CatchBlog</h2>
-                    </div>
+                    </Link>
                 </div>
                 <div className="middle">
                     <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid #353535' : '1px solid rgb(227 223 223)', paddingLeft: '16px', height: '36px', borderRadius: '7px' }}>

@@ -1,0 +1,21 @@
+.leftlogin{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.rightlogin{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 26vh;
+}
+.containerlogin{
+    width:70%;
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    height:100vh
+}
