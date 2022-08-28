@@ -27,6 +27,7 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="right">
+                    <button style={{ fontFamily: 'Poppins', width: 'inherit', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">New Post</button>
                     <div className="tags">
                         <IconButton onClick={() => { context.setDark(!context.dark) }} sx={{ margin: '0 15px' }}><Brightness4Icon /></IconButton>
                         <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton>

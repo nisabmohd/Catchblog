@@ -13,14 +13,14 @@
     align-items: center;
 }
 .right{
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 .middle{
-    width: 55%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
