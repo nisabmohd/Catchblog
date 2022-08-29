@@ -5,7 +5,7 @@ export const MoreFrom = () => {
     const context = useContext(AppContext)
 
     return (
-        <div className="user-card" style={{ marginTop: '12px', width: '287px', borderRadius: '10px', padding: '20px',}}>
+        <div className="user-card" style={{ marginTop: '12px', width: '273px', borderRadius: '10px', padding: '20px',}}>
             <p style={{
                         fontStyle: 'normal',
                         fontWeight: '600',
