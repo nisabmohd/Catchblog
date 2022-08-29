@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
         unique:true,
         require:true
     },
-    list:{
+    savedlist:{
         type:Array,
         default:[]
     }

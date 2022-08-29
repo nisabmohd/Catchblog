@@ -1,4 +1,3 @@
-const { handleErr } = require('../utils/errorhandle')
 const { BlogPostModel } = require('../models/Blog')
 
 const router = require('express').Router()
@@ -8,7 +7,6 @@ router.get('/:postid', async (req, res, next) => {
         const findpost = await BlogPostModel.findone({ postid: req.body.postid })
         res.send(findpost)
     } catch (err) {
-        next(handleErr(res, err))
     }
 })
 

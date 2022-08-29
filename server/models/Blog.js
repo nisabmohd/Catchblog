@@ -13,16 +13,16 @@ const BlogSchema = new mongoose.Schema({
         default: []
     },
     votes: {
-        type: Number,
-        default: 0
+        type: Array,
+        default: []
     },
     saved: {
-        type: Number,
-        default: 0
+        type: Array,
+        default: []
     },
     shared: {
-        type: Number,
-        default: 0
+        type: Array,
+        default: []
     },
     postid: {
         type: String,
