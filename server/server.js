@@ -7,7 +7,9 @@ const postRouter = require('./routes/post')
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 
 mongoose.connect(process.env.mongouri, () => {
     console.log("Connected to db");
