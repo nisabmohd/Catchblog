@@ -3,21 +3,26 @@ import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import { Syntax } from "../components/Syntax"
 import { UserCard } from "../components/UserCard"
-import md from '../default.md'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ShareIcon from '@mui/icons-material/Share';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { MoreFrom } from "../components/MoreFrom"
+import { useParams } from "react-router-dom"
+import axios from "axios"
+import { url } from "../baseurl"
 
 export const Post = () => {
   const [content, setContent] = useState('')
+  const [uid,setUID]=useState()
+  const params = useParams()
   useEffect(() => {
-    fetch(md).then(res => {
-      return res.text()
-    }).then(data => {
-      setContent(data)
-    })
-  }, [])
+    async function fetch(){
+      const resp = await axios.get(`${url}/post/${params.postid}`)
+      setContent(resp.data.md)
+      setUID(resp.data.uid)
+    }
+    fetch();
+  }, [params.postid])
 
   return (
     <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
@@ -49,7 +54,7 @@ export const Post = () => {
         </div>
       </div>
       <div className="container-right">
-        <UserCard />
+        <UserCard uid={uid} />
         <MoreFrom />
       </div>
 

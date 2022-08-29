@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 
 const BlogSchema = new mongoose.Schema({
-    cover: {
-        type: String
-    },
     title: {
         type: String,
         require: true

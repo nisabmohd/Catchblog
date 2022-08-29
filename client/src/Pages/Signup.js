@@ -4,7 +4,8 @@ import loginimg from '../assets/blog.png'
 import '../css/login.css'
 import { AppContext } from '../App'
 import toast, { Toaster } from 'react-hot-toast';
-import { useFetch } from '../hooks/Fetch'
+import axios from 'axios'
+import { url } from '../baseurl'
 
 export const Signup = () => {
   const context = useContext(AppContext)
@@ -12,7 +13,6 @@ export const Signup = () => {
   const [email, setemail] = useState('')
   const [username, setusername] = useState('')
   const [password, setPassword] = useState('')
-  const [{ post }] = useFetch()
   async function signup() {
     if (!email) {
       toast.error("Email required", {
@@ -31,10 +31,10 @@ export const Signup = () => {
       return;
     }
     try {
-      const resp = await post({ email, password, username }, 'auth/signup')
-      localStorage.setItem('auth', JSON.stringify(resp))
+      const resp = await axios.post(`${url}auth/signup`,{email,password,username})
+      localStorage.setItem('auth', JSON.stringify(resp.data))
       navigate('/')
-      context.setAuth(resp)
+      context.setAuth(resp.data)
     }
     catch (err) {
       toast.error(err.response.data.message, {

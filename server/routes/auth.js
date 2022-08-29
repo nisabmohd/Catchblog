@@ -3,7 +3,7 @@ const { UserModel } = require('../models/User')
 const { v4: uid } = require('uuid')
 const { hash, verify } = require('../utils/passwordhash')
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', async (req, res) => {
     try {
         const finduser = await UserModel.findOne({ email: req.body.email })
         const isVerified = await verify(finduser.password, req.body.password)
@@ -19,7 +19,7 @@ router.post('/login', async (req, res, next) => {
 
 })
 
-router.post('/signup', async (req, res, next) => {
+router.post('/signup', async (req, res) => {
     try {
         const uuid = uid()
         const hashedpass = await hash(req.body.password)

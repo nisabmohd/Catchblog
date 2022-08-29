@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import loginimg from '../assets/login.png'
 import '../css/login.css'
 import { AppContext } from '../App'
-import { useFetch } from '../hooks/Fetch'
 import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios'
+import { url } from '../baseurl'
 
 export const Login = () => {
     const context = useContext(AppContext)
@@ -12,7 +13,6 @@ export const Login = () => {
 
     const [email, setemail] = useState('')
     const [password, setPassword] = useState('')
-    const [{ post }] = useFetch()
     async function login() {
         if (!email) {
             toast.error("Email required", {
@@ -31,10 +31,10 @@ export const Login = () => {
             return;
         }
         try {
-            const resp = await post({ email, password }, 'auth/login')
-            localStorage.setItem('auth', JSON.stringify(resp))
+            const resp = await axios.post(`${url}/auth/login`,{ email, password })
+            localStorage.setItem('auth', JSON.stringify(resp.data))
             navigate('/')
-            context.setAuth(resp)
+            context.setAuth(resp.data)
         }
         catch (err) {
             toast.error(err.response.data.message, {
