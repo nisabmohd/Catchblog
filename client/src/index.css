@@ -25,3 +25,7 @@ body {
     max-height: 600px;
     border-radius: 5px;
 }
+.cardshadow{
+    box-shadow:  0.5px 0.5px 2px #f9f9f9,
+             -0.5px -0.5px 2px #f7f7f7;
+}
