@@ -104,6 +104,18 @@ body {
         width: 30px !important;
     }
 }
+@media screen and (max-width:515px) {
+    .posthandle{
+        display: flex;
+        flex-direction: row !important;
+        height: fit-content !important;
+        padding: 0 !important;
+        margin-top: 19px !important;
+    }
+    .containerrev{
+        flex-direction: column-reverse !important;
+    }
+}
 
 @media screen and (max-width:412px) {
     .smicons{
