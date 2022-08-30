@@ -14,11 +14,14 @@ import { Signup } from "./Pages/Signup";
 import { Reset } from "./Pages/Reset";
 import { Home } from "./Pages/Home";
 import { Edit } from "./Pages/Edit";
+import { User } from "./Pages/User";
+import { Saved } from "./Pages/Saved";
 
 export const AppContext = React.createContext()
 function App() {
   const [dark, setDark] = useState(true)
   const [auth, setAuth] = useState(false);
+
 
   const darkTheme = createTheme({
     palette: {
@@ -43,7 +46,7 @@ function App() {
     localStorage.setItem('dark',`${!dark}`)
   }
 
-  const contextValue = { setDark, dark, auth, setAuth,handledark }
+  const contextValue = { setDark, dark, auth, setAuth,handledark}
   return (
     <BrowserRouter>
       <AppContext.Provider value={contextValue} >
@@ -56,7 +59,9 @@ function App() {
                     <Navbar />
                     <Routes>
                       <Route path="/" element={<Home/>} />
+                      <Route path="/saved" element={<Saved />} />
                       <Route path="/editor" element={<Edit />} />
+                      <Route path="/user/:uid" element={<User />} />
                       <Route path="/post/:postid" element={<Post />} />
                     </Routes>
                   </> :

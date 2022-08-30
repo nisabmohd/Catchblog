@@ -1,5 +1,3 @@
-<!-- <img className="md-header-img" src="https://firebasestorage.googleapis.com/v0/b/upload-pics-e599e.appspot.com/o/images%2Fclose-up-male-hands-using-laptop-home_1150-790.png?alt=media&token=6b3931e1-f6e3-4309-8216-5f2fd7b6b367"> -->
-
 # Learn the hidden feature in Git - Stash
 
 Lorem ipsum, everyone 👏

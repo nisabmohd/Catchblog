@@ -5,6 +5,10 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    summary: {
+        type: String,
+        require: true
+    },
     tags: {
         type: Array,
         default: []

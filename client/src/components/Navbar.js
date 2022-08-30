@@ -8,15 +8,19 @@ import { useContext } from 'react';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 // import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import logo from '../assets/blogger.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
+    const navigate = useNavigate()
+    function redirect() {
+        navigate('/editor')
+    }
     return (
         <div className="container">
             <div className="navbar">
                 <div className="left">
-                    <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',color:'inherit',textDecoration:'none' }}>
+                    <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
                         <img style={{ width: '36.5px', marginRight: '9px' }} src={logo} alt="" />
                         <h2>CatchBlog</h2>
                     </Link>
@@ -28,14 +32,14 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <button style={{ fontFamily: 'Poppins', width: 'inherit', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer',marginRight:'5px' }} variant="outlined">New Post</button>
+                    <button onClick={redirect} style={{ fontFamily: 'Poppins', width: 'inherit', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
                     <div className="tags">
                         <IconButton onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
                         <Badge sx={{ margin: '0 5px' }} color="error" overlap="circular" >
                             <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
                         </Badge>
-                        <IconButton sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src="https://firebasestorage.googleapis.com/v0/b/upload-pics-e599e.appspot.com/o/images%2F76525761.jpg?alt=media&token=dbc95980-be1d-4f16-ae70-24ee874cd885" alt="" /></IconButton>
+                        <IconButton sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
                     </div>
                 </div>
 

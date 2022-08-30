@@ -11,7 +11,8 @@ router.post('/new', async (req, res) => {
             tags: req.body.tags.slice(1, req.body.tags.length - 1).split(','),
             postid: postid(),
             uid: req.body.uid,
-            md: req.body.md
+            md: req.body.md,
+            summary:req.body.summary
         })
         const done = await newPost.save()
         res.send(done)
