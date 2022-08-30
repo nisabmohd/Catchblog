@@ -22,7 +22,7 @@ export const Navbar = () => {
                 <div className="left">
                     <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
                         <img style={{ width: '36.5px', marginRight: '9px' }} src={logo} alt="" />
-                        <h2>CatchBlog</h2>
+                        <h2 className='logohide'>CatchBlog</h2>
                     </Link>
                 </div>
                 <div className="middle">
@@ -32,14 +32,14 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <button onClick={redirect} style={{ fontFamily: 'Poppins', width: 'inherit', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
+                    <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content',width:'125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
                     <div className="tags">
-                        <IconButton onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
+                        <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
-                        <Badge sx={{ margin: '0 5px' }} color="error" overlap="circular" >
+                        <Badge className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
                             <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
                         </Badge>
-                        <IconButton sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
+                        <IconButton className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
                     </div>
                 </div>
 
