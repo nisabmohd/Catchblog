@@ -27,14 +27,14 @@ export const Post = () => {
   return (
     <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
       <div className="complete-left">
-        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '207px', marginTop: '5px', width: '10%' }}>
+        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '207px', marginTop: '5px', width: '3%',paddingRight:'9px' }}>
           <IconButton><ThumbUpOffAltIcon /></IconButton>
           <IconButton><ShareIcon /></IconButton>
           <IconButton> <BookmarkBorderIcon /></IconButton>
         </div>
       </div>
       <div className="container-left">
-        <div className="markdown">
+        <div className="markdown" style={{width:'96%'}}>
           <Markdown options={{
             forceBlock: true,
             overrides: {

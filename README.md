@@ -69,6 +69,10 @@ $ npm start
 <img src="./images/8.png">
 <img src="./images/7.png">
 
+#### Home Page
+<img src="./images/10.png">
+<img src="./images/9.png">
+
 #### Blog Page
 <img src="./images/2.png">
 <img src="./images/1.png">

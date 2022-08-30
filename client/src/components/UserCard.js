@@ -8,14 +8,13 @@ export const UserCard = (props) => {
     useEffect(() => {
         async function fetch() {
             const resp = await axios.get(`${url}/user/${props.uid}`)
-            console.log(resp.data);
             setUser(resp.data)
         }
         props.uid && fetch();
     }, [props.uid])
     return (
-        <div className="user-card" style={{ marginTop: '12px', width: '297px', borderRadius: '10px', padding: '20px', }}>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '79%' }} className="userdetails">
+        <div className="user-card" style={{ marginTop: '12px', width: '294px', borderRadius: '10px', }}>
+            <div style={{ display: 'flex', flexDirection: 'row',  width: '79%',alignItems:'center',marginBottom:'13px' }} className="userdetails">
                 <img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" />
                 <div className="name">
                     <p style={{
@@ -23,43 +22,44 @@ export const UserCard = (props) => {
                         fontWeight: '700',
                         fontSize: '14px',
                         lineHeight: '24px',
+                        marginLeft:'20px'
                     }}>{user && user.username}</p>
                 </div>
             </div>
-            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '79%' }}>
-                <div className="followers">
+            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '79%',marginTop:'-19px' }}>
+                <div className="followers" style={{ display: 'flex', flexDirection: 'row',alignItems:'center'}}>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '500',
                         fontSize: '13px',
                         lineHeight: '24px',
-                    }}>Followers</p>
+                    }}>Followers : </p>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '600',
                         fontSize: '12px',
                         lineHeight: '24px',
-                        marginTop:'-2px'
+                        marginLeft:'7px'
                     }}>{user && user.followers.length}</p>
                 </div>
-                <div className="joined">
+                <div className="joined" style={{ display: 'flex', flexDirection: 'row',alignItems:'center',marginLeft:'9px'}}>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '500',
                         fontSize: '13px',
                         lineHeight: '24px'
-                    }}>Joined</p>
+                    }}>Joined :</p>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '600',
                         fontSize: '12px',
                         lineHeight: '24px',
-                        marginTop:'-2px'
+                        marginLeft:'7px'
                     }}>{user && user.joined.slice(0,10)}</p>
                 </div>
             </div>
-            <div className="button" style={{ width: '95%' }}>
-                <button style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button>
+            <div className="button" style={{ width: '93%',marginTop:'16px' }}>
+                <button style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button>
             </div>
         </div >
     )

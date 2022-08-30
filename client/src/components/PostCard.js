@@ -1,43 +1,30 @@
 import React, { useContext } from 'react'
 import { Postcarduser } from './Postcarduser'
 import { AppContext } from "../App";
-import { Chip, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import { Chip } from './Chip';
+
 
 export const PostCard = (props) => {
     const context = useContext(AppContext)
 
     return (
-        <div className={`card ${context.dark ? "" : "cardshadow"}`} style={{ width: '100%', backgroundColor: !context.dark ? 'white' : '#181818', padding: '22px 15px', borderRadius: '7px', margin: '20px 0' }}>
+        <div className={`card`} style={{ width: '100%', padding: '22px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)' }}>
             <div className="header">
                 <div className="textheader">
-                    <Postcarduser img={props.img} name={props.name} date={props.date} />
+                    <Postcarduser uid={props.uid} img={props.img} name={props.name} date={props.date} />
                 </div>
-                <div className="imgheader">
 
-                </div>
             </div>
-            <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-                <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <h3 style={{ marginLeft: '40px', marginTop: '12px' }}>{props.content}</h3>
+            <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '9px' }}>
+                <Link to="/post/987fgdjkfdfudfgdigf" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <h1 style={{fontSize:'19px'}}>{props.content}</h1>
+                    <p style={{fontSize:'13px',width:'95%'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eos maxime impedit, recusandae animi distinctio perspiciatis nobis! Eaque quia nulla natus architecto nam deserunt incidunt sapiente rerum ullam quod nihil sunt mollitia, magnam, quas eos commodi sint.</p>
                 </Link>
-                <div style={{ marginLeft: '40px' }} className="labels">
+                <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 'auto' }} className="labels">
                     {props.tags?.map(item => {
-                        return <Chip onClick={{}} sx={{ height: '22px', fontSize: '10px', marginRight: '8px' }} label={`#${item}`} />
+                        return <Chip dark={context.dark} name={item} />
                     })}
-                </div>
-            </div>
-            <div className="handlethings" style={{ width: '100%', display: 'flex', flexDirection: 'row', marginTop: '15px', justifyContent: 'space-between',alignItems:'center'}}>
-                <div className="likes" style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-                    <IconButton style={{ marginLeft: '45px',marginRight:'6px'}} ><ThumbUpOffAltIcon style={{fontSize:'22px'}} /></IconButton>
-                    <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)',margin:'0',marginTop:'4px' }}>170 Likes</p>
-
-                </div>
-                <div className="save" style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-                    <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)',margin:'0',marginTop:'4px',marginRight:'6px' }}>7 min read</p>
-                    <IconButton style={{ marginRight: '10px' }}><BookmarkBorderIcon  style={{fontSize:'22px'}} /></IconButton>
                 </div>
             </div>
         </div>
