@@ -36,7 +36,7 @@ const BlogSchema = new mongoose.Schema({
     },
     md: {
         type: String
-    }
+    },
 })
 
 const BlogPostModel = new mongoose.model('Posts', BlogSchema)

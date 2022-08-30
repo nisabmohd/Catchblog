@@ -13,6 +13,7 @@ import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Reset } from "./Pages/Reset";
 import { Home } from "./Pages/Home";
+import { Edit } from "./Pages/Edit";
 
 export const AppContext = React.createContext()
 function App() {
@@ -55,6 +56,7 @@ function App() {
                     <Navbar />
                     <Routes>
                       <Route path="/" element={<Home/>} />
+                      <Route path="/editor" element={<Edit />} />
                       <Route path="/post/:postid" element={<Post />} />
                     </Routes>
                   </> :
