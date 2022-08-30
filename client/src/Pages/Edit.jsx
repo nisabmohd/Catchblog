@@ -47,15 +47,14 @@ export const Edit = () => {
 
                 <p style={{ fontSize: '13px', fontWeight: 'bold' }}>Post Info : </p>
             </div>
-            <div className="container">
-
+            <div className="container ">
                 <div className="txts" style={{ width: '100%', marginBottom: '29px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <div className="box" style={{ width: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div className="boxins" style={{ width: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                         <textarea style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '78px', fontSize: '14px' }} placeholder='Enter Title *'></textarea>
-                        <textarea style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '75px', fontSize: '14px' }} placeholder='Enter tags you want to mention'></textarea>
-                        <button style={{ fontFamily: 'Poppins', width: '100%', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '43px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Share Post</button>
+                        <textarea className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '75px', fontSize: '14px' }} placeholder='Enter tags you want to mention'></textarea>
+                        <button className='followbtn boxins' style={{ fontFamily: 'Poppins', width: '100%', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '43px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Share Post</button>
                     </div>
-                    <textarea style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '56%', height: '235px', fontSize: '14px' }} placeholder='Enter Summary of the post *'></textarea>
+                    <textarea className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '56%', height: '235px', fontSize: '14px' }} placeholder='Enter Summary of the post *'></textarea>
                 </div>
             </div>
         </>

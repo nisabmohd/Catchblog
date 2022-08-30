@@ -62,12 +62,32 @@ body {
 }
 
 @media screen and (max-width:755px) {
+    .container {
+        display: flex;
+        flex-direction: column !important;
+    }
+
     .container-left {
         width: 100%;
     }
 
+    .navbar {
+        margin-bottom: 0px !important;
+    }
+
     .container-right {
-        display: none;
+        width: 100% !important;
+        margin-left: -6px !important;
+    }
+
+    .user-card {
+        width: 100% !important;
+        margin-bottom: 29px !important;
+        margin-left: 9px !important;
+    }
+
+    .followbtn {
+        width: 100% !important;
     }
 
     .logohide {
@@ -99,26 +119,39 @@ body {
     .labels {
         margin-left: -9px !important;
     }
-    .newpostbtn{
+
+    .newpostbtn {
         font-size: 9px !important;
         width: 30px !important;
+        height: 32px !important;
     }
-}
-@media screen and (max-width:515px) {
-    .posthandle{
+
+    .container50 {
+        width: 100% !important;
+    }
+
+    .boxins {
+        width: 100% !important;
+        margin-top: 9px !important;
+    }
+
+    .txts {
+        flex-direction: column !important;
+        width: 100% !important;
+        flex-direction: column-reverse !important;
+    }
+    .posthandle {
         display: flex;
         flex-direction: row !important;
         height: fit-content !important;
         padding: 0 !important;
-        margin-top: 19px !important;
-    }
-    .containerrev{
-        flex-direction: column-reverse !important;
+        margin-top: 9px !important;
+        margin-bottom: -6px  !important;
     }
 }
 
 @media screen and (max-width:412px) {
-    .smicons{
+    .smicons {
         margin: 0 -5px !important;
     }
 }
