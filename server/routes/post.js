@@ -12,7 +12,7 @@ router.post('/new', async (req, res) => {
             postid: postid(),
             uid: req.body.uid,
             md: req.body.md,
-            summary:req.body.summary
+            summary: req.body.summary
         })
         const done = await newPost.save()
         res.send(done)
@@ -23,9 +23,29 @@ router.post('/new', async (req, res) => {
 
 router.get('/allpost', async (req, res) => {
     try {
-        const allpost = await BlogPostModel.find({})
-        res.send(allpost)
+        const pageNumber = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit) || 5;
+        const result = {};
+        const totalPosts = await BlogPostModel.countDocuments()
+        let startIndex = pageNumber * limit;
+        const endIndex = (pageNumber + 1) * limit;
+        result.totalPosts = totalPosts;
+        if (startIndex > 0) {
+            result.previous = {
+                pageNumber: pageNumber - 1,
+                limit: limit,
+            };
+        }
+        if (endIndex < (await BlogPostModel.countDocuments().exec())) {
+            result.next = {
+                pageNumber: pageNumber + 1,
+                limit: limit,
+            };
+        }
+        result.data = await BlogPostModel.find({}).skip(startIndex).limit(limit)
+        res.send(result)
     } catch (err) {
+        console.log(err);
         res.status(400).send(err)
     }
 })
