@@ -1,9 +1,9 @@
-import { Badge, IconButton } from '@mui/material'
+import { Badge, IconButton, Menu, MenuItem } from '@mui/material'
 import '../css/Navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { AppContext } from "../App";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 // import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 // import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -16,6 +16,14 @@ export const Navbar = () => {
     function redirect() {
         navigate('/editor')
     }
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <div className="container">
             <div className="navbar">
@@ -32,14 +40,27 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content',width:'125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
+                    <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
                     <div className="tags">
                         <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
                         <Badge className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
                             <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
                         </Badge>
-                        <IconButton className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                        >
+                            <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{navigate(`/user/${context.auth.uid}`);handleClose()}}>My account</MenuItem>
+                            <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{context.handlelogout();navigate('/login');handleClose()}}>Logout</MenuItem>
+                        </Menu>
+                        <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
+                        
                     </div>
                 </div>
 

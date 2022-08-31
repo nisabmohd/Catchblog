@@ -41,12 +41,16 @@ function App() {
     }
   },[])
 
+  function handlelogout(){
+    setAuth(false)
+    localStorage.removeItem('auth')
+  }
   function handledark(){
     setDark(!dark)
     localStorage.setItem('dark',`${!dark}`)
   }
 
-  const contextValue = { setDark, dark, auth, setAuth,handledark}
+  const contextValue = { setDark, dark, auth, setAuth,handledark,handlelogout}
   return (
     <BrowserRouter>
       <AppContext.Provider value={contextValue} >

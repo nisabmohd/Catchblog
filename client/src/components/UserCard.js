@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { url } from "../baseurl";
-
+import { AppContext } from "../App";
 
 export const UserCard = (props) => {
     const [user, setUser] = useState()
+    const context = useContext(AppContext)
+
     useEffect(() => {
         async function fetch() {
             const resp = await axios.get(`${url}/user/${props.uid}`)
@@ -16,7 +18,7 @@ export const UserCard = (props) => {
     return (
         <div className="user-card" style={{ marginTop: '12px', width: '294px', borderRadius: '10px', }}>
             <div style={{ display: 'flex', flexDirection: 'row',  width: '79%',alignItems:'center',marginBottom:'13px' }} className="userdetails">
-                <img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" />
+            <Link style={{color:'inherit',textDecoration:'none',display:'flex',justifyContent:'center',alignItems:'center'}} to={`/user/${props.uid}`}><img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" /></Link>
                 <div className="name">
                     <Link style={{color:'inherit',textDecoration:'none'}} to={`/user/${props.uid}`}><p style={{
                         fontStyle: 'normal',
@@ -60,7 +62,10 @@ export const UserCard = (props) => {
                 </div>
             </div>
             <div className="button" style={{ width: '93%',marginTop:'16px' }}>
-                <button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button>
+                {
+                    props.uid===context.auth.uid?<button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Edit Profile</button>
+                    :<button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button>
+                }
             </div>
         </div >
     )
