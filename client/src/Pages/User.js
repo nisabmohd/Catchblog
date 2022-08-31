@@ -1,19 +1,42 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../App'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+// import { AppContext } from '../App'
+import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { UserCard } from '../components/UserCard'
 export const User = () => {
-    const context = useContext(AppContext)
+    // const context = useContext(AppContext)
+    const params = useParams()
+    const [user, setUser] = useState()
+    const[post,setPosts]=useState([])
+    useEffect(() => {
+        async function fetch() {
+            const resp = await axios.get(`${url}/user/${params.uid}`)
+            setUser(resp.data)
+        }
+        params.uid && fetch();
+    }, [params])
+    useEffect(() => {
+        if (!user) return
+        async function fetch() {
+            const resp = await axios.get(`${url}/post/userpost/${params.uid}`)
+            // console.log(resp.data);
+            setPosts(resp.data)
+        }
+        fetch();
+    }, [params.uid, user])
     return (
         <div className='container'>
             <div className="container-left">
-                <PostCard img="https://res.cloudinary.com/practicaldev/image/fetch/s--SeFZpZ8W--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/612541/6ce4b30d-2f5e-4c87-bb95-5c5543dd605c.jpg" uid="gjf956168hjgjhjk" name="Michał Hawełka" date="2022-08-29" content="Basic Next.js app - blog post page [Building Personal Blog Website Part 3]" tags={["Dev"]} />
-                <PostCard img="https://res.cloudinary.com/practicaldev/image/fetch/s--SeFZpZ8W--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/612541/6ce4b30d-2f5e-4c87-bb95-5c5543dd605c.jpg" uid="gjf956168hjgjhjk" name="Michał Hawełka" date="2022-08-29" content="Why 0.1+0.2==0.3 False?" tags={["HTML", "CSS"]} />
-                <PostCard img="https://res.cloudinary.com/practicaldev/image/fetch/s--SeFZpZ8W--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/612541/6ce4b30d-2f5e-4c87-bb95-5c5543dd605c.jpg" uid="gjf956168hjgjhjk" name="Michał Hawełka" date="2022-07-09" content="7 Useful Articles Every New Developer Should Bookmark 👍💯" tags={["dev", "coding", "learning"]} />
-                <PostCard img="https://res.cloudinary.com/practicaldev/image/fetch/s--SeFZpZ8W--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/612541/6ce4b30d-2f5e-4c87-bb95-5c5543dd605c.jpg" uid="gjf956168hjgjhjk"  name="Michał Hawełka" date="2022-07-09" content="I built a REST API with Redis" tags={["redis","api"]} />
+                {
+                    post.map(item=>{
+                        return <PostCard key={item.postid} id={item.postid} uid={item.uid} date={item.timestamp.slice(0,10)} content={item.title} tags={item.tags} />
+                    })
+                }
             </div>
             <div className="container-right">
-                <UserCard uid={context.auth.uid} />
+                {user && <UserCard uid={user.uid} />}
             </div>
         </div>
     )

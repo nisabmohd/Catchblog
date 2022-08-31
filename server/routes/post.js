@@ -59,7 +59,14 @@ router.get('/:postid', async (req, res) => {
     }
 })
 
-
+router.get('/userpost/:uid', async (req, res) => {
+    try {
+        const findpost = await BlogPostModel.find({ uid: req.params.uid })
+        res.send(findpost)
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
 
 //edit post
 // router.put('/edit/:postid', async (req, res) => {

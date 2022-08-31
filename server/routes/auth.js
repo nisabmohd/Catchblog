@@ -26,7 +26,7 @@ router.post('/signup', async (req, res) => {
         const newUser = new UserModel({
             uid: uuid,
             username: req.body.username,
-            img: req.body.img ? req.body.img : "",
+            img: req.body.img ? req.body.img : `https://avatars.dicebear.com/api/identicon/${uuid}.svg`,
             password: hashedpass,
             email: req.body.email
         })

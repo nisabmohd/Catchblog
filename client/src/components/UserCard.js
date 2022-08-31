@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { url } from "../baseurl";
 
 
@@ -17,13 +18,13 @@ export const UserCard = (props) => {
             <div style={{ display: 'flex', flexDirection: 'row',  width: '79%',alignItems:'center',marginBottom:'13px' }} className="userdetails">
                 <img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" />
                 <div className="name">
-                    <p style={{
+                    <Link style={{color:'inherit',textDecoration:'none'}} to={`/user/${props.uid}`}><p style={{
                         fontStyle: 'normal',
                         fontWeight: '700',
                         fontSize: '14px',
                         lineHeight: '24px',
                         marginLeft:'20px'
-                    }}>{user && user.username}</p>
+                    }}>{user && user.username}</p></Link>
                 </div>
             </div>
             <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '79%',marginTop:'-19px' }}>
