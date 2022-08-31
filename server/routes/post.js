@@ -36,7 +36,7 @@ router.get('/allpost', async (req, res) => {
                 limit: limit,
             };
         }
-        if (endIndex < (await BlogPostModel.countDocuments().exec())) {
+        if (endIndex < (await BlogPostModel.countDocuments())) {
             result.next = {
                 pageNumber: pageNumber + 1,
                 limit: limit,
