@@ -57,7 +57,7 @@ body {
 
 @media screen and (max-width:845px) {
     .container {
-        width: 95%;
+        width: 98%;
     }
 }
 
@@ -67,12 +67,18 @@ body {
         flex-direction: column !important;
     }
 
+    .card {
+        width: 97% !important;
+        margin-left: 2px !important;
+    }
+
     .container-left {
         width: 100%;
     }
 
     .navbar {
         margin-bottom: 0px !important;
+        
     }
 
     .container-right {
@@ -81,13 +87,13 @@ body {
     }
 
     .user-card {
-        width: 100% !important;
+        width: 98.5% !important;
         margin-bottom: 29px !important;
-        margin-left: 9px !important;
+        margin-left: 8.7px !important;
     }
 
     .followbtn {
-        width: 100% !important;
+        width: 107.5% !important;
     }
 
     .logohide {
@@ -96,6 +102,7 @@ body {
 
     .left {
         width: 13% !important;
+        margin-left: 6px !important;
     }
 
     .searchbox {
@@ -140,18 +147,26 @@ body {
         width: 100% !important;
         flex-direction: column-reverse !important;
     }
+
     .posthandle {
         display: flex;
         flex-direction: row !important;
         height: fit-content !important;
         padding: 0 !important;
         margin-top: 9px !important;
-        margin-bottom: -6px  !important;
+        margin-bottom: -6px !important;
+    }
+
+    .markdown {
+        width: 98.5% !important;
     }
 }
 
 @media screen and (max-width:412px) {
     .smicons {
         margin: 0 -5px !important;
+    }
+    .newpostbtn{
+        margin-left: -5px;
     }
 }
