@@ -56,19 +56,6 @@ $ npm start
 
 ## Overview
 
-#### Login
-
-<img src="./images/3.png">
-<img src="./images/4.png">
-
-#### Register
-<img src="./images/5.png">
-<img src="./images/6.png">
-
-#### Reset Password
-<img src="./images/8.png">
-<img src="./images/7.png">
-
 #### Home Page
 <img src="./images/10.png">
 <img src="./images/9.png">
