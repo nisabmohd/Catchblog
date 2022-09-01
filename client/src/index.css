@@ -82,14 +82,14 @@ body {
     }
 
     .container-right {
-        width: 100% !important;
-        margin-left: -6px !important;
+        width: 98% !important;
+        margin-left: -2px !important;
     }
 
     .user-card {
-        width: 98.5% !important;
+        width: 98% !important;
         margin-bottom: 29px !important;
-        margin-left: 8.7px !important;
+        margin-left: 9.7px !important;
     }
 
     .followbtn {
@@ -159,6 +159,12 @@ body {
 
     .markdown {
         width: 98.5% !important;
+    }
+    .summary{
+        width: inherit !important;
+    }
+    .pararesp{
+        width: 100% !important;
     }
 }
 

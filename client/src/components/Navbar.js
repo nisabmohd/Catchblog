@@ -9,10 +9,12 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 // import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import logo from '../assets/blogger.png'
 import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
     const navigate = useNavigate()
+    const [search, setSearch] = useState('')
     function redirect() {
         navigate('/editor')
     }
@@ -24,8 +26,22 @@ export const Navbar = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleSearch = () => {
+        console.log(search);
+        if (!search){
+            toast.error("Enter keyword to search", {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+            return;
+        }
+        setSearch('')
+        navigate(`/search?q=${search}`)
+    }
     return (
         <div className="container">
+            <Toaster />
             <div className="navbar">
                 <div className="left">
                     <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
@@ -36,7 +52,7 @@ export const Navbar = () => {
                 <div className="middle">
                     <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid #353535' : '2px solid rgb(248, 248, 248)', paddingLeft: '16px', height: '36px', borderRadius: '7px' }}>
                         <SearchIcon sx={{ width: '19px', marginRight: '9px' }} />
-                        <input type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
+                        <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
                     </div>
                 </div>
                 <div className="right">
@@ -44,7 +60,7 @@ export const Navbar = () => {
                     <div className="tags">
                         <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
-                        <Badge onClick={()=>navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
+                        <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
                             <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
                         </Badge>
                         <Menu
@@ -56,11 +72,11 @@ export const Navbar = () => {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{navigate(`/user/${context.auth.uid}`);handleClose()}}>My account</MenuItem>
-                            <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{context.handlelogout();navigate('/login');handleClose()}}>Logout</MenuItem>
+                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}>My account</MenuItem>
+                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}>Logout</MenuItem>
                         </Menu>
                         <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '24px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
-                        
+
                     </div>
                 </div>
 

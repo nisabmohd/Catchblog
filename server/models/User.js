@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema({
     notifications:{
         type:Array,
         default:[]
+    },
+    summary:{
+        type:String,
+        default:"-"
     }
 })
 

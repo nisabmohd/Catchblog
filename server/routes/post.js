@@ -1,6 +1,6 @@
 const { BlogPostModel } = require('../models/Blog')
 const { v4: postid } = require('uuid')
-const { createConnection } = require('mongoose')
+const { UserModel } = require('../models/User')
 
 const router = require('express').Router()
 
@@ -9,7 +9,7 @@ router.post('/new', async (req, res) => {
     try {
         const newPost = new BlogPostModel({
             title: req.body.title,
-            tags: req.body.tags.slice(1, req.body.tags.length - 1).split(','),
+            tags: req.body.tags.split(','),
             postid: postid(),
             uid: req.body.uid,
             md: req.body.md,
@@ -79,6 +79,8 @@ router.get('/trends/:uid', async (req, res) => {
     }
 })
 
+
+
 router.get('/tags/:tags', async (req, res) => {
     try {
         const pageNumber = parseInt(req.query.page) || 0;
@@ -134,8 +136,6 @@ router.get('/userpost/:uid', async (req, res) => {
         res.status(400).send(err)
     }
 })
-
-
 
 
 //edit post

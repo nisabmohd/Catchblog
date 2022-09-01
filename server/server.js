@@ -4,13 +4,14 @@ const cors = require('cors')
 require('dotenv').config()
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-const userRoute=require('./routes/user')
+const userRoute = require('./routes/user')
+const searchRoute = require('./routes/search')
 
 const app = express()
 app.use(express.json())
 
 app.use(cors());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect(process.env.mongouri, () => {
     console.log("Connected to db");
@@ -20,9 +21,13 @@ app.get('/test', (req, res) => {
     res.send("hello from other side")
 })
 
+app.use('/search', searchRoute)
+
 app.use('/post', postRouter)
 
+
 app.use('/auth', authRouter)
+
 
 app.use('/user', userRoute)
 

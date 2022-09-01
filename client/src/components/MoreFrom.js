@@ -11,7 +11,6 @@ export const MoreFrom = (props) => {
     useEffect(() => {
         async function fetch() {
             const resp = await axios.get(`${url}/post/morefrom?uid=${props.uid}&prev=${props.prev}`)
-            console.log(resp.data);
             setMore(resp.data)
             setUsername(await (await axios.get(`${url}/user/${props.uid}`)).data.username)
         }
