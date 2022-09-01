@@ -29,7 +29,7 @@ export const PostCard = (props) => {
             <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '9px' }}>
                 <Link to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                     <h1 style={{ fontSize: '19px' }}>{props.content}</h1>
-                    <p style={{ fontSize: '13px', width: '95%' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eos maxime impedit, recusandae animi distinctio perspiciatis nobis! Eaque quia nulla natus architecto nam deserunt incidunt sapiente rerum ullam quod nihil sunt mollitia, magnam, quas eos commodi sint.</p>
+                    <p style={{ fontSize: '13px', width: '95%' }}>{props.summary && props.summary}</p>
                 </Link>
                 <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 'auto' }} className="labels">
                     {props.tags?.map(item => {
