@@ -71,7 +71,7 @@ export const User = () => {
                 >
                     {
                         post && post.map(item => {
-                            return <PostCard key={item.postid} id={item.postid} uid={item.uid} date={item.timestamp.slice(0, 10)} content={item.title} tags={item.tags} />
+                            return <PostCard summary={item.summary} key={item.postid} id={item.postid} uid={item.uid} date={item.timestamp.slice(0, 10)} content={item.title} tags={item.tags} />
                         })
                     }
                 </InfiniteScroll>
