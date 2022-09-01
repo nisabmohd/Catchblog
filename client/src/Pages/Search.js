@@ -30,16 +30,15 @@ export const Search = () => {
                     {
                         users.map(item => {
                             return (
+                                <Link to={`/user/${item.uid}`}  style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
                                 <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '21.5px', paddingTop: '12px' }}>
                                     <div className="header" style={{ width: '100%' }}>
                                         <div className="textheader" style={{ width: '100%' }}>
                                             <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                <Link to={`/user/${item.uid}`}>
                                                     <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '4px' }} src={item.img} alt="" />
-                                                </Link>
                                                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                     <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
-                                                        <Link to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
+                                                        <div>
                                                             <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
                                                                 <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
                                                                 <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
@@ -47,14 +46,14 @@ export const Search = () => {
                                                             <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
                                                                 <p style={{ fontSize: '12px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
                                                             </div>
-                                                        </Link>
+                                                        </div>
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>)
+                                </div></Link>)
                         })
                     }</div>}
                 {post.length !== 0 && <h3 style={{ marginBottom: '11px' }}> Posts Results for ' {searchParams.get("q")} '</h3>}
