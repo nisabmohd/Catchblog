@@ -16,6 +16,8 @@ import { Home } from "./Pages/Home";
 import { Edit } from "./Pages/Edit";
 import { User } from "./Pages/User";
 import { Saved } from "./Pages/Saved";
+import {Tags} from './Pages/Tags'
+import {Notifications} from './Pages/Notifications'
 
 export const AppContext = React.createContext()
 function App() {
@@ -63,6 +65,8 @@ function App() {
                     <Navbar />
                     <Routes>
                       <Route path="/" element={<Home/>} />
+                      <Route path="/notifications" element={<Notifications/>} />
+                      <Route path="/tags/:tag"  element={<Tags/>} />
                       <Route path="/saved" element={<Saved />} />
                       <Route path="/editor" element={<Edit />} />
                       <Route path="/user/:uid" element={<User />} />

@@ -44,7 +44,7 @@ export const Navbar = () => {
                     <div className="tags">
                         <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
-                        <Badge className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
+                        <Badge onClick={()=>navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
                             <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
                         </Badge>
                         <Menu
@@ -59,7 +59,7 @@ export const Navbar = () => {
                             <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{navigate(`/user/${context.auth.uid}`);handleClose()}}>My account</MenuItem>
                             <MenuItem sx={{fontFamily:'Poppins',fontSize:'12px'}} onClick={()=>{context.handlelogout();navigate('/login');handleClose()}}>Logout</MenuItem>
                         </Menu>
-                        <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
+                        <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '24px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
                         
                     </div>
                 </div>

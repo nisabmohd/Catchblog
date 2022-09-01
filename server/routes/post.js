@@ -1,5 +1,6 @@
 const { BlogPostModel } = require('../models/Blog')
 const { v4: postid } = require('uuid')
+const { createConnection } = require('mongoose')
 
 const router = require('express').Router()
 
@@ -36,7 +37,7 @@ router.get('/allpost', async (req, res) => {
                 limit: limit,
             };
         }
-        if (endIndex < (await BlogPostModel.countDocuments())) {
+        if (endIndex < totalPosts) {
             result.next = {
                 pageNumber: pageNumber + 1,
                 limit: limit,
@@ -51,7 +52,6 @@ router.get('/allpost', async (req, res) => {
 })
 router.get('/morefrom', async (req, res) => {
     const { prev, uid } = req.query
-    console.log(prev, uid);
     try {
         const posts = await BlogPostModel.find({ $and: [{ uid: uid }, { postid: { $ne: prev } }] }).sort({ _id: -1 }).limit(3)
         res.send(posts)
@@ -69,12 +69,40 @@ router.get('/:postid', async (req, res) => {
     }
 })
 
-router.get('/trends/:uid', async(req, res) => {
-    try{
-        const data=await BlogPostModel.find().sort({votes:-1}).limit(4)
+router.get('/trends/:uid', async (req, res) => {
+    try {
+        const data = await BlogPostModel.find().sort({ votes: -1 }).limit(4)
         res.send(data)
     }
-    catch(err){
+    catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.get('/tags/:tags', async (req, res) => {
+    try {
+        const pageNumber = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit) || 5;
+        const result = {};
+        const totalPosts = await BlogPostModel.countDocuments({ tags: req.params.tags })
+        let startIndex = pageNumber * limit;
+        const endIndex = (pageNumber + 1) * limit;
+        result.totalPosts = totalPosts;
+        if (startIndex > 0) {
+            result.previous = {
+                pageNumber: pageNumber - 1,
+                limit: limit,
+            };
+        }
+        if (endIndex < totalPosts) {
+            result.next = {
+                pageNumber: pageNumber + 1,
+                limit: limit,
+            };
+        }
+        result.data = await BlogPostModel.find({ tags: req.params.tags }).sort({ _id: -1 }).skip(startIndex).limit(limit)
+        res.send(result)
+    } catch (err) {
         res.status(400).send(err)
     }
 })
@@ -94,7 +122,7 @@ router.get('/userpost/:uid', async (req, res) => {
                 limit: limit,
             };
         }
-        if (endIndex < (await BlogPostModel.countDocuments({ uid: req.params.uid }))) {
+        if (endIndex < totalPosts) {
             result.next = {
                 pageNumber: pageNumber + 1,
                 limit: limit,
@@ -106,6 +134,7 @@ router.get('/userpost/:uid', async (req, res) => {
         res.status(400).send(err)
     }
 })
+
 
 
 

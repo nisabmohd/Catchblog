@@ -32,7 +32,6 @@ export const Home = () => {
         setPost(prev => {
             return [...prev, ...resp.data.data]
         })
-        console.log(resp);
         if (resp.data.next) {
             setPage(resp.data.next.pageNumber)
             setMore(true)

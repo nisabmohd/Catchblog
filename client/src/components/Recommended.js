@@ -11,7 +11,6 @@ export const Recommended = (props) => {
   useEffect(() => {
     async function fetch() {
       const resp = await axios.get(`${url}/post/trends/${props.uid}`)
-      console.log(resp.data);
       setMore(resp.data)
     }
     props.uid && fetch();

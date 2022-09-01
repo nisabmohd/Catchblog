@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
     savedlist:{
         type:Array,
         default:[]
+    },
+    notifications:{
+        type:Array,
+        default:[]
     }
 })
 
