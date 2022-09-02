@@ -66,6 +66,7 @@ body {
         display: flex;
         flex-direction: column !important;
     }
+
     .fontresp {
         font-size: 17px !important;
     }

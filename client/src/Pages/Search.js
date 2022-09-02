@@ -63,10 +63,10 @@ export const Search = () => {
                 }
 
                 {
-                    loading === false && post.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
                 }
 
-                {post.length !== 0 && <h3 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h3>}
+                {post.length !== 0 && <h4 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h4>}
 
                 <InfiniteScroll
                     dataLength={post.length}

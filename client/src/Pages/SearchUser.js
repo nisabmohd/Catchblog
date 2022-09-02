@@ -56,11 +56,11 @@ export const SearchUser = () => {
                     <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark?'white':'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
                 </>}
                 {
-                    loading === false && users.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+                    loading === false && users.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
                 }
 
 
-                {users.length !== 0 && <h3 style={{ marginBottom: '33px' }}>Showing Users Results for ' {searchParams.get("q")} '</h3>}
+                {users.length !== 0 && <h4 style={{ marginBottom: '33px' }}>Showing Users Results for ' {searchParams.get("q")} '</h4>}
                 {users.length !== 0 && <div style={{ marginBottom: '45px' }}>
                     <InfiniteScroll
                         dataLength={users.length}
@@ -81,7 +81,7 @@ export const SearchUser = () => {
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
+                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '14.5px' }}>{item.username}</p>
                                                                         <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>

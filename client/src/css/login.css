@@ -31,9 +31,10 @@
     }
     .leftlogin{
         padding: 0;
-        height: 23vh;
+        height: 100px;
         width: 100%;
         margin-bottom: 30px;
+        margin-top: 60px;
     }.leftlogin img{
         width: 125px;
         margin-bottom: 9vh;
@@ -42,7 +43,7 @@
     .rightlogin{
         padding: 0;
         padding-bottom: 39px;
-        height: 50vh;
+        height: 600px;
     }
     .hrespreset{
         font-size: 25px;

@@ -75,7 +75,7 @@ export const Navbar = () => {
                             <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}>My account</MenuItem>
                             <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}>Logout</MenuItem>
                         </Menu>
-                        <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '24px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
+                        <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
 
                     </div>
                 </div>
