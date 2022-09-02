@@ -66,6 +66,9 @@ body {
         display: flex;
         flex-direction: column !important;
     }
+    .fontresp {
+        font-size: 17px !important;
+    }
 
     .card {
         width: 97% !important;
@@ -78,7 +81,12 @@ body {
 
     .navbar {
         margin-bottom: 0px !important;
-        
+
+    }
+
+    .ml-5 {
+        margin-left: 1vw;
+        margin-top: 12px !important;
     }
 
     .container-right {
@@ -160,10 +168,12 @@ body {
     .markdown {
         width: 98.5% !important;
     }
-    .summary{
+
+    .summary {
         width: inherit !important;
     }
-    .pararesp{
+
+    .pararesp {
         width: 100% !important;
     }
 }
@@ -172,7 +182,13 @@ body {
     .smicons {
         margin: 0 -5px !important;
     }
-    .newpostbtn{
+
+    .newpostbtn {
         margin-left: -5px;
+    }
+
+    .ml-5 {
+        margin-left: 1vw;
+        margin-top: 12px !important;
     }
 }
