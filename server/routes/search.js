@@ -7,7 +7,6 @@ router.get('/post/:q', async (req, res) => {
     try {
         const pageNumber = parseInt(req.query.page) || 0;
         const limit = parseInt(req.query.limit) || 5;
-        console.log(pageNumber,limit);
         const totalPosts = await BlogPostModel.countDocuments({ $or: [{ tags: { $regex: req.params.q, $options: 'i' } }, { title: { $regex: req.params.q, $options: 'i' } }, { summary: { $regex: req.params.q, $options: 'i' } }] })
         let result = {}
         let startIndex = pageNumber * limit;

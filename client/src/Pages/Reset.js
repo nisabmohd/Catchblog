@@ -11,13 +11,12 @@ export const Reset = () => {
         <div className="containerlogin">
             <div className="leftlogin">
                 <div className="headerlogin">
-                    <h1>
+                    <h1 className='hrespreset'>
                         Reset CatchBlog Password
                     </h1>
-                    <p style={{ marginTop: '19px', marginBottom: '-10px' }}>If you remeber your password</p>
-                    <p style={{ marginLeft: '5px' }}>You can <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
+                    <p style={{ marginTop: '19px', marginBottom: '-0px' }}>Remeber your password <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
                 </div>
-                <img style={{marginTop:'-40px'}} src={loginimg} alt="" />
+                <img style={{ marginTop: '-40px',minWidth:'400px' }}  src={loginimg} alt="" />
             </div>
             <div className="rightlogin">
                 <input type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} />

@@ -52,16 +52,16 @@ export const Search = () => {
         <div className='container'>
             <div className="container-left">
 
-
+                {
+                    loading && <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>
+                }
                 {
                     <>
                         <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
                         <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
                     </>
                 }
-                {
-                    loading && <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>
-                }
+
                 {
                     loading === false && post.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
                 }
@@ -79,7 +79,6 @@ export const Search = () => {
 
                     })}
                 </InfiniteScroll>
-                {post.length === 0 && <h3 style={{ marginBottom: '33px' }}>No Results for ' {searchParams.get("q")} '</h3>}
 
             </div>
             <div className="container-right">

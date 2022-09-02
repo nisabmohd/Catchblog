@@ -21,17 +21,18 @@ import {Notifications} from './Pages/Notifications'
 import { Search } from "./Pages/Search";
 import { SearchUser } from "./Pages/SearchUser";
 
+
 export const AppContext = React.createContext()
 function App() {
   const [dark, setDark] = useState(true)
   const [auth, setAuth] = useState(false);
-
 
   const darkTheme = createTheme({
     palette: {
       mode: dark ? 'dark' : 'light',
     },
   });
+
 
   useEffect(()=>{
     const isDark=localStorage.getItem('dark')
