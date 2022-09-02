@@ -19,6 +19,7 @@ import { Saved } from "./Pages/Saved";
 import {Tags} from './Pages/Tags'
 import {Notifications} from './Pages/Notifications'
 import { Search } from "./Pages/Search";
+import { SearchUser } from "./Pages/SearchUser";
 
 export const AppContext = React.createContext()
 function App() {
@@ -67,6 +68,7 @@ function App() {
                     <Routes>
                       <Route path="/" element={<Home/>} />
                       <Route path="/search" element={<Search/>} />
+                      <Route path="/searchuser" element={<SearchUser/>} />
                       <Route path="/notifications" element={<Notifications/>} />
                       <Route path="/tags/:tag"  element={<Tags/>} />
                       <Route path="/saved" element={<Saved />} />

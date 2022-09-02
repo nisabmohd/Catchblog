@@ -37,7 +37,7 @@ export const Navbar = () => {
             return;
         }
         setSearch('')
-        navigate(`/search?q=${search}`)
+        navigate(`/searchuser?q=${search}`)
     }
     return (
         <div className="container">
@@ -56,7 +56,7 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
+                    <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '128px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px' }} variant="outlined">New Post</button>
                     <div className="tags">
                         <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}><Brightness4Icon /></IconButton>
                         {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}

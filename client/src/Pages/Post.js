@@ -33,13 +33,13 @@ export const Post = () => {
   return (
     <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
       <div className="complete-left">
-        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: uid===context.auth.uid?"295px":'207px',marginTop: '-2px', width: '3%',paddingRight:'9px' }}>
-          <IconButton><ThumbUpOffAltIcon /></IconButton>
-          <IconButton><ShareIcon /></IconButton>
+        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height:'207px',marginTop: '-2px', width: '3%',paddingRight:'9px' }}>
+          {uid && uid!==context.auth.uid?<IconButton><ThumbUpOffAltIcon /></IconButton>:<></>}
           {
             uid && uid===context.auth.uid?
             <> <IconButton><EditIcon /></IconButton><IconButton><DeleteOutlineIcon /></IconButton></>  : <IconButton> <BookmarkBorderIcon /></IconButton>
           }
+          <IconButton><ShareIcon /></IconButton>
         </div>
       </div>
       <div className="container-left">

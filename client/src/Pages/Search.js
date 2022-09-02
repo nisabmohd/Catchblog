@@ -1,69 +1,85 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { AppContext } from '../App'
 import { Recommended } from '../components/Recommended'
+import { Box, CircularProgress } from '@mui/material'
+import InfiniteScroll from "react-infinite-scroll-component";
+
 
 export const Search = () => {
     const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
     const [post, setPost] = useState([])
-    const [users, setusers] = useState([])
     const context = useContext(AppContext)
-
+    const [page, setPage] = useState(0)
+    const [more, setMore] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        async function fetch() {
-            const resp = await axios.get(`${url}/search/${searchParams.get("q")}`)
+        async function fetchPost() {
+            const resp = await axios.get(`${url}/search/post/${searchParams.get("q")}?page=0&limit=6`)
             console.log(resp.data);
             setPost(resp.data.posts)
-            setusers(resp.data.users)
+            if (resp.data.next) {
+                setPage(resp.data.next.pageNumber)
+                setMore(true)
+
+            }
         }
-        fetch();
+        fetchPost();
+        setLoading(false)
     }, [searchParams])
+
+
+
+    async function fetchMorePostData() {
+        const resp = await axios.get(`${url}/search/post/${searchParams.get("q")}?page=${page}&limit=6`)
+        setPost(prev => {
+            return [...prev, ...resp.data.posts]
+        })
+        if (resp.data.next) {
+            setPage(resp.data.next.pageNumber)
+            setMore(true)
+        }
+        else {
+            setMore(false)
+        }
+    }
     return (
         <div className='container'>
             <div className="container-left">
-                {users.length !== 0 && <h3 style={{ marginBottom: '33px' }}>Users Results for ' {searchParams.get("q")} '</h3>}
-                {users.length !== 0 && <div style={{ marginBottom: '45px' }}>
-                    {
-                        users.map(item => {
-                            return (
-                                <Link to={`/user/${item.uid}`}  style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '21.5px', paddingTop: '12px' }}>
-                                    <div className="header" style={{ width: '100%' }}>
-                                        <div className="textheader" style={{ width: '100%' }}>
-                                            <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                    <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '4px' }} src={item.img} alt="" />
-                                                <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
-                                                    <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
-                                                        <div>
-                                                            <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
-                                                                <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
-                                                            </div>
-                                                            <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                <p style={{ fontSize: '12px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></Link>)
-                        })
-                    }</div>}
-                {post.length !== 0 && <h3 style={{ marginBottom: '11px' }}> Posts Results for ' {searchParams.get("q")} '</h3>}
+
                 {
-                    post && post.map(item => {
+                    <>
+                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
+                        <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
+                    </>
+                }
+                {
+                    loading && <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>
+                }
+                {
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+                }
+
+                {post.length !== 0 && <h3 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h3>}
+
+                <InfiniteScroll
+                    dataLength={post.length}
+                    next={fetchMorePostData}
+                    hasMore={more}
+                    loader={<Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>}
+                >
+                    {post && post.map(item => {
                         return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp.slice(0, 10)} content={item.title} tags={item.tags} />
 
-                    })
-                }
-            {users.length=== 0 && post.length===0 && <h3 style={{ marginBottom: '33px' }}>No Results for ' {searchParams.get("q")} '</h3>}
+                    })}
+                </InfiniteScroll>
+                {post.length === 0 && <h3 style={{ marginBottom: '33px' }}>No Results for ' {searchParams.get("q")} '</h3>}
 
             </div>
             <div className="container-right">
