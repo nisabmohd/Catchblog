@@ -6,10 +6,12 @@ import { AppContext } from '../App'
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
 import { url } from '../baseurl'
+import { GoogleLogin } from '@react-oauth/google';
 
 export const Login = () => {
     const context = useContext(AppContext)
     const navigate = useNavigate()
+
 
     const [email, setemail] = useState('')
     const [password, setPassword] = useState('')
@@ -31,7 +33,7 @@ export const Login = () => {
             return;
         }
         try {
-            const resp = await axios.post(`${url}/auth/login`,{ email, password })
+            const resp = await axios.post(`${url}/auth/login`, { email, password })
             localStorage.setItem('auth', JSON.stringify(resp.data))
             navigate('/')
             context.setAuth(resp.data)
@@ -44,9 +46,11 @@ export const Login = () => {
             })
         }
     }
+
     return (
         <div className="containerlogin">
             <Toaster />
+
             <div className="leftlogin">
                 <div className="headerlogin">
                     <h1>
@@ -55,13 +59,22 @@ export const Login = () => {
                     <p style={{ marginTop: '19px', marginBottom: '-10px' }}>If you don't have an account</p>
                     <p style={{ marginLeft: '5px' }}>You can <Link to="/register" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Register here</Link></p>
                 </div>
-                <img style={{marginTop:'-40px'}} src={loginimg} alt="" />
+                <img style={{ marginTop: '-40px' }} src={loginimg} alt="" />
             </div>
             <div className="rightlogin">
                 <input type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={email} onChange={(e) => setemail(e.target.value)} />
                 <input type="password" placeholder='Enter password' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button onClick={login} style={{ fontFamily: 'Poppins', width: '320px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '44px', borderRadius: '5px', cursor: 'pointer', marginTop: '20px', fontWeight: 'bold' }} variant="outlined">Login</button>
-                <Link style={{ textDecoration: 'none', color: 'inherit', fontSize: '12.75px', marginTop: '12px' }} to="/reset"><p>Forgot Password ?</p></Link>
+                <Link style={{ textDecoration: 'none', color: 'inherit', fontSize: '12.75px', marginTop: '12px',marginBottom:'25px' }} to="/reset"><p>Forgot Password ?</p></Link>
+                <GoogleLogin
+                    onSuccess={credentialResponse => {
+                        console.log(credentialResponse);
+                    }}
+                    onError={() => {
+                        console.log('Login Failed');
+                    }}
+                    useOneTap
+                />
             </div>
         </div>
     )
