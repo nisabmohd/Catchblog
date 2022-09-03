@@ -29,7 +29,7 @@ export const Notify = (props) => {
 
     return (
         props && (props.type===1 || props.type===2) ?<Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none',zIndex:'-99'}}>
-            <div className={`card cardnotify`} style={{ width: '100%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
+            <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
                 <div className="header">
                     <div className="textheader">
                         <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -54,7 +54,7 @@ export const Notify = (props) => {
             </div>
         </Link>:
         <Link to={`/user/${props.uid}`} style={{ color: 'inherit', textDecoration: 'none',zIndex:'-99'}}>
-        <div className={`card cardnotify`} style={{ width: '100%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
+        <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
             <div className="header">
                 <div className="textheader">
                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
