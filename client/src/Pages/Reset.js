@@ -14,7 +14,7 @@ export const Reset = () => {
                     <h1 className='hrespreset'>
                         Reset CatchBlog Password
                     </h1>
-                    <p style={{ marginTop: '19px', marginBottom: '-0px' }}>Remeber your password <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
+                    <p style={{ marginTop: '19px', marginBottom: '-0px' }}>Remember your password <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
                 </div>
                 <img style={{ marginTop: '-40px',minWidth:'400px',zIndex:'-99' }}  src={loginimg} alt="" />
             </div>

@@ -25,7 +25,7 @@ import { Setting } from "./Pages/Setting";
 
 export const AppContext = React.createContext()
 function App() {
-  const [dark, setDark] = useState(true)
+  const [dark, setDark] = useState(false)
   const [auth, setAuth] = useState(false);
 
   const darkTheme = createTheme({
