@@ -16,7 +16,7 @@ export const Recommended = (props) => {
     props.uid && fetch();
   }, [props])
   return (
-    <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px' }}>
+    <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px',width:'273px' }}>
       {
         more.length !== 0 &&
         <p style={{

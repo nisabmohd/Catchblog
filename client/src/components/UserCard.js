@@ -16,7 +16,7 @@ export const UserCard = (props) => {
         props.uid && fetch();
     }, [props.uid])
     return (
-        <div className="user-card" style={{ marginTop: '12px', width: '294px', borderRadius: '10px', }}>
+        <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px', }}>
             <div style={{ display: 'flex', flexDirection: 'row', width: '79%', alignItems: 'center', marginBottom: '13px' }} className="userdetails">
                 <Link style={{ color: 'inherit', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} to={`/user/${props.uid}`}><img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" /></Link>
                 <div className="name">
@@ -29,7 +29,7 @@ export const UserCard = (props) => {
                     }}>{user && user.username}</p></Link>
                 </div>
             </div>
-            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '79%', marginTop: '-19px' }}>
+            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-19px'}}>
                 <div className="followers" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <p style={{
                         fontStyle: 'normal',
@@ -45,7 +45,7 @@ export const UserCard = (props) => {
                         marginLeft: '7px'
                     }}>{user && user.followers.length}</p>
                 </div>
-                <div className="joined" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '9px' }}>
+                <div className="joined" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '9px'}}>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '500',
@@ -61,10 +61,10 @@ export const UserCard = (props) => {
                     }}>{user && user.joined.slice(0, 10)}</p>
                 </div>
             </div>
-            <div className="summary" style={{ fontSize: '13px', width: '87%', color: 'rgb(161, 148, 148)' }}>
+            <div className="summary" style={{ fontSize: '13px', width: '99%', color: 'rgb(161, 148, 148)' }}>
                 {user && user.summary}
             </div>
-            <div className="button" style={{ width: '93%', marginTop: '23px' }}>
+            <div className="button" style={{ width: '99%', marginTop: '23px' }}>
                 {
                     props.uid === context.auth.uid ? <button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Edit Profile</button>
                         : <button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button>

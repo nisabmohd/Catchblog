@@ -9,7 +9,7 @@ export const Postcarduser = (props) => {
             </Link>
             <Link to={`/user/${props.uid}`} style={{color:'inherit',textDecoration:'none'}}>
                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h5 style={{ margin: '0' }}>{props.name}</h5>
+                    <p style={{ margin: '0',fontSize:'13.85px',fontWeight:'600'}}>{props.name}</p>
                     <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}>{props.date}</p>
                 </div>
             </Link>

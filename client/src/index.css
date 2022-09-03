@@ -22,7 +22,7 @@ body {
 }
 
 .container-right {
-    width: 20%;
+    width: 23%;
 }
 
 .md-header-img {
@@ -99,10 +99,6 @@ body {
         width: 98% !important;
         margin-bottom: 29px !important;
         margin-left: 9.7px !important;
-    }
-
-    .followbtn {
-        width: 107.5% !important;
     }
 
     .logohide {

@@ -31,9 +31,9 @@ export const Post = () => {
   }, [params.postid])
 
   return (
-    <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
+    <Box style={{ marginBottom: '39px' }} className="container">
       <div className="complete-left">
-        <div className="posthandle" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height:'207px',marginTop: '-2px', width: '3%',paddingRight:'9px' }}>
+        <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height:'167px',width: '3%' , marginTop: '19px', }}>
           {uid && uid!==context.auth.uid?<IconButton><ThumbUpOffAltIcon /></IconButton>:<></>}
           {
             uid && uid===context.auth.uid?
@@ -42,8 +42,8 @@ export const Post = () => {
           <IconButton><ShareIcon /></IconButton>
         </div>
       </div>
-      <div className="container-left">
-        <div className="markdown" style={{width:'96%'}}>
+      <div className="container-left" style={{ }}>
+        <div className="markdown" style={{width:'90%'}}>
           <Markdown options={{
             forceBlock: true,
             overrides: {
