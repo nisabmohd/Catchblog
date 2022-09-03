@@ -66,7 +66,7 @@ export const Notify = (props) => {
                                 <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none',zIndex:'99' }}>
                                     <p style={{ margin: '0', marginRight: '5px', fontSize: '14.5px',marginTop:'-2.5px' }}>{user && user.username}</p>
                                 </Link>
-                                <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                                <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                                     <p style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)'}}>{content}</p>
                                 </Link>
                             </div>
