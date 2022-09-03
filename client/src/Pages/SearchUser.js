@@ -81,7 +81,7 @@ export const SearchUser = () => {
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '14px',fontWeight:'bold }}>{item.username}</p>
+                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '14px',fontWeight:'bold' }}>{item.username}</p>
                                                                         <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
