@@ -71,7 +71,7 @@ export const Login = () => {
                     </h1>
                     <p style={{ marginTop: '19px', marginBottom: '-5px' }}>Don't have an account <Link to="/register" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Register here</Link></p>
                 </div>
-                <img style={{ marginTop: '-40px', minWidth:'400px', }} src={loginimg} alt="" />
+                <img style={{ marginTop: '-40px', minWidth:'400px',zIndex:'-99' }} src={loginimg} alt="" />
             </div>
             <div className="rightlogin">
                 <input type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={email} onChange={(e) => setemail(e.target.value)} />

@@ -10,6 +10,9 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import logo from '../assets/blogger.png'
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
@@ -72,8 +75,9 @@ export const Navbar = () => {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}>My account</MenuItem>
-                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}>Logout</MenuItem>
+                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}><AccountCircleIcon sx={{marginRight:'8px',fontSize:'20px',color:context.dark?'white':'gray'}}/>Profile</MenuItem>
+                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/settings`); handleClose() }}><SettingsIcon sx={{marginRight:'8px',fontSize:'20px',color:context.dark?'white':'gray'}}/>Settings</MenuItem>
+                            <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}><LogoutIcon sx={{marginRight:'8px',fontSize:'20px',color:context.dark?'white':'gray'}}/>Logout</MenuItem>
                         </Menu>
                         <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '28px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
 

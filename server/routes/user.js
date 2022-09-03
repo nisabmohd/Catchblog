@@ -23,9 +23,12 @@ router.get('/:uid', async (req, res) => {
 router.get("/notifications/:uid", async (req, res) => {
     try {
         const find = await UserModel.findOne({ uid: req.params.uid }, { password: 0 })
-        res.send(find.notifications)
+        const sortedRes=find.notifications.sort((a,b)=>{
+            return Date.parse(b.date)-Date.parse(a.date)
+        })
+        res.send(sortedRes)
     } catch (err) {
-        res.status(err.code).send(err)
+        res.status(400).send(err)
     }
 })
 
