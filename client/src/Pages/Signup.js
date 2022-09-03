@@ -36,7 +36,7 @@ export const Signup = () => {
       return;
     }
     try {
-      const resp = await axios.post(`${url}/auth/signup`,)
+      const resp = await axios.post(`${url}/auth/signup`,{email, password, username})
       localStorage.setItem('auth', JSON.stringify(resp.data))
       navigate('/')
       context.setAuth(resp.data)
