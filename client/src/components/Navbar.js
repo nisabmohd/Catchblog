@@ -45,6 +45,7 @@ export const Navbar = () => {
         navigate(`/searchuser?q=${search}`)
     }
     return (
+        <div className={context.dark?"bg":"bg-light"}>
             <div className="container">
                 <Toaster />
                 <div className="navbar">
@@ -55,7 +56,7 @@ export const Navbar = () => {
                         </Link>
                     </div>
                     <div className="middle">
-                        <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid #353535' : '1px solid rgb(216 216 216)', paddingLeft: '16px', height: '36px', borderRadius: '7px' }}>
+                        <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid rgb(45 45 45)' : '1px solid rgb(233 233 233)', paddingLeft: '16px', height: '35px', borderRadius: '7px',backgroundColor:context.dark?'#121212':'#ffff'  }}>
                             <SearchIcon sx={{ width: '19px', marginRight: '9px' }} />
                             <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
                         </div>
@@ -89,6 +90,7 @@ export const Navbar = () => {
 
                 </div>
             </div>
+        </div>
 
     )
 }

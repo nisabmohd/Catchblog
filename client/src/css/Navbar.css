@@ -1,10 +1,21 @@
 .navbar{
     width: 100%;
-    height:68px;
+    height:58px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 25px;
+}
+.bg{
+    background-color: #232323;
+    height: 59px;
+    margin-bottom: 20px !important;
+
+}
+.bg-light{
+    background-color: #f8f8f8;
+    height: 59px;
+    margin-bottom: 20px !important;
+
 }
 .left{
     width: 20%;
