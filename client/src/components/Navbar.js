@@ -13,6 +13,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
 export const Navbar = () => {
@@ -77,6 +78,7 @@ export const Navbar = () => {
                                 }}
                             >
                                 <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}><AccountCircleIcon sx={{ marginRight: '8px', fontSize: '20px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Profile</MenuItem>
+                                <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/saved`); handleClose() }}><BookmarkAddedIcon sx={{ marginRight: '8px', fontSize: '20px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Saved</MenuItem>
                                 <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { navigate(`/settings`); handleClose() }}><SettingsIcon sx={{ marginRight: '8px', fontSize: '20px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Settings</MenuItem>
                                 <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '12px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}><LogoutIcon sx={{ marginRight: '8px', fontSize: '20px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Logout</MenuItem>
                             </Menu>

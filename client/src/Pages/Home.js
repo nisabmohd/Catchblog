@@ -22,9 +22,9 @@ export const Home = () => {
                 setPage(resp.data.next.pageNumber)
                 setMore(true)
             }
-            setLoading(false)
         }
         fetch();
+        setLoading(false)
     }, [])
 
     async function fetchMoreData() {

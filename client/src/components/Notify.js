@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../App'
 import { url } from '../baseurl'
+import ReactTimeAgo from 'react-time-ago'
+
 
 export const Notify = (props) => {
     const context = useContext(AppContext)
@@ -45,7 +47,7 @@ export const Notify = (props) => {
                                         <p style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)'}}>{content}</p>
                                     </Link>
                                 </div>
-                                <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}>{props.date}</p>
+                                <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US"/></p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +72,7 @@ export const Notify = (props) => {
                                     <p style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)'}}>{content}</p>
                                 </Link>
                             </div>
-                            <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}>{props.date}</p>
+                            <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US"/></p>
                         </div>
                     </div>
                 </div>

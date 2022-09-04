@@ -37,9 +37,9 @@ export const User = () => {
                 setMore(true)
 
             }
-            setLoading(false)
         }
         fetch();
+        setLoading(false)
     }, [params.uid, user])
 
     async function fetchMoreData() {
