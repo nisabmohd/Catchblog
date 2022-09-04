@@ -58,7 +58,7 @@ export const Home = () => {
                 >
                     {
                         post.map(item => {
-                            return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp.slice(0, 10)} content={item.title} tags={item.tags} />
+                            return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp} content={item.title} tags={item.tags} />
                         })
                     }
                 </InfiniteScroll>

@@ -75,7 +75,7 @@ export const Search = () => {
                     loader={<Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>}
                 >
                     {post && post.map(item => {
-                        return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp.slice(0, 10)} content={item.title} tags={item.tags} />
+                        return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp} content={item.title} tags={item.tags} />
 
                     })}
                 </InfiniteScroll>

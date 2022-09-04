@@ -26,7 +26,7 @@ export const Notifications = () => {
         <h3 style={{ marginBottom: '33px' }}>Notifications</h3>
         {
           not.map(item=>{
-            return <Notify key={item.id} type={item.type} postid={item.postid} date={item.date.slice(0,10)} uid={item.uid}/>
+            return <Notify key={item.id} type={item.type} postid={item.postid} date={item.date} uid={item.uid}/>
           })
         }
         {
