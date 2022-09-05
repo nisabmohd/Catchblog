@@ -4,7 +4,7 @@ CatchBlog is an open source online blog page for devs.
 
 ##  Features 
 - *MarkDown support* 
-- Login/SignUp
+- One tap Google login
 - Markdown code syntax highlight
 
 ## Prerequisites
