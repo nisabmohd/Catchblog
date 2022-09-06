@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 14vh;
+    padding-top: 18vh;
 }
 
 .rightlogin {
@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 22vh;
+    padding-top: 25vh;
 }
 
 .containerlogin {
@@ -29,34 +29,42 @@
         justify-content: center;
         align-items: center;
     }
-    .leftlogin{
+
+    .leftlogin {
         padding: 0;
         height: 100px;
         width: 100%;
         margin-bottom: 30px;
         margin-top: 60px;
-    }.leftlogin img{
+    }
+
+    .leftlogin img {
         width: 125px;
         margin-bottom: 9vh;
         display: none;
     }
-    .rightlogin{
+
+    .rightlogin {
         padding: 0;
         padding-bottom: 39px;
         height: 600px;
     }
-    .hrespreset{
+
+    .hrespreset {
         font-size: 25px;
     }
 }
+
 @media screen and (max-width:412px) {
-    .leftlogin h1{
+    .leftlogin h1 {
         font-size: 25px;
     }
-    .hrespreset{
+
+    .hrespreset {
         font-size: 21px;
     }
-    .leftlogin img{
-       width: 50% !important;
+
+    .leftlogin img {
+        width: 50% !important;
     }
 }

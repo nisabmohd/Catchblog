@@ -15,12 +15,14 @@ body {
     margin: auto;
     justify-content: space-between;
 }
-.navigation-setting{
+
+.navigation-setting {
     padding: 1px 16px;
     border-radius: 6px;
     cursor: pointer;
 }
-.navigation-setting:hover{
+
+.navigation-setting:hover {
     background-color: rgb(66, 66, 66);
     color: white;
 }

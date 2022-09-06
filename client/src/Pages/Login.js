@@ -54,7 +54,7 @@ export const Login = () => {
         }
     }
     function handleGoogleAuth(user) {
-        axios.post(`${url}/auth/googleauth`, { email: user.email, img: user.picture, username: user.name, uid: user.sub})
+        axios.post(`${url}/auth/googleauth`, { email: user.email, img: user.picture, username: user.name, uid: user.sub })
             .then((res) => {
                 console.log(res);
                 localStorage.setItem('auth', JSON.stringify(res.data))
@@ -67,17 +67,16 @@ export const Login = () => {
     return (
         <div className="containerlogin">
             <Toaster />
-
             <div className="leftlogin">
+                <img style={{ marginTop: '-25px', minWidth: '400px', zIndex: '-99' ,width:'85%',marginBottom:'0px'}} src={loginimg} alt="" />
+            </div>
+            <div className="rightlogin">
                 <div className="headerlogin">
                     <h1>
                         Sign in to CatchBlog
                     </h1>
-                    <p style={{ marginTop: '19px', marginBottom: '-5px' }}>Don't have an account <Link to="/register" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Register here</Link></p>
+                    <p style={{marginTop: '-10px', marginBottom: '5px' ,fontSize:'14px',marginLeft:'5px',minWidth:'320px'}}>Don't have an account <Link to="/register" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Register here</Link></p>
                 </div>
-                <img style={{ marginTop: '-40px', minWidth: '400px', zIndex: '-99' }} src={loginimg} alt="" />
-            </div>
-            <div className="rightlogin">
                 <input type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={email} onChange={(e) => setemail(e.target.value)} />
                 <input type="password" placeholder='Enter password' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button onClick={login} style={{ fontFamily: 'Poppins', width: '320px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '44px', borderRadius: '5px', cursor: 'pointer', marginTop: '20px', fontWeight: 'bold' }} variant="outlined">Login</button>

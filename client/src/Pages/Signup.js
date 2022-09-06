@@ -50,15 +50,15 @@ export const Signup = () => {
     <div className="containerlogin">
       <Toaster />
       <div className="leftlogin">
+        <img style={{ marginTop: '25px', minWidth: '400px', zIndex: '-99' ,width:'85%' }} src={loginimg} alt="" />
+      </div>
+      <div className="rightlogin">
         <div className="headerlogin">
           <h1>
             Sign up to CatchBlog
           </h1>
-          <p style={{ marginTop: '19px', marginBottom: '0px' }}>Have an account <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
+          <p style={{ marginTop: '-10px', marginBottom: '5px' ,fontSize:'14px',marginLeft:'5px',minWidth:'320px'}}>Already have an account <Link to="/login" style={{ color: 'rgb(109 109 109)', textDecoration: 'none', marginBottom: '-2.5px', marginLeft: '3px' }}> Login here</Link></p>
         </div>
-        <img style={{ marginTop: '-40px', minWidth: '400px', zIndex: '-99' }} src={loginimg} alt="" />
-      </div>
-      <div className="rightlogin">
         <input type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={email} onChange={(e) => setemail(e.target.value)} />
         <input type="text" placeholder='Enter username' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={username} onChange={(e) => setusername(e.target.value)} />
         <input type="password" placeholder='Enter password' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} value={password} onChange={(e) => setPassword(e.target.value)} />

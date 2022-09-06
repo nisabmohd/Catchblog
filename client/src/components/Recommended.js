@@ -31,8 +31,8 @@ export const Recommended = (props) => {
       {
         more.map(item => {
           return <Link key={item.postid} style={{ textDecoration: 'none', color: 'inherit' }} to={`/post/${item.postid}`}><div style={{ borderBottom: context.dark ? '1px solid #353535' : '1px solid rgb(227 223 223)' }}>
-            <p style={{ fontSize: '0.82rem' }}>{item.title.length > 36 ? item.title.slice(0, 35) : item.title}</p>
-            <p style={{ fontSize: '0.75rem', color: 'rgb(161, 148, 148)', marginTop: '-9px' }}>{item.summary.length > 36 ? item.summary.slice(0, 35) + "..." : item.summary}</p>
+            <p style={{ fontSize: '0.82rem' }}>{item.title.length > 36 ? item.title.slice(0, 36)+" ..." : item.title}</p>
+            <p style={{ fontSize: '0.75rem', color: 'rgb(161, 148, 148)', marginTop: '-9px' }}>{item.summary.length > 42 ? item.summary.slice(0, 42) + " ..." : item.summary}</p>
           </div></Link>
         })
       }
