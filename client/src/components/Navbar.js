@@ -79,11 +79,11 @@ export const Navbar = () => {
                             <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon /> : <NightlightOutlinedIcon />}</IconButton>
                             {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
                             {
-                                context.hasNotification ? <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} variant="dot" color="error" overlap="circular" >
-                                    <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
-                                </Badge> : <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
-                                    <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
-                                </Badge>
+                                context.hasNotification ?<IconButton  onClick={() => navigate('/notifications')}  style={{borderRadius:'50%',width:'40px'}}><Badge className='smicons' sx={{ margin: '0 5px' }} variant="dot" color="error" overlap="circular" >
+                                    <NotificationsNoneIcon />
+                                </Badge> </IconButton>  : <IconButton onClick={() => navigate('/notifications')} style={{borderRadius:'50%',width:'40px'}} ><Badge className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
+                                   <NotificationsNoneIcon />
+                                </Badge></IconButton>
                             }
                             <Menu
                                 id="basic-menu"

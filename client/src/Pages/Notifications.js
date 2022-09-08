@@ -35,7 +35,7 @@ export const Notifications = () => {
           not.length===0 && <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box>
         }
       </div>
-      <div className="container-right">
+      <div className="container-right notification-page-resp">
         {<UserCard uid={context.auth.uid} />}
       </div>
     </div>

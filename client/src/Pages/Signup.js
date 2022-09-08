@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import loginimg from '../assets/blog.png'
+import loginimg from '../assets/hand.png'
 import '../css/login.css'
 import { AppContext } from '../App'
 import toast, { Toaster } from 'react-hot-toast';

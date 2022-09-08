@@ -206,4 +206,21 @@ body {
         margin-left: 1vw;
         margin-top: 12px !important;
     }
+    /* .not-usercard{
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    } */
+    .notiHp{
+        font-size: 12px !important;
+    }
+    .notiP{
+        font-size: 10.85px !important;
+    }
+    .notiimg{
+        width: 30px !important;
+    }
+
+    .notification-page-resp{
+        display: none !important;
+    }
 }
