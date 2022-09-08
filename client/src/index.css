@@ -74,6 +74,12 @@ body {
 }
 
 @media screen and (max-width:755px) {
+
+    .resphandlebtns{
+        margin-top: 0px !important;
+        margin-right: 9px !important;
+    }
+
     .container {
         display: flex;
         flex-direction: column !important;

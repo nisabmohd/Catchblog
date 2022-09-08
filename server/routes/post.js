@@ -1,8 +1,116 @@
 const { BlogPostModel } = require('../models/Blog')
 const { v4: postid } = require('uuid')
 const { UserModel } = require('../models/User')
+const { v4: idnot } = require('uuid')
+
 
 const router = require('express').Router()
+
+
+router.get('/saved', async (req, res) => {
+    try {
+        const post = await UserModel.findOne({ uid: req.query.uid })
+        const savedList = post.savedlist
+        let savedPosts = []
+        await Promise.all(savedList.map(async item => {
+            const fPost = await BlogPostModel.findOne({ postid: item })
+            savedPosts.push(fPost)
+        }))
+        res.send(savedPosts)
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err)
+    }
+})
+
+router.put('/like', async (req, res) => {
+    const { postid, uid } = req.body
+    try {
+        const post = await BlogPostModel.findOne({ postid: postid })
+        const update = await BlogPostModel.updateOne({ postid: postid }, { $push: { votes: uid } })
+        await UserModel.updateOne({ uid: post.uid }, { hasNotification: true })
+        await UserModel.updateOne({ uid: post.uid }, {
+            $push:
+            {
+                notifications: {
+                    type: 1,
+                    postid: postid,
+                    uid: uid,
+                    date: new Date().toString(),
+                    id: idnot()
+                }
+            }
+        })
+        res.send(update)
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.put('/unlike', async (req, res) => {
+    const { postid, uid } = req.body
+    try {
+        const update = await BlogPostModel.updateOne({ postid: postid }, { $pull: { votes: uid } })
+        res.send(update)
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.put('/save', async (req, res) => {
+    const { postid, uid } = req.body
+    try {
+        const post = await BlogPostModel.findOne({ postid: postid })
+        const update = await BlogPostModel.updateOne({ postid: postid }, { $push: { saved: uid } })
+        const updateUser = await UserModel.updateOne({ uid: uid }, { $push: { savedlist: postid } })
+
+        await UserModel.updateOne({ uid: post.uid }, { hasNotification: true })
+        await UserModel.updateOne({ uid: post.uid }, {
+            $push:
+            {
+                notifications: {
+                    type: 2,
+                    postid: postid,
+                    uid: uid,
+                    date: new Date().toString(),
+                    id: idnot()
+                }
+            }
+        })
+
+        res.send({ ...update, ...updateUser })
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+
+router.put('/undosave', async (req, res) => {
+    const { postid, uid } = req.body
+    try {
+        const update = await BlogPostModel.updateOne({ postid: postid }, { $pull: { saved: uid } })
+        const updateUser = await UserModel.updateOne({ uid: uid }, { $pull: { savedlist: postid } })
+        res.send({ ...update, ...updateUser })
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+router.delete('/delete', async (req, res) => {
+    const { postid, uid } = req.body
+    try {
+        const findPost = await BlogPostModel.findOne({ postid: postid })
+        if (!findPost) return res.status(400).send({ message: "No post found" })
+        if (findPost.uid == uid) {
+            res.send(await BlogPostModel.deleteOne({ postid: postid }))
+        } else {
+            res.status(401).send({ message: "Unauthorized" })
+        }
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
 
 
 router.post('/new', async (req, res) => {
@@ -50,6 +158,7 @@ router.get('/allpost', async (req, res) => {
         res.status(400).send(err)
     }
 })
+
 router.get('/morefrom', async (req, res) => {
     const { prev, uid } = req.query
     try {
@@ -158,13 +267,5 @@ router.get('/userpost/:uid', async (req, res) => {
 //     }
 // })
 
-
-//delete post
-
-// vote post
-
-// share count
-
-// save post
 
 module.exports = router

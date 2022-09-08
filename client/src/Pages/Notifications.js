@@ -13,11 +13,13 @@ export const Notifications = () => {
   useEffect(() => {
     async function fetch(){
       const resp = await axios.get(`${url}/user/notifications/${context.auth.uid}`)
-      console.log(resp);
+      const resp1=await axios.put(`${url}/user/readnotification/${context.auth.uid}`)
+      console.log(resp,resp1);
+      if(resp1.data.message) context.setHaveNotification(false)
       setNot(resp.data)
     }
     fetch();
-  }, [context.auth.uid])
+  }, [context])
   
 
   return (

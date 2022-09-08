@@ -15,6 +15,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { url } from '../baseurl';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
@@ -25,6 +28,15 @@ export const Navbar = () => {
     }
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    useEffect(() => {
+        async function fetch() {
+            const resp = await axios.get(`${url}/user/hasnotification/${context.auth.uid}`)
+            context.setHaveNotification(resp.data)
+        }
+        fetch();
+    }, [context])
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -45,7 +57,7 @@ export const Navbar = () => {
         navigate(`/searchuser?q=${search}`)
     }
     return (
-        <div className={context.dark?"bg":"bg-light"}>
+        <div className={context.dark ? "bg" : "bg-light"}>
             <div className="container">
                 <Toaster />
                 <div className="navbar">
@@ -56,7 +68,7 @@ export const Navbar = () => {
                         </Link>
                     </div>
                     <div className="middle">
-                        <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid rgb(45 45 45)' : '1px solid rgb(233 233 233)', paddingLeft: '16px', height: '35px', borderRadius: '7px',backgroundColor:context.dark?'#121212':'#ffff'  }}>
+                        <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid rgb(45 45 45)' : '1px solid rgb(233 233 233)', paddingLeft: '16px', height: '35px', borderRadius: '7px', backgroundColor: context.dark ? '#121212' : '#ffff' }}>
                             <SearchIcon sx={{ width: '19px', marginRight: '9px' }} />
                             <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
                         </div>
@@ -66,9 +78,13 @@ export const Navbar = () => {
                         <div className="tags">
                             <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon /> : <NightlightOutlinedIcon />}</IconButton>
                             {/* <IconButton sx={{ margin: '0 15px' }}><BookmarkBorderIcon /></IconButton> */}
-                            <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
-                                <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
-                            </Badge>
+                            {
+                                context.hasNotification ? <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} variant="dot" color="error" overlap="circular" >
+                                    <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
+                                </Badge> : <Badge onClick={() => navigate('/notifications')} className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
+                                    <IconButton sx={{ marginTop: '0px' }}><NotificationsNoneIcon /></IconButton>
+                                </Badge>
+                            }
                             <Menu
                                 id="basic-menu"
                                 anchorEl={anchorEl}

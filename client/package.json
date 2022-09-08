@@ -13,6 +13,7 @@
     "@uiw/react-md-editor": "^3.18.1",
     "axios": "^0.27.2",
     "markdown-to-jsx": "^7.1.7",
+    "millify": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-editor": "^2.0.1",

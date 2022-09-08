@@ -16,17 +16,20 @@ import { Home } from "./Pages/Home";
 import { Edit } from "./Pages/Edit";
 import { User } from "./Pages/User";
 import { Saved } from "./Pages/Saved";
-import {Tags} from './Pages/Tags'
-import {Notifications} from './Pages/Notifications'
+import { Tags } from './Pages/Tags'
+import { Notifications } from './Pages/Notifications'
 import { Search } from "./Pages/Search";
 import { SearchUser } from "./Pages/SearchUser";
 import { Setting } from "./Pages/Setting";
+import axios from "axios";
+import { url } from "./baseurl";
 
 
 export const AppContext = React.createContext()
 function App() {
   const [dark, setDark] = useState(false)
   const [auth, setAuth] = useState(false);
+  const [hasNotification, setHaveNotification] = useState(false)
 
   const darkTheme = createTheme({
     palette: {
@@ -34,29 +37,38 @@ function App() {
     },
   });
 
+  useEffect(() => {
+    async function fetch() {
+      const resp = await axios.get(`${url}/user/hasnotification/${auth.uid}`)
+      console.log(resp.data);
+      setHaveNotification(resp.data)
+    }
+    auth.uid && fetch();
+  }, [auth.uid])
 
-  useEffect(()=>{
-    const isDark=localStorage.getItem('dark')
-    if(isDark){
-      if(isDark==='true') setDark(true)
+
+  useEffect(() => {
+    const isDark = localStorage.getItem('dark')
+    if (isDark) {
+      if (isDark === 'true') setDark(true)
       else setDark(false)
     }
-    const isAuth=localStorage.getItem('auth')
-    if(isAuth){
+    const isAuth = localStorage.getItem('auth')
+    if (isAuth) {
       setAuth(JSON.parse(isAuth))
     }
-  },[])
+  }, [])
 
-  function handlelogout(){
+  function handlelogout() {
     setAuth(false)
     localStorage.removeItem('auth')
   }
-  function handledark(){
+  function handledark() {
     setDark(!dark)
-    localStorage.setItem('dark',`${!dark}`)
+    localStorage.setItem('dark', `${!dark}`)
   }
 
-  const contextValue = { setDark, dark, auth, setAuth,handledark,handlelogout}
+  const contextValue = { setDark, dark, auth, setAuth, handledark, handlelogout, hasNotification, setHaveNotification }
   return (
     <BrowserRouter>
       <AppContext.Provider value={contextValue} >
@@ -68,12 +80,12 @@ function App() {
                   <>
                     <Navbar />
                     <Routes>
-                      <Route path="/" element={<Home/>} />
-                      <Route path="/search" element={<Search/>} />
-                      <Route path="/settings" element={<Setting/>} />
-                      <Route path="/searchuser" element={<SearchUser/>} />
-                      <Route path="/notifications" element={<Notifications/>} />
-                      <Route path="/tags/:tag"  element={<Tags/>} />
+                      <Route path="/" element={<Home />} />
+                      <Route path="/search" element={<Search />} />
+                      <Route path="/settings" element={<Setting />} />
+                      <Route path="/searchuser" element={<SearchUser />} />
+                      <Route path="/notifications" element={<Notifications />} />
+                      <Route path="/tags/:tag" element={<Tags />} />
                       <Route path="/saved" element={<Saved />} />
                       <Route path="/editor" element={<Edit />} />
                       <Route path="/user/:uid" element={<User />} />
