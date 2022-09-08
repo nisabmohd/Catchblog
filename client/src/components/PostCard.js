@@ -25,7 +25,7 @@ export const PostCard = (props) => {
                 </div>
             </div>
             <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '9px' }}>
-                <Link target="_blank" to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                <Link to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                     <p style={{ fontSize: '19px', marginBottom: '3px', marginTop: '6px', fontWeight: '600' }}>{props.content}</p>
                     <p className='pararesp' style={{ fontSize: '13px', }}>{props.summary && props.summary}</p>
                 </Link>
