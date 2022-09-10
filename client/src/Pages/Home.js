@@ -1,4 +1,4 @@
-import { Box} from "@mui/material"
+import { Box } from "@mui/material"
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { url } from "../baseurl"
@@ -70,12 +70,10 @@ export const Home = () => {
             <div className="container-right">
                 {/* <Top /> */}
                 {
-                    loading &&
-                    <>
-                       <RecommendedSketon />
-                    </>
+                    loading ?
+                        <RecommendedSketon /> :
+                        <Recommended uid={context.auth.uid} />
                 }
-                <Recommended uid={context.auth.uid} />
             </div>
 
         </Box>

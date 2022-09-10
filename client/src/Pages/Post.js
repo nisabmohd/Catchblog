@@ -201,12 +201,13 @@ export const Post = () => {
           <UserCard uid={uid} />
         }
         {
-          loading &&
+          loading?
           <div style={{ marginTop: '30px' }}>
             <RecommendedSketon/>
-          </div>
-        }
+          </div>:
+
         <MoreFrom uid={uid} prev={postid} />
+        }
       </div>
 
     </Box>

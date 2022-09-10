@@ -9,7 +9,7 @@ import { NotifySkeleton } from '../components/NotifySkeleton'
 import { UserCard } from '../components/UserCard'
 import { UserCardSkleton } from '../components/UserCardSkleton'
 
-const loadingarr = [1, 2, 3, 4]
+const loadingarr = [1, 2, 3, 4,5,6,7,8,9]
 export const Notifications = () => {
   const context = useContext(AppContext)
   const [not, setNot] = useState([])
