@@ -12,7 +12,7 @@ export const Saved = () => {
   const context = useContext(AppContext)
   const [user] = useState(context.auth.uid)
   const [post, setPosts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (!user) return
@@ -20,9 +20,9 @@ export const Saved = () => {
     async function fetch() {
       const resp = await axios.get(`${url}/post/saved?uid=${context.auth.uid}`)
       setPosts(resp.data)
+      setLoading(false)
     }
     fetch();
-    setLoading(false)
   }, [context.auth.uid, user])
 
 
@@ -31,10 +31,10 @@ export const Saved = () => {
     <div className='container'>
       <div className="container-left">
         {
-          loading && <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress size='10' thickness={4} style={{ margin: 'auto' }} color="inherit" /></Box>
+          loading && <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>
         }
         {
-          loading === false && post.length === 0 ? <Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+          loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'80vh',  display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
         }
         {
           post && post.map(item => {
