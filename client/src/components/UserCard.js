@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { url } from "../baseurl";
 import { AppContext } from "../App";
 import millify from "millify";
 
 
 export const UserCard = (props) => {
+    const navigate=useNavigate()
     const [user, setUser] = useState()
     const context = useContext(AppContext)
     const [iFollow, setIFollow] = useState(false)
@@ -15,7 +16,6 @@ export const UserCard = (props) => {
     useEffect(() => {
         async function fetch() {
             const resp = await axios.get(`${url}/user/${props.uid}`)
-            console.log(resp.data);
             setFollwers(resp.data.followers.length)
             if (resp.data.followers.includes(context.auth.uid)) {
                 setIFollow(true)
@@ -30,7 +30,6 @@ export const UserCard = (props) => {
             currUser: context.auth.uid,
             fUser: user.uid
         })
-        console.log(resp.data);
         if (resp.data.message) {
             setIFollow(true)
             setFollwers(followers + 1)
@@ -42,7 +41,6 @@ export const UserCard = (props) => {
             currUser: context.auth.uid,
             fUser: user.uid
         })
-        console.log(resp.data);
         if (resp.data.message) {
             setIFollow(false)
             setFollwers(followers - 1)
@@ -100,7 +98,7 @@ export const UserCard = (props) => {
             </div>
             <div className="button" style={{ width: '99%', marginTop: '23px' }}>
                 {
-                    props.uid === context.auth.uid ? <button className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Edit Profile</button>
+                    props.uid === context.auth.uid ? <button onClick={()=>navigate('/settings')} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Edit Profile</button>
                         :
                         !iFollow ? <button onClick={follow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Follow</button> :
                             <button onClick={unfollow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Unfollow</button>

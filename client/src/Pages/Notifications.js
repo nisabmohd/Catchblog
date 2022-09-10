@@ -14,7 +14,6 @@ export const Notifications = () => {
     async function fetch(){
       const resp = await axios.get(`${url}/user/notifications/${context.auth.uid}`)
       const resp1=await axios.put(`${url}/user/readnotification/${context.auth.uid}`)
-      console.log(resp,resp1);
       if(resp1.data.message) context.setHaveNotification(false)
       setNot(resp.data)
     }

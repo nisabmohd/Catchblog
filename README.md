@@ -56,7 +56,5 @@ $ npm start
 
 ## Overview
 <img src="./images/4.png">
-<img src="./images/10.png">
-<img src="./images/9.png">
-<img src="./images/2.png">
-<img src="./images/1.png">
+<img src="./images/ss.png">
+<img src="./images/ss2.png">

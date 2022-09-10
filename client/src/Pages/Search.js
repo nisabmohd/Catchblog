@@ -21,7 +21,6 @@ export const Search = () => {
     useEffect(() => {
         async function fetchPost() {
             const resp = await axios.get(`${url}/search/post/${searchParams.get("q")}?page=0&limit=6`)
-            console.log(resp.data);
             setPost(resp.data.posts)
             if (resp.data.next) {
                 setPage(resp.data.next.pageNumber)

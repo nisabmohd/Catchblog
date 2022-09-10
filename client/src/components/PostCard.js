@@ -18,10 +18,10 @@ export const PostCard = (props) => {
     }, [props.uid])
 
     return (
-        <div className={`card`} style={{ width: '95%', padding: '22px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingTop: '10px' }}>
+        <div className={`card`} style={{ width: '95%', padding: '22px 0px', margin: '8px 0', borderBottom: props.showprofile?"":context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingTop: '10px' }}>
             <div className="header">
                 <div className="textheader">
-                    <Postcarduser uid={props.uid} img={user && user.img} name={user && user.username} date={props.date} />
+                   {!props.showprofile && <Postcarduser uid={props.uid} img={user && user.img} name={user && user.username} date={props.date} />}
                 </div>
             </div>
             <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '9px' }}>

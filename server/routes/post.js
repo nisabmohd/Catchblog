@@ -1,5 +1,5 @@
 const { BlogPostModel } = require('../models/Blog')
-const { v4: postid } = require('uuid')
+const { v4: id } = require('uuid')
 const { UserModel } = require('../models/User')
 const { v4: idnot } = require('uuid')
 
@@ -115,15 +115,32 @@ router.delete('/delete', async (req, res) => {
 
 router.post('/new', async (req, res) => {
     try {
+        const postid=id()
         const newPost = new BlogPostModel({
             title: req.body.title,
             tags: req.body.tags.split(','),
-            postid: postid(),
+            postid: postid,
             uid: req.body.uid,
             md: req.body.md,
             summary: req.body.summary
         })
         const done = await newPost.save()
+        const followers = await UserModel.find({ followings: req.body.uid })
+        Promise.all(followers.map(async item => {
+            await UserModel.updateOne({ uid: item.uid }, { hasNotification: true })
+            await UserModel.updateOne({ uid: item.uid }, {
+                $push:
+                {
+                    notifications: {
+                        type: 4,
+                        postid: postid,
+                        uid: req.body.uid,
+                        date: new Date().toString(),
+                        id: idnot()
+                    }
+                }
+            })
+        }))
         res.send(done)
     } catch (err) {
         res.status(400).send(err)

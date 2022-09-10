@@ -19,7 +19,6 @@ export const SearchUser = () => {
     useEffect(() => {
         async function fetchPost() {
             const resp = await axios.get(`${url}/search/user/${searchParams.get("q")}?page=0&limit=9`)
-            console.log(resp.data);
             setusers(resp.data.users)
             if (resp.data.next) {
                 setPage(resp.data.next.pageNumber)

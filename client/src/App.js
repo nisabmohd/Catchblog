@@ -40,7 +40,6 @@ function App() {
   useEffect(() => {
     async function fetch() {
       const resp = await axios.get(`${url}/user/hasnotification/${auth.uid}`)
-      console.log(resp.data);
       setHaveNotification(resp.data)
     }
     auth.uid && fetch();

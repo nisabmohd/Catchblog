@@ -56,7 +56,6 @@ export const Login = () => {
     function handleGoogleAuth(user) {
         axios.post(`${url}/auth/googleauth`, { email: user.email, img: user.picture, username: user.name, uid: user.sub })
             .then((res) => {
-                console.log(res);
                 localStorage.setItem('auth', JSON.stringify(res.data))
                 navigate('/')
                 context.setAuth(res.data)
