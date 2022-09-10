@@ -50,7 +50,7 @@ export const Signup = () => {
     <div className="containerlogin">
       <Toaster />
       <div className="leftlogin">
-        <img style={{ marginTop: '25px', minWidth: '400px', zIndex: '-99' ,width:'85%' }} src={loginimg} alt="" />
+        <img style={{ marginTop: '45px', minWidth: '400px', zIndex: '-99' ,width:'74%' }} src={loginimg} alt="" />
       </div>
       <div className="rightlogin">
         <div className="headerlogin">
