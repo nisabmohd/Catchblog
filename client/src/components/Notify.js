@@ -52,7 +52,7 @@ export const Notify = (props) => {
                             <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                 <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                     <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '14.5px', marginTop: '-2.5px' }}>{user && user.username}</p>
+                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '14.5px'}}>{user && user.username}</p>
                                     </Link>
                                     <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                                         <p className='notiP' style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)' }}>{content}</p>
