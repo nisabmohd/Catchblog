@@ -5,8 +5,10 @@ import { UserCard } from '../components/UserCard'
 import axios from 'axios';
 import { url } from '../baseurl';
 import { Box } from '@mui/system';
-import { CircularProgress } from '@mui/material';
+import { UserCardSkleton } from '../components/UserCardSkleton';
+import { PostCradSkeleton } from '../components/PostCradSkeleton';
 
+const loadingarr = [1, 2, 3, 4]
 
 export const Saved = () => {
   const context = useContext(AppContext)
@@ -31,10 +33,10 @@ export const Saved = () => {
     <div className='container'>
       <div className="container-left">
         {
-          loading && <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>
+           loading && loadingarr.map(item => <PostCradSkeleton />)
         }
         {
-          loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'80vh',  display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+          loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
         }
         {
           post && post.map(item => {
@@ -43,7 +45,8 @@ export const Saved = () => {
         }
       </div>
       <div className="container-right">
-        {user && <UserCard uid={user} />}
+        {loading && <UserCardSkleton />}
+        {user && loading === false && <UserCard uid={user} />}
       </div>
     </div>
   )

@@ -6,8 +6,11 @@ import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { UserCard } from '../components/UserCard'
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Box, CircularProgress } from '@mui/material'
+import { Box,  } from '@mui/material'
+import { PostCradSkeleton } from '../components/PostCradSkeleton'
+import { UserCardSkleton } from '../components/UserCardSkleton'
 
+const loadingarr = [1, 2, 3, 4]
 
 export const User = () => {
     // const context = useContext(AppContext)
@@ -27,7 +30,6 @@ export const User = () => {
 
     useEffect(() => {
         if (!user) return
-        setLoading(true)
         async function fetch() {
             const resp = await axios.get(`${url}/post/userpost/${params.uid}?page=0&limit=5`)
             // console.log(resp.data);
@@ -58,16 +60,17 @@ export const User = () => {
         <div className='container'>
             <div className="container-left">
                 {
-                    loading && <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>
+                    loading && loadingarr.map(item => <PostCradSkeleton />)
+
                 }
                 {
-                    loading===false && post.length===0 ?<Box style={{ width: '100%',height:'80vh',  display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box>:<></>
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
                 }
                 <InfiniteScroll
                     dataLength={post.length}
                     next={fetchMoreData}
                     hasMore={more}
-                    loader={<Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '30px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>}
+                    loader={loadingarr.map(item => <PostCradSkeleton />)}
                 >
                     {
                         post && post.map(item => {
@@ -77,7 +80,8 @@ export const User = () => {
                 </InfiniteScroll>
             </div>
             <div className="container-right">
-                {user && <UserCard uid={user.uid} />}
+                {loading && <UserCardSkleton/>}
+                {user && loading===false && <UserCard uid={user.uid} />}
             </div>
         </div>
     )

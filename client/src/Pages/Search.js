@@ -5,10 +5,12 @@ import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { AppContext } from '../App'
 import { Recommended } from '../components/Recommended'
-import { Box, CircularProgress } from '@mui/material'
+import { Box,Skeleton } from '@mui/material'
 import InfiniteScroll from "react-infinite-scroll-component";
+import { PostCradSkeleton } from '../components/PostCradSkeleton'
+import { RecommendedSketon } from '../components/RecommendedSketon'
 
-
+const loadingarr = [1, 2, 3, 4]
 export const Search = () => {
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
@@ -53,25 +55,27 @@ export const Search = () => {
 
                 {
                     <>
-                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='newpostbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark?'white':'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
+                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='newpostbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
                         <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='newpostbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
                     </>
                 }
+                {loading && <Skeleton style={{ height: '30px', width: '195px',marginBottom:'9px' }} />}
+
                 {
-                    loading && <Box style={{ width: '100%',height:'80vh',  display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>
+                    loading && loadingarr.map(item => <PostCradSkeleton />)
+
                 }
 
                 {
-                    loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
                 }
-
                 {post.length !== 0 && <h4 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h4>}
 
                 <InfiniteScroll
                     dataLength={post.length}
                     next={fetchMorePostData}
                     hasMore={more}
-                    loader={<Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>}
+                    loader={loadingarr.map(item => <PostCradSkeleton />)}
                 >
                     {post && post.map(item => {
                         return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp} content={item.title} tags={item.tags} />
@@ -82,7 +86,13 @@ export const Search = () => {
             </div>
             <div className="container-right">
                 {/* <Top /> */}
-                <Recommended uid={context.auth.uid} />
+                {
+                    loading ?
+                        <>
+                            <RecommendedSketon />
+
+                        </> : <Recommended uid={context.auth.uid} />
+                }
             </div>
         </div>
     )

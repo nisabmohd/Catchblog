@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from '@mui/material'
+import { Box } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../App'
 import { PostCard } from '../components/PostCard'
@@ -7,7 +7,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios'
 import { url } from '../baseurl'
 import { useParams } from 'react-router-dom'
+import { PostCradSkeleton } from '../components/PostCradSkeleton'
 
+const loadingarr = [1, 2, 3, 4]
 
 export const Tags = () => {
     const [post, setPost] = useState([])
@@ -17,6 +19,7 @@ export const Tags = () => {
     const context = useContext(AppContext)
     const params = useParams()
     useEffect(() => {
+        setPost([])
         async function fetch() {
             setLoading(true)
             const resp = await axios.get(`${url}/post/tags/${params.tag}?page=0&limit=5`)
@@ -48,7 +51,7 @@ export const Tags = () => {
         <div className='container'>
             <div className="container-left">
                 {
-                    loading && <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>
+                    loading && loadingarr.map(item => <PostCradSkeleton />)
                 }
                 {
                     loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
@@ -57,7 +60,7 @@ export const Tags = () => {
                     dataLength={post.length}
                     next={fetchMoreData}
                     hasMore={more}
-                    loader={<Box style={{ width: '100%', display: 'flex', alignContent: 'center', marginTop: '10px' }}><CircularProgress style={{ margin: 'auto' }} color="inherit" /></Box>}
+                    loader={ loading && loadingarr.map(item => <PostCradSkeleton />)}
                 >
                     {
                         post.map(item => {

@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from "@mui/material"
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Skeleton } from "@mui/material"
 import Markdown from "markdown-to-jsx"
 import { useContext, useEffect, useState } from "react"
 import { Syntax } from "../components/Syntax"
@@ -17,8 +17,12 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import toast, { Toaster } from "react-hot-toast"
+import { UserCardSkleton } from "../components/UserCardSkleton"
+import { RecommendedSketon } from "../components/RecommendedSketon"
+
 
 export const Post = () => {
+  const [loading, setLoading] = useState(true)
   const context = useContext(AppContext)
   const navigate = useNavigate()
   const [content, setContent] = useState('')
@@ -52,6 +56,7 @@ export const Post = () => {
       setTitle(resp.data.title)
       setILiked(resp.data.votes.includes(context.auth.uid))
       setISaved(resp.data.saved.includes(context.auth.uid))
+      setLoading(false)
     }
     fetch();
   }, [context.auth.uid, params.postid])
@@ -146,43 +151,61 @@ export const Post = () => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle sx={{fontFamily:'Poppins'}} id="alert-dialog-title">
+        <DialogTitle sx={{ fontFamily: 'Poppins' }} id="alert-dialog-title">
           {"Delete This Post?"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{fontFamily:'Poppins',fontSize:'14px'}} id="alert-dialog-description">
+          <DialogContentText sx={{ fontFamily: 'Poppins', fontSize: '14px' }} id="alert-dialog-description">
             Are you sure you want to delete this post permanently
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button sx={{fontFamily:'Poppins',fontSize:'14px'}} color="error" onClick={()=>{deletepost();handleClose();}}>Delete</Button>
-          <Button sx={{fontFamily:'Poppins',color:'inherit',fontSize:'14px'}}  onClick={handleClose} autoFocus>
+          <Button sx={{ fontFamily: 'Poppins', fontSize: '14px' }} color="error" onClick={() => { deletepost(); handleClose(); }}>Delete</Button>
+          <Button sx={{ fontFamily: 'Poppins', color: 'inherit', fontSize: '14px' }} onClick={handleClose} autoFocus>
             Cancel
           </Button>
         </DialogActions>
       </Dialog>
       <div className="container-left" style={{}}>
         <div className="markdown" style={{ width: '90%' }}>
-          <Markdown options={{
-            forceBlock: true,
-            overrides: {
-              code: {
-                component: Syntax,
-                props: {
-                  className: 'foo',
+          {
+            loading ? <div style={{marginTop:'22px'}}>
+            <Skeleton style={{width:'60%',height:'49px'}}/>
+            <Skeleton/>
+            <Skeleton/>
+            <Skeleton style={{width:'80%'}}/>
+            <Skeleton style={{width:'70%'}}/>
+            <Skeleton style={{width:'60%',height:'249px',marginTop:'-35px'}}/>
+            </div> :
+              <Markdown options={{
+                forceBlock: true,
+                overrides: {
+                  code: {
+                    component: Syntax,
+                    props: {
+                      className: 'foo',
+                    },
+                  },
                 },
-              },
-            },
-          }}>
-            {content}
-          </Markdown>
+              }}>
+                {content}
+              </Markdown>
+          }
         </div>
         <div className="header-blog">
 
         </div>
       </div>
       <div className="container-right">
-        <UserCard uid={uid} />
+        {loading ? <UserCardSkleton /> :
+          <UserCard uid={uid} />
+        }
+        {
+          loading &&
+          <div style={{ marginTop: '30px' }}>
+            <RecommendedSketon/>
+          </div>
+        }
         <MoreFrom uid={uid} prev={postid} />
       </div>
 
