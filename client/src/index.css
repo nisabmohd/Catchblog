@@ -204,6 +204,11 @@ body {
     .hideright{
         display: none !important;
     }
+    .posthandleskeleton{
+        margin-right: 12px;
+        width: 33% !important;
+        margin-left: 9px !important;
+    }
 }
 
 @media screen and (max-width:412px) {

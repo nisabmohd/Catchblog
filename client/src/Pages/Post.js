@@ -127,7 +127,13 @@ export const Post = () => {
   return (
     <Box style={{ marginBottom: '39px' }} className="container">
       <Toaster />
-      <div className="complete-left">
+      {loading ? <div className="complete-left" >
+        <div className="posthandle posthandleskeleton" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '167px', width: '3%', marginTop: '24px', }}>
+          <Skeleton style={{ width: '22px', height: '40px',}} />
+          <Skeleton style={{ width: '22px', height: '40px', }} />
+          <Skeleton style={{ width: '22px', height: '40px'}} />
+        </div>
+      </div> : <div className="complete-left">
         <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '167px', width: '3%', marginTop: '19px', }}>
           {uid && uid !== context.auth.uid ?
             <>
@@ -145,6 +151,7 @@ export const Post = () => {
           <IconButton onClick={share}><ShareIcon /></IconButton>
         </div>
       </div>
+      }
       <Dialog
         open={open}
         onClose={handleClose}
@@ -169,12 +176,12 @@ export const Post = () => {
       <div className="container-left" style={{}}>
         <div className="markdown" style={{ width: '90%' }}>
           {
-            loading ? <div style={{marginTop:'22px'}}>
-            <Skeleton style={{width:'60%',height:'49px'}}/>
-            <Skeleton/>
-            <Skeleton/>
-            <Skeleton style={{width:'95%'}}/>
-            <Skeleton style={{width:'90%',height:'249px',marginTop:'-35px'}}/>
+            loading ? <div style={{ marginTop: '22px' }}>
+              <Skeleton style={{ width: '50%', height: '49px' }} />
+              <Skeleton style={{ width: '99%' }} />
+              <Skeleton style={{ width: '95%' }} />
+              <Skeleton style={{ width: '85%' }} />
+              <Skeleton style={{ width: '99%', height: '249px', marginTop: '-35px' }} />
             </div> :
               <Markdown options={{
                 forceBlock: true,
@@ -200,12 +207,12 @@ export const Post = () => {
           <UserCard uid={uid} />
         }
         {
-          loading?
-          <div style={{ marginTop: '30px' }}>
-            <RecommendedSketon/>
-          </div>:
+          loading ?
+            <div style={{ marginTop: '30px' }}>
+              <RecommendedSketon />
+            </div> :
 
-        <MoreFrom uid={uid} prev={postid} />
+            <MoreFrom uid={uid} prev={postid} />
         }
       </div>
 

@@ -5,7 +5,7 @@ export const UserCardSkleton = () => {
     return (
         <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px', }}>
             <div style={{ display: 'flex', flexDirection: 'row', width: '79%', alignItems: 'center', marginBottom: '13px' }} className="userdetails">
-            <Skeleton style={{ width: '40px',height:'40px', borderRadius: '50%', marginRight: '12px',marginBottom:'18px' }} variant="circular" width={36} height={40} />
+            <Skeleton style={{marginRight: '12px',marginBottom:'18px',width:'40px',height:'40px' }} variant="circular"/>
                 <div className="name">
                     <Skeleton style={{ color: 'inherit', textDecoration: 'none',width:'175px' ,marginTop:'-18px'}} ></Skeleton>
                 </div>
