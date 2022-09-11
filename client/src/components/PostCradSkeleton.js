@@ -15,9 +15,9 @@ export const PostCradSkeleton = () => {
     </div>
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '9px' }}>
         <div style={{ color: 'inherit', textDecoration: 'none' }}>
-            <Skeleton style={{ fontSize: '19px', marginBottom: '3px', marginTop: '6px', fontWeight: '900',height:'28px' }}></Skeleton>
-            <Skeleton className='pararesp' style={{ fontSize: '13px', }}></Skeleton>
-            <Skeleton className='pararesp' style={{ fontSize: '13px',width:'50%' }}></Skeleton>
+            <Skeleton style={{ fontSize: '19px', marginBottom: '3px', marginTop: '6px', fontWeight: '900',height:'28px',width:'320px' }}></Skeleton>
+            <Skeleton style={{ fontSize: '13px',width:'255px' }}></Skeleton>
+            <Skeleton style={{ fontSize: '13px',width:'175px' }}></Skeleton>
         </div>
         <div style={{ display: 'flex', flexDirection: 'row',}}>
             <Skeleton style={{width:'75px'}}/>
