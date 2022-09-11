@@ -69,7 +69,7 @@ export const Tags = () => {
                     }
                 </InfiniteScroll>
             </div>
-            <div className="container-right">
+            <div className="container-right hideright">
                 {/* <Top /> */}
                 <Recommended uid={context.auth.uid} />
             </div>
