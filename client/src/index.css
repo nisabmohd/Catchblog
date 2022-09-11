@@ -103,7 +103,6 @@ body {
 
     .navbar {
         margin-bottom: 0px !important;
-
     }
 
     .ml-5 {
@@ -243,9 +242,12 @@ body {
     .hiddennavtab{
         display: block !important;
         margin-bottom: -5px !important;
-        margin-right: 1px !important;
+        margin-right: 2px !important;
     }
     .searchbox {
-        width: 95% !important;
+        width: 84% !important;
+    }
+    .rightnavresp{
+        margin-left: -19px !important;
     }
 }

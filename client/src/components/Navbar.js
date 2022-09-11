@@ -74,7 +74,7 @@ export const Navbar = () => {
                             <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
                         </div>
                     </div>
-                    <div className="right">
+                    <div className="right rightnavresp">
                         <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '128px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} variant="outlined">New Post </button>
                         <div className="tags">
                             <IconButton onClick={redirect} className='smicons hiddennavtab' sx={{}}><PostAddIcon /></IconButton>
