@@ -45,13 +45,13 @@ export const Home = () => {
     }
 
     return (
-        <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container">
+        <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container homecontainer">
             <div className="container-left">
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton />)
                 }
                 {
-                    loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
                 }
 
                 <InfiniteScroll
@@ -67,7 +67,7 @@ export const Home = () => {
                     }
                 </InfiniteScroll>
             </div>
-            <div className="container-right">
+            <div className="container-right hideright">
                 {/* <Top /> */}
                 {
                     loading ?

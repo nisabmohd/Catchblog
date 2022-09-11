@@ -36,7 +36,7 @@ export const Notifications = () => {
           loadingarr.map(item=><NotifySkeleton />)
         }
         {
-          loading === false && not.length === 0 ? <Box style={{ width: '100%', height: '80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+          loading === false && not.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
         }
         {
           not.map(item => {
@@ -45,8 +45,7 @@ export const Notifications = () => {
         }
       </div>
       <div className="container-right notification-page-resp">
-        {loading && <UserCardSkleton />}
-        {<UserCard uid={context.auth.uid} />}
+        {loading ? <UserCardSkleton />:<UserCard uid={context.auth.uid} />}
       </div>
     </div>
   )

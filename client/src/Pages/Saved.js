@@ -30,7 +30,7 @@ export const Saved = () => {
 
 
   return (
-    <div className='container'>
+    <div className='container homecontainer'>
       <div className="container-left">
         {
            loading && loadingarr.map(item => <PostCradSkeleton />)

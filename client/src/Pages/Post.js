@@ -173,9 +173,8 @@ export const Post = () => {
             <Skeleton style={{width:'60%',height:'49px'}}/>
             <Skeleton/>
             <Skeleton/>
-            <Skeleton style={{width:'80%'}}/>
-            <Skeleton style={{width:'70%'}}/>
-            <Skeleton style={{width:'60%',height:'249px',marginTop:'-35px'}}/>
+            <Skeleton style={{width:'95%'}}/>
+            <Skeleton style={{width:'90%',height:'249px',marginTop:'-35px'}}/>
             </div> :
               <Markdown options={{
                 forceBlock: true,

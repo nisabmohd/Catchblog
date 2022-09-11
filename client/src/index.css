@@ -7,6 +7,9 @@ body {
 * {
     font-family: 'Poppins', sans-serif;
 }
+.hiddennavtab{
+    display: none !important;
+}
 
 .container {
     width: 70%;
@@ -155,6 +158,11 @@ body {
         width: 30px !important;
         height: 32px !important;
     }
+    .searchbtn {
+        font-size: 10px !important;
+        width: 35px !important;
+        height: 36px !important;
+    }
 
     .container50 {
         width: 100% !important;
@@ -191,6 +199,12 @@ body {
     .pararesp {
         width: 100% !important;
     }
+    .homecontainer{
+        flex-direction: column-reverse !important;
+    }
+    .hideright{
+        display: none !important;
+    }
 }
 
 @media screen and (max-width:412px) {
@@ -222,5 +236,16 @@ body {
 
     .notification-page-resp{
         display: none !important;
+    }
+    .newpostbtn{
+        display: none !important;
+    }
+    .hiddennavtab{
+        display: block !important;
+        margin-bottom: -5px !important;
+        margin-right: 1px !important;
+    }
+    .searchbox {
+        width: 95% !important;
     }
 }

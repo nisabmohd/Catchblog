@@ -54,7 +54,7 @@ export const Tags = () => {
                     loading && loadingarr.map(item => <PostCradSkeleton />)
                 }
                 {
-                    loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'80vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
+                    loading === false && post.length === 0 ? <Box style={{ width: '100%',height:'10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h4 style={{ margin: 'auto' }} >Nothing to see here</h4></Box> : <></>
                 }
                 <InfiniteScroll
                     dataLength={post.length}

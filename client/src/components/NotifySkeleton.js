@@ -15,7 +15,7 @@ export const NotifySkeleton = () => {
                     <Skeleton style={{ margin: '0', fontSize: '13.85px', fontWeight: '600', width: '195px', height: '27px' }}></Skeleton>
                 </div>
             </div>
-             <Skeleton style={{marginLeft:'auto',width:'75px',marginTop:'-5px'}}/>
+             <Skeleton style={{marginLeft:'auto',width:'75px',marginTop:'-3px'}}/>
         </div>
     )
 }
