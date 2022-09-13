@@ -269,7 +269,7 @@ router.put('/edit/:postid', async (req, res) => {
         const post = await BlogPostModel.findOne({ postid: req.params.postid })
         console.log();
         if (post.uid === req.body.uid) {
-            return res.send(await BlogPostModel.updateOne({ postid: req.params.postid }, { $set: { ...post._doc, ...req.body } }));
+            return res.send(await BlogPostModel.updateOne({ postid: req.params.postid }, { $set: { ...post._doc, ...req.body ,tags:req.body.tags.split(',')} }));
 
         } else {
             return res.send(401).send({ message: "Unauthorized" })

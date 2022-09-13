@@ -25,7 +25,7 @@ export const Navbar = () => {
     const navigate = useNavigate()
     const [search, setSearch] = useState('')
     function redirect() {
-        navigate('/editor')
+        navigate(`/editor/newpost`)
     }
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);

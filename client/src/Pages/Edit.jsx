@@ -6,7 +6,7 @@ import Markdown from 'markdown-to-jsx'
 import axios from 'axios'
 import { url } from '../baseurl'
 import toast, { Toaster } from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 export const Edit = () => {
@@ -15,15 +15,25 @@ export const Edit = () => {
     const [title, setTitle] = useState("")
     const [summary, setSummary] = useState("")
     const [tags, setTags] = useState("")
-    const nav=useNavigate()
-
+    const nav = useNavigate()
+    const params = useParams()
     useEffect(() => {
-        fetch(md).then(resp => {
-            return resp.text()
-        }).then(data => {
-            setValue(data)
-        })
-    }, [context])
+        console.log(params);
+        if (params.postid === "newpost") {
+            fetch(md).then(resp => {
+                return resp.text()
+            }).then(data => {
+                setValue(data)
+            })
+        } else {
+            axios.get(`${url}/post/${params.postid}`).then((resp) => {
+                setTitle(resp.data.title)
+                setSummary(resp.data.summary)
+                setValue(resp.data.md)
+                setTags(resp.data.tags.toString())
+            })
+        }
+    }, [params])
 
     async function newpost() {
         if (!title) {
@@ -42,14 +52,61 @@ export const Edit = () => {
             })
             return;
         }
-        const params = new URLSearchParams();
-        params.append('md', value);
-        params.append('uid', context.auth.uid);
-        params.append('tags', tags.split(','));
-        params.append('title', title);
-        params.append('summary', summary);
-        const resp = await axios.post(`${url}/post/new`, params)
+        if (!value) {
+            toast.error("Post required", {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+            return;
+        }
+        const paramsurl = new URLSearchParams();
+        paramsurl.append('md', value);
+        paramsurl.append('uid', context.auth.uid);
+        paramsurl.append('tags', tags.split(','));
+        paramsurl.append('title', title);
+        paramsurl.append('summary', summary);
+        const resp = await axios.post(`${url}/post/new`, paramsurl)
         resp && nav(`/post/${resp.data.postid}`)
+    }
+    const savepost = async () => {
+        if (!title) {
+            toast.error("Title required", {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+            return;
+        }
+        if (!summary) {
+            toast.error("Summary required", {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+            return;
+        }
+        if (!value) {
+            toast.error("Post required", {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+            return;
+        }
+        const paramsurl = new URLSearchParams();
+        paramsurl.append('md', value);
+        paramsurl.append('uid', context.auth.uid);
+        paramsurl.append('tags', tags.split(','));
+        paramsurl.append('title', title);
+        paramsurl.append('summary', summary);
+        const resp = await axios.put(`${url}/post/edit/${params.postid}`, paramsurl)
+        resp && toast.success("Saved Post", {
+            style: {
+                fontSize: '12px'
+            }
+        })
+        resp && nav(`/post/${params.postid}`)
     }
 
     return (
@@ -88,7 +145,11 @@ export const Edit = () => {
                     <div className="boxins" style={{ width: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                         <textarea value={title} onChange={e => setTitle(e.target.value)} style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '78px', fontSize: '14px' }} placeholder='Enter Title *'></textarea>
                         <textarea value={tags} onChange={e => setTags(e.target.value)} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '75px', fontSize: '14px' }} placeholder='Enter tags you want to mention'></textarea>
-                        <button onClick={newpost} className='followbtn boxins' style={{ fontFamily: 'Poppins', width: '100%', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '43px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Share Post</button>
+                        {
+                            params && params.postid === "newpost" ?
+                                <button onClick={newpost} className='followbtn boxins' style={{ fontFamily: 'Poppins', width: '100%', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '43px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Share Post</button> :
+                                <button onClick={savepost} className='followbtn boxins' style={{ fontFamily: 'Poppins', width: '100%', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '43px', borderRadius: '5px', cursor: 'pointer' }} variant="outlined">Save Post</button>
+                        }
                     </div>
                     <textarea value={summary} onChange={e => setSummary(e.target.value)} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '56%', height: '235px', fontSize: '14px' }} placeholder='Enter Summary of the post *'></textarea>
                 </div>

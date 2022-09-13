@@ -7,7 +7,7 @@ import { AppContext } from '../App';
 export const Setting = () => {
   const context = useContext(AppContext)
   return (
-    <div className='container'>
+    <div className='container homecontainer'>
       <div className="container-left">
         <div className="useredit" style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ margin: '15px 0', marginBottom: '35px' }}>User</h3>
@@ -17,9 +17,9 @@ export const Setting = () => {
           <p style={{ margin: '0', fontSize: '13px', marginTop: '12px' }}>Enter Email</p>
 
           <input type="text" placeholder='Enter Email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px' ,width:'95%',marginBottom:'14px'}} value={context.auth.email} />
-          <p style={{ margin: '0', fontSize: '13px', marginTop: '12px' }}>Enter Email</p>
+          <p style={{ margin: '0', fontSize: '13px', marginTop: '12px' }}>Enter Bio</p>
 
-          <textarea  placeholder='Enter Email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '147px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '10px',paddingTop:'9px',resize:'none',width:'95%',marginBottom:'14px'  }} value={context.auth.summary} spellCheck="false" />
+          <textarea  placeholder='Enter Bio' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '147px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '10px',paddingTop:'9px',resize:'none',width:'95%',marginBottom:'14px'  }} value={context.auth.summary} spellCheck="false" />
           <p style={{ margin: '0', fontSize: '13px', marginTop: '23px' }}>Profile img</p>
 
           <input type="file" id='imgup' hidden />

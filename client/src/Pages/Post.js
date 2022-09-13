@@ -146,7 +146,7 @@ export const Post = () => {
             <></>}
           {
             uid && uid === context.auth.uid ?
-              <> <IconButton><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton></> : !iSaved ? <><IconButton onClick={save}> <BookmarkBorderIcon /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></> : <><IconButton onClick={unsave}> <BookmarkIcon color="primary" /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></>
+              <> <IconButton onClick={()=>navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton></> : !iSaved ? <><IconButton onClick={save}> <BookmarkBorderIcon /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></> : <><IconButton onClick={unsave}> <BookmarkIcon color="primary" /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></>
           }
           <IconButton onClick={share}><ShareIcon /></IconButton>
         </div>

@@ -86,7 +86,7 @@ function App() {
                       <Route path="/notifications" element={<Notifications />} />
                       <Route path="/tags/:tag" element={<Tags />} />
                       <Route path="/saved" element={<Saved />} />
-                      <Route path="/editor" element={<Edit />} />
+                      <Route path="/editor/:postid" element={<Edit />} />
                       <Route path="/user/:uid" element={<User />} />
                       <Route path="/post/:postid" element={<Post />} />
                     </Routes>
