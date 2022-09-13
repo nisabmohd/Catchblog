@@ -24,7 +24,7 @@ router.get('/hasnotification/:uid', async (req, res) => {
 
 router.put('/readnotification/:uid', async (req, res) => {
     try {
-        await UserModel.updateOne({ uid: req.params.uid },{hasNotification:false})
+        await UserModel.updateOne({ uid: req.params.uid }, { hasNotification: false })
         res.send({ message: true })
     } catch (err) {
         console.log(err);
@@ -79,6 +79,14 @@ router.get("/notifications/:uid", async (req, res) => {
     }
 })
 
+router.put('/edit/:uid', async (req, res) => {
+    try {
+        const find = await UserModel.findOne({ uid: req.params.uid })
+        res.send(await UserModel.updateOne({ uid: req.params.uid }, { $set: { ...find._doc, ...req.body } }))
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
 
 
 
