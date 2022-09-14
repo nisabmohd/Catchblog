@@ -193,7 +193,7 @@ export const Post = () => {
                         <div className="tags" style={{marginTop:'-8px',marginLeft:'-6px'}}>
 
                             {
-                                tags.map(item =>
+                                tags.length!==0 && tags.map(item =>
                                     <Chip key={item} fontbig={true} name={item} dark={context.dark} />
                                 )
 
