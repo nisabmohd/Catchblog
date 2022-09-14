@@ -3,8 +3,8 @@ import Markdown from "markdown-to-jsx"
 import { useContext, useEffect, useState } from "react"
 import { Syntax } from "../components/Syntax"
 import { UserCard } from "../components/UserCard"
-import ShareIcon from '@mui/icons-material/Share';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import IosShareIcon from '@mui/icons-material/IosShare';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { MoreFrom } from "../components/MoreFrom"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
@@ -13,12 +13,12 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { AppContext } from "../App"
 import millify from "millify";
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import BookmarkAddedOutlinedIcon from '@mui/icons-material/BookmarkAddedOutlined';
+import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 import toast, { Toaster } from "react-hot-toast"
 import { UserCardSkleton } from "../components/UserCardSkleton"
 import { RecommendedSketon } from "../components/RecommendedSketon"
+import {Chip} from '../components/Chip'
 
 
 export const Post = () => {
@@ -34,6 +34,7 @@ export const Post = () => {
   const params = useParams()
   const [iSaved, setISaved] = useState(false)
   const [iLiked, setILiked] = useState(false)
+  const [tags,setTags]=useState([])
 
   const [open, setOpen] = useState(false);
 
@@ -57,6 +58,10 @@ export const Post = () => {
       setILiked(resp.data.votes.includes(context.auth.uid))
       setISaved(resp.data.saved.includes(context.auth.uid))
       setLoading(false)
+      setTags(resp.data.tags)
+      console.log('====================================');
+      console.log(resp.data.tags);
+      console.log('====================================');
     }
     fetch();
   }, [context.auth.uid, params.postid])
@@ -129,26 +134,26 @@ export const Post = () => {
       <Toaster />
       {loading ? <div className="complete-left" >
         <div className="posthandle posthandleskeleton" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '167px', width: '3%', marginTop: '24px', }}>
-          <Skeleton style={{ width: '22px', height: '40px',}} />
           <Skeleton style={{ width: '22px', height: '40px', }} />
-          <Skeleton style={{ width: '22px', height: '40px'}} />
+          <Skeleton style={{ width: '22px', height: '40px', }} />
+          <Skeleton style={{ width: '22px', height: '40px' }} />
         </div>
       </div> : <div className="complete-left">
-        <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: '167px', width: '3%', marginTop: '19px', }}>
+        <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', height: uid && uid === context.auth.uid ? '235px' : '167px', width: '3%', marginTop: '19px', }}>
           {uid && uid !== context.auth.uid ?
             <>
               {iLiked ?
-                <><IconButton onClick={unlike}><ThumbUpAltIcon color="primary" /></IconButton><p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(likes)}</p> </> :
-                <><IconButton onClick={like}><ThumbUpOffAltIcon /></IconButton><p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(likes)}</p></>
+                <><IconButton onClick={unlike}><FavoriteBorderIcon color="error" /></IconButton><p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(likes)}</p> </> :
+                <><IconButton onClick={like}><FavoriteBorderIcon /></IconButton><p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(likes)}</p></>
               }
             </>
             :
             <></>}
           {
             uid && uid === context.auth.uid ?
-              <> <IconButton onClick={()=>navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton></> : !iSaved ? <><IconButton onClick={save}> <BookmarkBorderIcon /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></> : <><IconButton onClick={unsave}> <BookmarkIcon color="primary" /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></>
+              <> <><IconButton disabled><FavoriteBorderIcon /></IconButton><p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-28px', color: 'rgb(161, 148, 148)',marginBottom:'0.5px' }}>{millify(likes)}</p></> <IconButton onClick={() => navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton> </> : !iSaved ? <><IconButton onClick={save}> <BookmarkAddOutlinedIcon /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p>  </> : <><IconButton onClick={unsave}> <BookmarkAddedOutlinedIcon color="primary" /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginTop: '-14px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p></>
           }
-          <IconButton onClick={share}><ShareIcon /></IconButton>
+          <IconButton onClick={share}><IosShareIcon color="action" /></IconButton>
         </div>
       </div>
       }
@@ -183,23 +188,32 @@ export const Post = () => {
               <Skeleton style={{ width: '85%' }} />
               <Skeleton style={{ width: '99%', height: '249px', marginTop: '-35px' }} />
             </div> :
-              <Markdown options={{
-                forceBlock: true,
-                overrides: {
-                  code: {
-                    component: Syntax,
-                    props: {
-                      className: 'foo',
+              <>
+              <h1>{tilte}</h1>
+                        <div className="tags" style={{marginTop:'-8px',marginLeft:'-6px'}}>
+
+                            {
+                                tags.map(item =>
+                                    <Chip key={item} fontbig={true} name={item} dark={context.dark} />
+                                )
+
+                            }
+                        </div>
+                <Markdown options={{
+                  forceBlock: true,
+                  overrides: {
+                    code: {
+                      component: Syntax,
+                      props: {
+                        className: 'foo',
+                      },
                     },
                   },
-                },
-              }}>
-                {content}
-              </Markdown>
+                }}>
+                  {content}
+                </Markdown>
+              </>
           }
-        </div>
-        <div className="header-blog">
-
         </div>
       </div>
       <div className="container-right">

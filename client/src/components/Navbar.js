@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { url } from '../baseurl';
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import AddIcon from '@mui/icons-material/Add';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
@@ -75,9 +76,9 @@ export const Navbar = () => {
                         </div>
                     </div>
                     <div className="right rightnavresp">
-                        <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '128px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} variant="outlined">New Post </button>
+                        <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '128px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} variant="outlined"><AddIcon sx={{ width: '21px', marginRight: '3.85px', marginTop: '-1px' }}/>New Post </button>
                         <div className="tags">
-                            <IconButton onClick={redirect} className='smicons hiddennavtab' sx={{}}><PostAddIcon /></IconButton>
+                            <IconButton onClick={redirect} className='smicons hiddennavtab' sx={{width:'39px'}}><PostAddIcon sx={{fontSize:'27px',marginBottom:'-2px'}} /></IconButton>
                             <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon /> : <NightlightOutlinedIcon />}</IconButton>
 
                             {

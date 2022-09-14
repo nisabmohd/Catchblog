@@ -2,8 +2,6 @@ const { BlogPostModel } = require('../models/Blog')
 const { v4: id } = require('uuid')
 const { UserModel } = require('../models/User')
 const { v4: idnot } = require('uuid')
-
-
 const router = require('express').Router()
 
 
@@ -143,6 +141,9 @@ router.post('/new', async (req, res) => {
         }))
         res.send(done)
     } catch (err) {
+        console.log('====================================');
+        console.log(err);
+        console.log('====================================');
         res.status(400).send(err)
     }
 })
@@ -269,7 +270,7 @@ router.put('/edit/:postid', async (req, res) => {
         const post = await BlogPostModel.findOne({ postid: req.params.postid })
         console.log();
         if (post.uid === req.body.uid) {
-            return res.send(await BlogPostModel.updateOne({ postid: req.params.postid }, { $set: { ...post._doc, ...req.body ,tags:req.body.tags.split(',')} }));
+            return res.send(await BlogPostModel.updateOne({ postid: req.params.postid }, { $set: { ...post._doc, ...req.body, tags: req.body.tags.split(',') } }));
 
         } else {
             return res.send(401).send({ message: "Unauthorized" })
