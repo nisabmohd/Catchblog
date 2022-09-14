@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { UserModel } = require('../models/User')
 const { v4: idnot } = require('uuid')
+const { hash } = require('../utils/passwordhash')
 
 router.get('/:uid', async (req, res) => {
     try {
@@ -82,7 +83,19 @@ router.get("/notifications/:uid", async (req, res) => {
 router.put('/edit/:uid', async (req, res) => {
     try {
         const find = await UserModel.findOne({ uid: req.params.uid })
-        res.send(await UserModel.updateOne({ uid: req.params.uid }, { $set: { ...find._doc, ...req.body } }))
+        if (!req.body.password) {
+            console.log(req.body);
+            await UserModel.updateOne({ uid: req.params.uid }, { $set: { ...find._doc, ...req.body } })
+        }
+        else {
+            console.log(req.body);
+            const hashedpass = await hash(req.body.password)
+            console.log(hashedpass);
+            await UserModel.updateOne({ uid: req.params.uid }, {
+                $set: { ...{...find._doc, ...req.body}, password: hashedpass }
+            })
+        }
+        res.send(await UserModel.findOne({ uid: req.params.uid }, { password: 0 }))
     } catch (err) {
         res.status(400).send(err)
     }
