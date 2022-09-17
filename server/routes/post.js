@@ -141,9 +141,7 @@ router.post('/new', async (req, res) => {
         }))
         res.send(done)
     } catch (err) {
-        console.log('====================================');
         console.log(err);
-        console.log('====================================');
         res.status(400).send(err)
     }
 })

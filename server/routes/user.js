@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { UserModel } = require('../models/User')
 const { v4: idnot } = require('uuid')
 const { hash } = require('../utils/passwordhash')
+const { paginate } = require('../utils/paginate')
 
 router.get('/:uid', async (req, res) => {
     try {
@@ -11,6 +12,40 @@ router.get('/:uid', async (req, res) => {
         res.status(err.code).send(err)
     }
 
+})
+
+router.get('/followers/:uid', async (req, res) => {
+    try {
+        const user = await UserModel.findOne({ uid: req.params.uid })
+        allFollowers = user.followers.reverse()
+        const newArr = paginate(allFollowers, req.query.total, req.query.page)
+        var followersObj = []
+        Promise.all(newArr.map(async item => {
+            const tempObj = await UserModel.findOne({ uid: item },{notifications:0,password:0,savedlist:0,hasNotification:0,email:0})
+            followersObj.push(tempObj)
+        })).then(() => {
+            res.send(followersObj)
+        })
+    } catch (err) {
+
+    }
+})
+
+router.get('/followongs/:uid', async (req, res) => {
+    try {
+        const user = await UserModel.findOne({ uid: req.params.uid })
+        allFollowers = user.followings.reverse()
+        const newArr = paginate(allFollowers, req.query.total, req.query.page)
+        var followersObj = []
+        Promise.all(newArr.map(async item => {
+            const tempObj = await UserModel.findOne({ uid: item },{notifications:0,password:0,savedlist:0,hasNotification:0,email:0})
+            followersObj.push(tempObj)
+        })).then(() => {
+            res.send(followersObj)
+        })
+    } catch (err) {
+
+    }
 })
 
 router.get('/hasnotification/:uid', async (req, res) => {
@@ -92,7 +127,7 @@ router.put('/edit/:uid', async (req, res) => {
             const hashedpass = await hash(req.body.password)
             console.log(hashedpass);
             await UserModel.updateOne({ uid: req.params.uid }, {
-                $set: { ...{...find._doc, ...req.body}, password: hashedpass }
+                $set: { ...{ ...find._doc, ...req.body }, password: hashedpass }
             })
         }
         res.send(await UserModel.findOne({ uid: req.params.uid }, { password: 0 }))
