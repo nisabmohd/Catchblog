@@ -55,6 +55,5 @@ $ npm start
 * Your server application should run on port 8000, so in your browser just go to [http://localhost:8000](http://localhost:3000)
 
 ## Overview
-<img src="./images/4.png">
-<img src="./images/ss.png">
-<img src="./images/ss2.png">
+
+<img src="./images/1.png">
