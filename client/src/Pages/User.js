@@ -60,7 +60,7 @@ export const User = () => {
         <div className='container homecontainer'>
             <div className="container-left">
                 {
-                    loading && loadingarr.map(item => <PostCradSkeleton />)
+                    loading && loadingarr.map(item => <PostCradSkeleton key={item} />)
 
                 }
                 {

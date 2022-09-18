@@ -16,35 +16,14 @@ router.get('/:uid', async (req, res) => {
 
 router.get('/followers/:uid', async (req, res) => {
     try {
-        const pageNumber = parseInt(req.query.page) || 0;
-        const limit = parseInt(req.query.limit) || 12;
-        const result = {};
         const user = await UserModel.findOne({ uid: req.params.uid })
-        const totalPosts = user.followers.length;
-        let startIndex = pageNumber * limit;
-        const endIndex = (pageNumber + 1) * limit;
-        result.total = totalPosts;
-        if (startIndex > 0) {
-            result.previous = {
-                pageNumber: pageNumber - 1,
-                limit: limit,
-            };
-        }
-        if (endIndex < totalPosts) {
-            result.next = {
-                pageNumber: pageNumber + 1,
-                limit: limit,
-            };
-        }
         allFollowers = user.followers.reverse()
-        const newArr = paginate(allFollowers, req.query.limit, req.query.page)
         var followersObj = []
-        Promise.all(newArr.map(async item => {
+        Promise.all(allFollowers.map(async item => {
             const tempObj = await UserModel.findOne({ uid: item }, { notifications: 0, password: 0, savedlist: 0, hasNotification: 0, email: 0 })
             followersObj.push(tempObj)
         })).then(() => {
-            result.data = followersObj
-            res.send(result)
+            res.send(followersObj)
         })
     } catch (err) {
         res.status(err.code).send(err)
@@ -53,35 +32,14 @@ router.get('/followers/:uid', async (req, res) => {
 
 router.get('/followings/:uid', async (req, res) => {
     try {
-        const pageNumber = parseInt(req.query.page) || 0;
-        const limit = parseInt(req.query.limit) || 12;
-        const result = {};
         const user = await UserModel.findOne({ uid: req.params.uid })
-        const totalPosts = user.followings.length;
-        let startIndex = pageNumber * limit;
-        const endIndex = (pageNumber + 1) * limit;
-        result.total = totalPosts;
-        if (startIndex > 0) {
-            result.previous = {
-                pageNumber: pageNumber - 1,
-                limit: limit,
-            };
-        }
-        if (endIndex < totalPosts) {
-            result.next = {
-                pageNumber: pageNumber + 1,
-                limit: limit,
-            };
-        }
-        allFollowers = user.followers.reverse()
-        const newArr = paginate(allFollowers, req.query.limit, req.query.page)
+        allFollowers = user.followings.reverse()
         var followersObj = []
-        Promise.all(newArr.map(async item => {
+        Promise.all(allFollowers.map(async item => {
             const tempObj = await UserModel.findOne({ uid: item }, { notifications: 0, password: 0, savedlist: 0, hasNotification: 0, email: 0 })
             followersObj.push(tempObj)
         })).then(() => {
-            result.data = followersObj
-            res.send(result)
+            res.send(followersObj)
         })
     } catch (err) {
         res.status(err.code).send(err)
