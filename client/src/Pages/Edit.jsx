@@ -139,7 +139,7 @@ export const Edit = () => {
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
             <div className="container" style={{ marginBottom: '29px', marginTop: '-15px' }}>
@@ -148,16 +148,16 @@ export const Edit = () => {
                 {
                     preview ? <div className="container50" style={{ width: '70%', margin: 'auto' }}>
                         <h1>{title}</h1>
-                        <div className="tags" style={{marginTop:'-8px',marginLeft:'-6px'}}>
+                        <div className="tags" style={{ marginTop: '-8px', marginLeft: '-6px' }}>
 
                             {
-                               tags && tags.split(',').map(item =>
+                                tags && tags.split(',').map(item =>
                                     <Chip name={item} dark={context.dark} />
                                 )
 
                             }
                         </div>
-                        <div style={{ height: '99.8vh', overflow: 'scroll' }}>
+                        <div style={{ height: '99.8vh', overflow: 'auto' }}>
                             <Markdown options={{
                                 forceBlock: true,
                                 overrides: {
@@ -173,9 +173,9 @@ export const Edit = () => {
                             </Markdown>
                         </div>
                     </div> : <div className="container50" style={{ width: '70%', margin: 'auto' }}>
-                        <textarea value={title} onChange={e => setTitle(e.target.value)} style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '78px', fontSize: '14px',marginBottom:'-1.2px' }} placeholder='Title of the blog *'></textarea>
-                        <textarea value={tags} onChange={e => {setTags(e.target.value);}} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '55px', fontSize: '14px',marginBottom:'-1.2px'  }} placeholder='Enter tags (eg : javscript,typescript)'></textarea>
-                        <textarea value={summary} onChange={e => setSummary(e.target.value)} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '135px', fontSize: '14px',marginBottom:'-1.2px'  }} placeholder='Summary of the post *'></textarea>
+                        <textarea value={title} onChange={e => setTitle(e.target.value)} style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '78px', fontSize: '14px', marginBottom: '-1.2px' }} placeholder='Title of the blog *'></textarea>
+                        <textarea value={tags} onChange={e => { setTags(e.target.value); }} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '55px', fontSize: '14px', marginBottom: '-1.2px' }} placeholder='Enter tags (eg : javscript,typescript)'></textarea>
+                        <textarea value={summary} onChange={e => setSummary(e.target.value)} className='boxins' style={{ backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', resize: 'none', width: '100%', height: '135px', fontSize: '14px', marginBottom: '-1.2px' }} placeholder='Summary of the post *'></textarea>
                         <textarea style={{ width: '100%', backgroundColor: !context.dark ? 'rgb(248, 248, 248)' : '#202020', color: 'inherit', padding: '15px', border: 'none', borderRadius: '5px', outline: 'none', minHeight: '84vh', resize: 'none' }} value={value} onChange={e => setValue(e.target.value)} spellCheck="false"></textarea>
                     </div>
                 }
