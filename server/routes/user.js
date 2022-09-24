@@ -1,8 +1,11 @@
 const router = require('express').Router()
 const { UserModel } = require('../models/User')
 const { v4: idnot } = require('uuid')
-const { hash } = require('../utils/passwordhash')
-const { paginate } = require('../utils/paginate')
+const { hash, verify } = require('../utils/passwordhash')
+const { otpModel } = require('../models/Otp')
+const { main } = require('../utils/mail')
+const {AddMinutesToDate}=require('../utils/date')
+
 
 router.get('/:uid', async (req, res) => {
     try {
@@ -12,6 +15,36 @@ router.get('/:uid', async (req, res) => {
         res.status(err.code).send(err)
     }
 
+})
+
+router.put('/password/otp', async (req, res) => {
+    const { email } = req.body
+    const otp = Math.ceil(Math.random() * 1000000).toString()
+    const hashedOtp=await hash(otp)
+    const find = await otpModel.findOne({ email })
+    if (!find) {
+        const newotp = new otpModel({
+            email, otp:hashedOtp,expiry:AddMinutesToDate(new Date(),5)
+        })
+        await newotp.save()
+    } else {
+        await otpModel.updateOne({ email }, { otp:hashedOtp,expiry:AddMinutesToDate(new Date(),5) })
+    }
+    await main(otp, email)
+    res.send({ status: true })
+})
+
+router.put('/verifyotp', async (req, res) => {
+    const { otp, email, password } = req.body
+    const otpdata=await otpModel.findOne({ email })
+    if(otpdata.otp<new Date()) return res.status(401).send({ message: "Wrong otp" });
+    const valid = await verify(otpdata.otp, otp) 
+    if (!valid) {
+        return res.status(401).send({ message: "Wrong otp" });
+    }
+    const result = await UserModel.updateOne({ email }, { password: await hash(password) })
+    if(result.modifiedCount===0) return res.send({message:'No account found'})
+    if (result) res.send({ message: "done" })
 })
 
 router.get('/followers/:uid', async (req, res) => {
