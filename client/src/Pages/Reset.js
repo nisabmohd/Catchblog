@@ -13,10 +13,12 @@ export const Reset = () => {
     const navigate = useNavigate()
     const [otp, setOpt] = useState('')
     const [email, setEmail] = useState('')
+    const [disable, setDisable] = useState(false)
     const [pass, setPass] = useState('')
 
 
     async function sendOtp() {
+        setDisable(true)
         if (!email)
             toast.error("Email required", {
                 style: {
@@ -33,6 +35,7 @@ export const Reset = () => {
                 }
             })
         }
+        setDisable(false)
     }
     async function changePass() {
         if (!email)
@@ -65,7 +68,7 @@ export const Reset = () => {
                 })
                 navigate('/login')
             }
-        }).catch(err=>{
+        }).catch(err => {
             toast.error(`Wrong OTP`, {
                 style: {
                     fontSize: '12px'
@@ -88,7 +91,11 @@ export const Reset = () => {
                 </div>
                 <div className="same-line" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '325px', marginTop: '20px', }}>
                     <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder='Enter email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', paddingLeft: '14px', width: '78%' }} />
-                    <button onClick={() => sendOtp()} style={{ fontFamily: 'Poppins', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', cursor: 'pointer', fontWeight: 'bold', borderRadius: '5px', height: '45px', width: '21%', marginLeft: '8px' }}>OTP</button>
+                    {
+                        !disable ? <button onClick={() => sendOtp()} style={{ fontFamily: 'Poppins', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', cursor: 'pointer', fontWeight: 'bold', borderRadius: '5px', height: '45px', width: '21%', marginLeft: '8px' }}>OTP</button> :
+                            <button disabled={true} style={{ fontFamily: 'Poppins', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', cursor: 'not-allowed', fontWeight: 'bold', borderRadius: '5px', height: '45px', width: '21%', marginLeft: '8px' }}>OTP</button>
+                    }
+
                 </div>
                 <input value={otp} onChange={e => setOpt(e.target.value)} type="text" placeholder='Enter OTP' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} />
                 <input value={pass} onChange={e => setPass(e.target.value)} type="password" placeholder='Enter new password' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', width: '325px', marginTop: '20px', paddingLeft: '14px' }} />
