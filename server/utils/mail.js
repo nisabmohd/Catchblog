@@ -8,6 +8,7 @@ async function main(otp, email) {
             user: `${process.env.email}`,
             pass: `${process.env.password}`,
         },
+        from:process.env.email
     });
 
     let info = await transporter.sendMail({
