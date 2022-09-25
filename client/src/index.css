@@ -53,7 +53,7 @@ body {
 }
 
 *::-webkit-scrollbar {
-    height: 9px;
+    height: 6.4px;
     width: 6.75px;
     background-color: transparent;
 }
