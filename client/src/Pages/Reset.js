@@ -55,7 +55,23 @@ export const Reset = () => {
             })
         await axios.put(`${url}/user/verifyotp`, {
             email, password: pass, otp
-        }).then(() => navigate('/login'))
+        }).then((resp) => {
+            console.log(resp);
+            if (resp.data.message === "done") {
+                toast.success(`${resp.data.message}`, {
+                    style: {
+                        fontSize: '12px'
+                    }
+                })
+                navigate('/login')
+            }
+        }).catch(err=>{
+            toast.error(`Wrong OTP`, {
+                style: {
+                    fontSize: '12px'
+                }
+            })
+        })
     }
     return (
         <div className="containerlogin">
