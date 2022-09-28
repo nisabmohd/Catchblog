@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { AppContext } from "../App";
 import { useContext, useState } from 'react';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import logo from '../assets/CB-logos_black.png'
+import logo from '../assets/CB-logos_transparent.png'
 import darklogo from '../assets/CB-logos_white.png'
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';

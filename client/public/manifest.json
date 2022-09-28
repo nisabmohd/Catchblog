@@ -1,38 +1,77 @@
 {
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "name": "CatchBlog",
-  "short_name": "CatchBlog",
-  "description": "A Dev Blog App",
-  "icons": [
-      {
-          "src": "./maskable.png",
-          "sizes": "196x196",
-          "type": "image/png",
-          "purpose": "any maskable"
-      },
-      {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-      },
-      {
-          "src": "/icon-256x256.png",
-          "sizes": "256x256",
-          "type": "image/png"
-      },
-      {
-          "src": "/icon-384x384.png",
-          "sizes": "384x384",
-          "type": "image/png"
-      },
-      {
-          "src": "/icon-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
-      }
-  ]
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "CatchBlog",
+    "short_name": "CatchBlog",
+    "description": "A Dev Blog App",
+    "icons": [
+        {
+            "src": "/android-icon-192x192-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/apple-icon-180x180-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "180x180"
+        },
+        {
+            "src": "/apple-icon-152x152-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "152x152"
+        },
+        {
+            "src": "/apple-icon-144x144-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/apple-icon-120x120-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "/apple-icon-114x114-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "114x114"
+        },
+        {
+            "src": "/favicon-96x96-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/apple-icon-76x76-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "76x76"
+        },
+        {
+            "src": "/apple-icon-72x72-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "/apple-icon-60x60-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "60x60"
+        },
+        {
+            "src": "/apple-icon-57x57-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "57x57"
+        },
+        {
+            "src": "/favicon-32x32-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "32x32"
+        },
+        {
+            "src": "/favicon-16x16-seochecker-manifest-6728.png",
+            "type": "image/png",
+            "sizes": "16x16"
+        }
+    ]
 }
