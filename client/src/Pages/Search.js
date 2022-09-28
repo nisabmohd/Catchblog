@@ -69,13 +69,13 @@ export const Search = () => {
                 {
                     loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
                 }
-                {post.length !== 0 && <h4 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h4>}
+                {post.length !== 0 && <h5 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h5>}
 
                 <InfiniteScroll
                     dataLength={post.length}
                     next={fetchMorePostData}
                     hasMore={more}
-                    loader={loadingarr.map(item => <PostCradSkeleton />)}
+                    loader={<></>}
                 >
                     {post && post.map(item => {
                         return <PostCard key={item.postid} summary={item.summary} id={item.postid} uid={item.uid} date={item.timestamp} content={item.title} tags={item.tags} />

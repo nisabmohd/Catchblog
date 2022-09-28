@@ -73,7 +73,7 @@ function App() {
       <AppContext.Provider value={contextValue} >
         <ThemeProvider theme={darkTheme}>
           <CssBaseline>
-            <Box>
+            <Box >
               {
                 auth ?
                   <>

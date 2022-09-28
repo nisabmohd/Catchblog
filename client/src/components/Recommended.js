@@ -26,7 +26,7 @@ export const Recommended = (props) => {
           lineHeight: '24px',
           borderBottom: context.dark ? '1px solid #353535' : '1px solid rgb(227 223 223)',
           paddingBottom: '12px'
-        }}>Posts <span style={{ color: 'rgb(161 148 148)' }}>Trending</span></p>
+        }}>Trending</p>
       }
       {
         more.map(item => {

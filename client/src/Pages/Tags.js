@@ -60,7 +60,7 @@ export const Tags = () => {
                     dataLength={post.length}
                     next={fetchMoreData}
                     hasMore={more}
-                    loader={ loading && loadingarr.map(item => <PostCradSkeleton />)}
+                    loader={ <></>}
                 >
                     {
                         post.map(item => {

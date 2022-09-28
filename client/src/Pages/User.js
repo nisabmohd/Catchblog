@@ -70,7 +70,7 @@ export const User = () => {
                     dataLength={post.length}
                     next={fetchMoreData}
                     hasMore={more}
-                    loader={loadingarr.map(item => <PostCradSkeleton />)}
+                    loader={<></>}
                 >
                     {
                         post && post.map(item => {

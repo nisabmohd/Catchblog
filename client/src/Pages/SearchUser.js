@@ -53,7 +53,7 @@ export const SearchUser = () => {
                     <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
                     <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
                 </>}
-                {users.length !== 0 && loading === false && <h4 style={{ marginBottom: '16px' }}>Showing Users Results for ' {searchParams.get("q")} '</h4>}
+                {users.length !== 0 && loading === false && <h5 style={{ marginBottom: '16px' }}>Showing Users Results for ' {searchParams.get("q")} '</h5>}
                 {loading && <Skeleton style={{ height: '30px', width: '195px', marginBottom: '15px' }} />}
 
                 {
@@ -74,7 +74,7 @@ export const SearchUser = () => {
                         dataLength={users.length}
                         next={fetchMoreUserData}
                         hasMore={more}
-                        loader={loadingarr.map(item => <div style={{ borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10.5px', paddingTop: '12px' }}><PostcardUserSkeleton /></div>)}
+                        loader={<></>}
                     >
                         {
                             users.map(item => {
@@ -84,16 +84,16 @@ export const SearchUser = () => {
                                             <div className="header" style={{ width: '100%' }}>
                                                 <div className="textheader" style={{ width: '100%' }}>
                                                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                        <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '4px' }} src={item.img} alt="" />
+                                                        <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                         <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '14px', fontWeight: 'bold' }}>{item.username}</p>
-                                                                        <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                        <p style={{ margin: '0', marginRight: '1px', fontSize: '13px'}}>{item.username}</p>
+                                                                        <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                        <p style={{ fontSize: '13px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
+                                                                        <p style={{ fontSize: '12px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>

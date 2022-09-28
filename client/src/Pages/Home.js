@@ -58,7 +58,7 @@ export const Home = () => {
                     dataLength={post.length}
                     next={fetchMoreData}
                     hasMore={more}
-                    loader={loadingarr.map(item => <PostCradSkeleton />)}
+                    loader={<></>}
                 >
                     {
                         post.map(item => {

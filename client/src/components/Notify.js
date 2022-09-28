@@ -52,10 +52,10 @@ export const Notify = (props) => {
                             <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                 <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                     <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '14.5px'}}>{user && user.username}</p>
+                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px'}}>{user && user.username}</p>
                                     </Link>
                                     <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                        <p className='notiP' style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                        <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                     </Link>
                                 </div>
                                 <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
@@ -77,10 +77,10 @@ export const Notify = (props) => {
                                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                     <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '14.5px', marginTop: '-2.5px' }}>{user && user.username}</p>
+                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px', marginTop: '-2.5px' }}>{user && user.username}</p>
                                         </Link>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                            <p className='notiP' style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                            <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                         </Link>
                                     </div>
                                     <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
@@ -101,17 +101,17 @@ export const Notify = (props) => {
                                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                     <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '14.5px', marginTop: '-2.5px' }}>{user && user.username}</p>
+                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px', marginTop: '-2.5px' }}>{user && user.username}</p>
                                         </Link>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                            <p className='notiP' style={{ fontSize: '13.65px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                            <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                         </Link>
                                     </div>
                                     <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
                                 </div>
                             </div>
-                            <div className="postnotif" style={{border:context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)',padding:'0 15px',borderRadius:'8px',marginTop:'10px',marginBlock:'8px'}}>
-                               { newNot&& <PostCard showprofile={true} key={newNot.postid} summary={newNot.summary} id={newNot.postid} uid={newNot.uid} date={newNot.timestamp} content={newNot.title} tags={[]}/>}
+                            <div className="postnotif" style={{border:context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)',padding:'0 15px',borderRadius:'8px',marginTop:'10px',marginBlock:'8px',borderLeft:context.dark?'8px solid #5e5d5d':'8px solid red'}}>
+                               { newNot&& <PostCard showprofile={true} key={newNot.postid} summary={newNot.summary} id={newNot.postid} uid={newNot.uid} date={newNot.timestamp} content={newNot.title} fontSm={true} tags={[]}/>}
                             </div>
                         </div>
 

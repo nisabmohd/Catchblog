@@ -3,10 +3,9 @@ import '../css/Navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import { AppContext } from "../App";
 import { useContext, useState } from 'react';
-// import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-// import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import logo from '../assets/blogger.png'
+import logo from '../assets/CB-logos_black.png'
+import darklogo from '../assets/CB-logos_white.png'
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -18,8 +17,6 @@ import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { url } from '../baseurl';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import AddIcon from '@mui/icons-material/Add';
 
 export const Navbar = () => {
     const context = useContext(AppContext)
@@ -65,27 +62,27 @@ export const Navbar = () => {
                 <div className="navbar">
                     <div className="left">
                         <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-                            <img style={{ width: '36.5px', marginRight: '9px' }} src={logo} alt="" />
-                            <h2 className='logohide'>CatchBlog</h2>
+                            <img style={{ width: '45.5px', marginRight: '2px', marginLeft: '-5px' }} src={context.dark ? darklogo : logo} alt="" />
+                            <h2 style={{ fontSize: '23px' }} className='logohide'>catchblog</h2>
                         </Link>
                     </div>
                     <div className="middle">
-                        <div className="searchbox" style={{ width: '80%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid rgb(45 45 45)' : '1px solid rgb(233 233 233)', paddingLeft: '16px', height: '35px', borderRadius: '7px', backgroundColor: context.dark ? '#121212' : '#ffff' }}>
-                            <SearchIcon sx={{ width: '19px', marginRight: '9px' }} />
-                            <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit' }} />
+                        <div className="searchbox" style={{ width: '85%', display: 'flex', flexDirection: 'row', alignItems: 'center', border: context.dark ? '1px solid rgb(83 82 82)' : '1px solid rgb(200 200 200)', paddingLeft: '16px', height: '38px', borderRadius: '18px', }}>
+                            <SearchIcon sx={{ width: '17px', marginRight: '9px' }} />
+                            <input onKeyDown={(e) => e.key === "Enter" && handleSearch()} value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" style={{ height: '24px', width: '90%', outline: 'none', border: 'none', background: 'transparent', color: 'inherit', fontSize: '13.5px' }} />
                         </div>
                     </div>
                     <div className="right rightnavresp">
-                        <button className='newpostbtn' onClick={redirect} style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '128px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '5px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} variant="outlined"><AddIcon sx={{ width: '21px', marginRight: '3.85px', marginTop: '-1px' }}/>New Post </button>
+                        <IconButton style={{ borderRadius: '50%', width: '40px'}} onClick={redirect} className='smicons' sx={{ margin: '0 5px' }}><i style={{ fontSize: '17px', marginBottom: '-4px' }} class="fi fi-rr-edit"></i></IconButton>
+
                         <div className="tags">
-                            <IconButton onClick={redirect} className='smicons hiddennavtab' sx={{width:'39px'}}><PostAddIcon sx={{fontSize:'27px',marginBottom:'-2px'}} /></IconButton>
-                            <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon /> : <NightlightOutlinedIcon />}</IconButton>
+                            <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon sx={{ fontSize: '22px' }} /> : <NightlightOutlinedIcon sx={{ fontSize: '22px' }} />}</IconButton>
 
                             {
                                 context.hasNotification ? <IconButton onClick={() => navigate('/notifications')} style={{ borderRadius: '50%', width: '40px' }}><Badge className='smicons' sx={{ margin: '0 5px' }} variant="dot" color="error" overlap="circular" >
-                                    <NotificationsNoneIcon />
+                                    <NotificationsNoneIcon sx={{ fontSize: '22px' }} />
                                 </Badge> </IconButton> : <IconButton onClick={() => navigate('/notifications')} style={{ borderRadius: '50%', width: '40px' }} ><Badge className='smicons' sx={{ margin: '0 5px' }} color="error" overlap="circular" >
-                                    <NotificationsNoneIcon />
+                                    <NotificationsNoneIcon sx={{ fontSize: '22px' }} />
                                 </Badge></IconButton>
                             }
                             <Menu
