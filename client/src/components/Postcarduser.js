@@ -11,8 +11,8 @@ export const Postcarduser = (props) => {
             </Link>
             <Link to={`/user/${props.uid}`} style={{color:'inherit',textDecoration:'none'}}>
                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'column' }}>
-                    <p style={{ margin: '0',fontSize:'15.15px',fontWeight:'600',letterSpacing:'1px'}}>{props.name}</p>
-                    <p style={{ fontSize: '13.7px', margin: '0', marginTop: '0px',color:'gray' }}>{dateFormat(props.date).slice(0,15)}</p>
+                    <p style={{ margin: '0',fontSize:'14.55px',fontWeight:'600',letterSpacing:'0.5px'}}>{props.name}</p>
+                    <p style={{ fontSize: '12.7px', margin: '0', marginTop: '0px',color:'gray' }}>{dateFormat(props.date).slice(0,15)}</p>
                 </div>
             </Link>
         </div>

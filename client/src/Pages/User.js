@@ -8,7 +8,6 @@ import { UserCard } from '../components/UserCard'
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Box, } from '@mui/material'
 import { PostCradSkeleton } from '../components/PostCradSkeleton'
-import { UserCardSkleton } from '../components/UserCardSkleton'
 
 const loadingarr = [1, 2, 3, 4]
 

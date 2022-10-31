@@ -1,4 +1,5 @@
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
 body {
     margin: 0;
     padding: 0;
@@ -8,7 +9,8 @@ body {
 * {
     font-family: 'IBM Plex Sans', sans-serif;
 }
-.hiddennavtab{
+
+.hiddennavtab {
     display: none !important;
 }
 
@@ -35,6 +37,11 @@ body {
     width: 70%;
     margin: auto;
 }
+
+.hideshow {
+    display: none;
+}
+
 
 /* .container-right {
     width: 23%;
@@ -85,9 +92,21 @@ body {
 
 @media screen and (max-width:755px) {
 
-    .resphandlebtns{
+    .resphandlebtns {
         margin-top: 0px !important;
         margin-right: 9px !important;
+    }
+
+    .navbar {
+        width: 100% !important;
+    }
+
+    .hideshow {
+        display: block !important;
+    }
+
+    .logohide {
+        display: none !important;
     }
 
     .container {
@@ -164,6 +183,7 @@ body {
         width: 30px !important;
         height: 32px !important;
     }
+
     .searchbtn {
         font-size: 10px !important;
         width: 35px !important;
@@ -205,13 +225,16 @@ body {
     .pararesp {
         width: 100% !important;
     }
-    .homecontainer{
+
+    .homecontainer {
         flex-direction: column-reverse !important;
     }
-    .hideright{
+
+    .hideright {
         display: none !important;
     }
-    .posthandleskeleton{
+
+    .posthandleskeleton {
         margin-right: 12px;
         width: 33% !important;
         margin-left: 9px !important;
@@ -231,35 +254,42 @@ body {
         margin-left: 1vw;
         margin-top: 12px !important;
     }
+
     /* .not-usercard{
         flex-direction: column !important;
         align-items: flex-start !important;
     } */
-    .notiHp{
+    .notiHp {
         font-size: 12px !important;
     }
-    .notiP{
+
+    .notiP {
         font-size: 10.85px !important;
     }
-    .notiimg{
+
+    .notiimg {
         width: 30px !important;
     }
 
-    .notification-page-resp{
+    .notification-page-resp {
         display: none !important;
     }
-    .newpostbtn{
+
+    .newpostbtn {
         display: none !important;
     }
-    .hiddennavtab{
+
+    .hiddennavtab {
         display: block !important;
         margin-bottom: -5px !important;
         margin-right: 2px !important;
     }
+
     .searchbox {
         width: 84% !important;
     }
-    .rightnavresp{
+
+    .rightnavresp {
         margin-left: -19px !important;
     }
 }

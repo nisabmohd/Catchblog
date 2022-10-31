@@ -5,12 +5,9 @@ import { url } from "../baseurl"
 import { PostCard } from "../components/PostCard"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { PostCradSkeleton } from "../components/PostCradSkeleton"
-import { useContext } from "react"
-import { AppContext } from "../App"
 
 const loadingarr = [1, 2, 3, 4]
 export const Home = () => {
-    const context=useContext(AppContext)
     const [post, setPost] = useState([])
     const [page, setPage] = useState(0)
     const [more, setMore] = useState(false)

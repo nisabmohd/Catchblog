@@ -47,12 +47,12 @@ export const Navbar = () => {
                 <div className="navbar">
                     <div className="left">
                         <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center' }} className='logohide'>CATCHBLOG <DataObjectIcon sx={{ marginLeft: "9px", marginBottom: '-2px', fontSize: '29px' }} /></h2>
+                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center' }} ><span className='logohide'>CATCHBLOG</span><span className='hideshow'>CB</span> <DataObjectIcon sx={{ marginLeft: "9px", marginBottom: '-2px', fontSize: '29px' }} /></h2>
                         </Link>
                     </div>
 
                     <div className="right rightnavresp">
-                        <IconButton style={{ borderRadius: '50%', width: '40px' }} onClick={redirect} className='smicons' sx={{ margin: '0 5px' }}><i style={{ fontSize: '19px', marginBottom: '-4px' }} class="fi fi-rr-edit"></i></IconButton>
+                        <IconButton style={{ borderRadius: '50%', width: '40px' }} onClick={redirect} className='smicons' sx={{ margin: '0 5px' }}><i style={{ fontSize: '19px', marginBottom: '-4px' }} className="fi fi-rr-edit"></i></IconButton>
 
                         <div className="tags">
                             <IconButton className='smicons' onClick={()=>navigate('/search')} sx={{ margin: '0 5px' }}><SearchIcon sx={{ fontSize: '26px' }} /></IconButton>

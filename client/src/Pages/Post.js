@@ -136,7 +136,7 @@ export const Post = () => {
 
 
 
-        <div className="markdown" style={{ width: '90%' }}>
+        <div className="markdown">
 
           {
             loading ? <div style={{ marginTop: '22px' }}>
@@ -173,7 +173,7 @@ export const Post = () => {
               </>
           }
           {loading ? <div className="complete-left"  style={{marginTop:'5vh'}}>
-            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px' }} />

@@ -8,7 +8,7 @@ export const NotifySkeleton = () => {
     return (
         <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '95%',borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '15px' ,paddingTop:'14px'}}>
             <div >
-                <Skeleton style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '12px' }} variant="circular" width={36} height={36} />
+                <Skeleton style={{ width: '40px', height: '40px', borderRadius: '35%', marginRight: '12px' }} variant="circular" width={36} height={36} />
             </div>
             <div style={{ color: 'inherit', textDecoration: 'none' }}>
                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', width: 'inherit',alignItems:'center' }}>

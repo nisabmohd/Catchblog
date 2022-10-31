@@ -91,7 +91,7 @@ export const UserCard = (props) => {
                         <p style={{
                         fontStyle: 'normal',
                         fontWeight: '700',
-                        fontSize: '17px',
+                        fontSize: '15.85px',
                         lineHeight: '24px',
                         marginLeft: '21px',
                         whiteSpace:'nowrap',
@@ -107,8 +107,8 @@ export const UserCard = (props) => {
                     </div>
                 </div>
             </div>
-                <p style={{marginLeft:'65px',marginTop:'-33px',fontSize:'15px',color:'inherit'}}>{user && user.summary}</p>
-            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-23px' }}>
+                <p style={{marginLeft:'65px',marginTop:'-33px',fontSize:'13.75px',color:'inherit'}}>{user && user.summary}</p>
+            <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-13px' }}>
                 <div className="followings" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <p style={{
                         fontStyle: 'normal',
