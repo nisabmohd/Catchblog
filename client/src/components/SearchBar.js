@@ -10,7 +10,7 @@ export default function SearchBar() {
     const handleClick = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
-            navigate(`/search?cd clientq=${value}`)
+            navigate(`/search?q=${value}`)
         }
     }
     return (
