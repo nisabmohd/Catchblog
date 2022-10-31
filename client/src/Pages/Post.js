@@ -172,27 +172,32 @@ export const Post = () => {
                 </Markdown>
               </>
           }
-          {loading ? <div className="complete-left"  style={{marginTop:'5vh'}}>
-            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
+          {loading ? <div className="complete-left" style={{ marginTop: '5vh' }}>
+            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px' }} />
             </div>
-          </div> : <div className="complete-left"  style={{marginTop:'5vh'}}>
+          </div> : <div className="complete-left" style={{ marginTop: '5vh' }}>
             <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
               {uid && uid !== context.auth.uid ?
                 <>
                   {iLiked ?
                     <><IconButton onClick={unlike}><FavoriteBorderIcon color="error" /></IconButton></> :
-                    <><IconButton onClick={like}><FavoriteBorderIcon /></IconButton><p className="resphandlebtns" style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', marginBottom: '-9px', }}>{millify(likes)}</p></>
+                    <><IconButton onClick={like}><FavoriteBorderIcon /></IconButton></>
                   }
                 </>
                 :
                 <></>}
+              {uid && uid !== context.auth.uid && <p style={{fontSize:'13px',marginLeft:'-19px',color:'#bfbfbf'}}>{millify(likes)}</p>}
+
               {
                 uid && uid === context.auth.uid ?
-                  <> <><IconButton disabled><FavoriteBorderIcon /></IconButton></> <IconButton onClick={() => navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton> </> : !iSaved ? <><IconButton onClick={save}> <BookmarkAddOutlinedIcon /></IconButton> <p className="resphandlebtns" style={{ margin: 0, fontSize: '11px', marginBottom: '-3px', color: 'rgb(161, 148, 148)' }}>{millify(saved)}</p>  </> : <><IconButton onClick={unsave}> <BookmarkAddedOutlinedIcon color="primary" /></IconButton></>
+                  <> <><IconButton disabled><FavoriteBorderIcon /></IconButton><p style={{fontSize:'13px',marginLeft:'-15px',color:'#bfbfbf'}}>{millify(likes)}</p></> <IconButton onClick={() => navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton>
+                  
+                   </> : !iSaved ? <><IconButton onClick={save}> <BookmarkAddOutlinedIcon /></IconButton>   </> : <><IconButton onClick={unsave}> <BookmarkAddedOutlinedIcon color="primary" /></IconButton></>
               }
+              {uid && uid !== context.auth.uid &&<p style={{fontSize:'13px',marginLeft:'-19px',color:'#bfbfbf'}}>{millify(saved)}</p>}
               <IconButton onClick={share}><IosShareIcon color="action" /></IconButton>
             </div>
           </div>
@@ -218,7 +223,7 @@ export const Post = () => {
               </Button>
             </DialogActions>
           </Dialog>
-          <div className="user" style={{ width: '100%', backgroundColor: context.dark?'#2b2b2b':'#fafafa', borderRadius: '11px', padding: '10px 20px', marginTop: '6vh' }}>
+          <div className="user" style={{ width: '100%', backgroundColor: context.dark ? '#2b2b2b' : '#fafafa', borderRadius: '11px', padding: '10px 20px', marginTop: '6vh' }}>
             <UserCard uid={uid} />
           </div>
         </div>
