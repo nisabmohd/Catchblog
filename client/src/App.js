@@ -27,8 +27,14 @@ import { url } from "./baseurl";
 
 export const AppContext = React.createContext()
 function App() {
-  const [dark, setDark] = useState(false)
-  const [auth, setAuth] = useState(false);
+  const [dark, setDark] = useState(() => {
+    const isDark = localStorage.getItem('dark')
+    if (isDark) {
+      if (isDark === 'true') return true
+      return false
+    }
+  })
+  const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')));
   const [hasNotification, setHaveNotification] = useState(false)
 
   const darkTheme = createTheme({
@@ -42,21 +48,9 @@ function App() {
       const resp = await axios.get(`${url}/user/hasnotification/${auth.uid}`)
       setHaveNotification(resp.data)
     }
-    auth.uid && fetch();
+    auth?.uid && fetch();
   }, [auth.uid])
 
-
-  useEffect(() => {
-    const isDark = localStorage.getItem('dark')
-    if (isDark) {
-      if (isDark === 'true') setDark(true)
-      else setDark(false)
-    }
-    const isAuth = localStorage.getItem('auth')
-    if (isAuth) {
-      setAuth(JSON.parse(isAuth))
-    }
-  }, [])
 
   function handlelogout() {
     setAuth(false)
