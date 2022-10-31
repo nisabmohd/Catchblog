@@ -48,8 +48,8 @@ function App() {
       const resp = await axios.get(`${url}/user/hasnotification/${auth.uid}`)
       setHaveNotification(resp.data)
     }
-    auth?.uid && fetch();
-  }, [auth.uid])
+    auth && fetch();
+  }, [auth])
 
 
   function handlelogout() {
