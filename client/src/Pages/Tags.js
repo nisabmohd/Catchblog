@@ -1,8 +1,6 @@
 import { Box } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../App'
+import React, {useEffect, useState } from 'react'
 import { PostCard } from '../components/PostCard'
-import { Recommended } from '../components/Recommended'
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios'
 import { url } from '../baseurl'
@@ -16,7 +14,6 @@ export const Tags = () => {
     const [page, setPage] = useState(0)
     const [more, setMore] = useState(false)
     const [loading, setLoading] = useState(false)
-    const context = useContext(AppContext)
     const params = useParams()
     useEffect(() => {
         setPost([])
@@ -69,11 +66,6 @@ export const Tags = () => {
                     }
                 </InfiniteScroll>
             </div>
-            <div className="container-right hideright">
-                {/* <Top /> */}
-                <Recommended uid={context.auth.uid} />
-            </div>
-
         </div>
     )
 }

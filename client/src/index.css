@@ -6,7 +6,7 @@ body {
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 .hiddennavtab{
     display: none !important;
@@ -32,14 +32,13 @@ body {
 }
 
 .container-left {
-    width: 75%;
-    margin-right: 12px;
-    margin-left: 5px;
+    width: 70%;
+    margin: auto;
 }
 
-.container-right {
+/* .container-right {
     width: 23%;
-}
+} */
 
 .md-header-img {
     width: 100%;

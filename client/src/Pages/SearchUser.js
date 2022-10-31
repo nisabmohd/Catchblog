@@ -2,12 +2,12 @@ import { Box, Skeleton } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { AppContext } from '../App'
-import { Recommended } from '../components/Recommended'
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios'
 import { url } from '../baseurl'
-import { RecommendedSketon } from '../components/RecommendedSketon'
 import { PostcardUserSkeleton } from '../components/PostcardUserSkeleton'
+import Search from '../components/SearchBar';
+import SearchBar from '../components/SearchBar';
 
 const loadingarr = [1, 2, 3, 4]
 export const SearchUser = () => {
@@ -47,13 +47,14 @@ export const SearchUser = () => {
         }
     }
     return (
-        <div className='container'>
+        <div className='container' style={{marginTop:'32px'}}>
             <div className="container-left">
+                <SearchBar/>
                 {<>
-                    <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
-                    <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
+                    <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Search User</button>
+                    <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Search Post</button>
                 </>}
-                {users.length !== 0 && loading === false && <h5 style={{ marginBottom: '16px' }}>Showing Users Results for ' {searchParams.get("q")} '</h5>}
+                {users.length !== 0 && loading === false && <h4 style={{ marginBottom: '16px' }}>Showing Users Results for ' {searchParams.get("q")} '</h4>}
                 {loading && <Skeleton style={{ height: '30px', width: '195px', marginBottom: '15px' }} />}
 
                 {
@@ -84,16 +85,16 @@ export const SearchUser = () => {
                                             <div className="header" style={{ width: '100%' }}>
                                                 <div className="textheader" style={{ width: '100%' }}>
                                                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                        <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
+                                                        <img style={{ width: '46px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                         <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '1px', fontSize: '13px'}}>{item.username}</p>
-                                                                        <p style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                        <p style={{ margin: '0', marginRight: '1px', fontSize: '15px'}}>{item.username}</p>
+                                                                        <p style={{ fontSize: '13px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                        <p style={{ fontSize: '12px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
+                                                                        <p style={{ fontSize: '14px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -107,16 +108,6 @@ export const SearchUser = () => {
                         } </InfiniteScroll>
                 </div>}
 
-            </div>
-            <div className="container-right hideright">
-                {/* <Top /> */}
-                {
-                    loading ?
-                        <>
-                            <RecommendedSketon />
-
-                        </> : <Recommended uid={context.auth.uid} />
-                }
             </div>
         </div>
     )

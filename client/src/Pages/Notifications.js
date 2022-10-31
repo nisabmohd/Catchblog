@@ -6,8 +6,6 @@ import { AppContext } from '../App'
 import { url } from '../baseurl'
 import { Notify } from '../components/Notify'
 import { NotifySkeleton } from '../components/NotifySkeleton'
-import { UserCard } from '../components/UserCard'
-import { UserCardSkleton } from '../components/UserCardSkleton'
 
 const loadingarr = [1, 2, 3, 4,5,6,7,8,9]
 export const Notifications = () => {
@@ -28,7 +26,7 @@ export const Notifications = () => {
 
 
   return (
-    <div className='container'>
+    <div className='container' style={{marginTop:'22px'}}>
       <div className="container-left">
         <h3 style={{ marginBottom: '33px' }}>Notifications</h3>
         {
@@ -43,9 +41,6 @@ export const Notifications = () => {
             return <Notify key={item.id} type={item.type} postid={item.postid} date={item.date} uid={item.uid} />
           })
         }
-      </div>
-      <div className="container-right notification-page-resp">
-        {loading ? <UserCardSkleton />:<UserCard uid={context.auth.uid} />}
       </div>
     </div>
   )

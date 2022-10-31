@@ -42,23 +42,23 @@ export const Notify = (props) => {
     return (
         props &&
             (props.type === 1 || props.type === 2) ? <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-            <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
+            <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0',  paddingBottom: '10px' }}>
                 <div className="header">
                     <div className="textheader">
                         <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Link to={`/user/${user && user.uid}`}>
-                                <img className='notiimg' style={{ width: '36px', borderRadius: '50%', marginRight: '12px' }} src={user && user.img} alt="" />
+                                <img className='notiimg' style={{ width: '36px', borderRadius: '35%', marginRight: '12px' }} src={user && user.img} alt="" />
                             </Link>
                             <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                 <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                     <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px'}}>{user && user.username}</p>
+                                        <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '15px'}}>{user && user.username}</p>
                                     </Link>
                                     <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                        <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                        <p className='notiP' style={{ fontSize: '14px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                     </Link>
                                 </div>
-                                <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
+                                <p className='notiP' style={{ fontSize: '13px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
                             </div>
                         </div>
                     </div>
@@ -67,23 +67,23 @@ export const Notify = (props) => {
             </div>
         </Link> :
             props.type === 3 ? <Link to={`/user/${props.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
+                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', paddingBottom: '10px' }}>
                     <div className="header">
                         <div className="textheader">
                             <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 <Link to={`/user/${user && user.uid}`}>
-                                    <img className='notiimg' style={{ width: '36px', borderRadius: '50%', marginRight: '12px' }} src={user && user.img} alt="" />
+                                    <img className='notiimg' style={{ width: '36px', borderRadius: '35%', marginRight: '12px' }} src={user && user.img} alt="" />
                                 </Link>
                                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                     <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px', marginTop: '-2.5px' }}>{user && user.username}</p>
+                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '15px', marginTop: '-2.5px' }}>{user && user.username}</p>
                                         </Link>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                            <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                            <p className='notiP' style={{ fontSize: '14px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                         </Link>
                                     </div>
-                                    <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
+                                    <p className='notiP' style={{ fontSize: '13px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
                                 </div>
                             </div>
                         </div>
@@ -91,27 +91,27 @@ export const Notify = (props) => {
                     </div>
                 </div>
             </Link> : <div style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '10px' }}>
+                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '8px 0',  paddingBottom: '10px' }}>
                     <div className="header">
                         <div className="textheader">
                             <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 <Link to={`/user/${user && user.uid}`}>
-                                    <img className='notiimg' style={{ width: '36px', borderRadius: '50%', marginRight: '12px' }} src={user && user.img} alt="" />
+                                    <img className='notiimg' style={{ width: '36px', borderRadius: '35%', marginRight: '12px' }} src={user && user.img} alt="" />
                                 </Link>
                                 <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                     <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '13px', marginTop: '-2.5px' }}>{user && user.username}</p>
+                                            <p className='notiHp' style={{ margin: '0', marginRight: '5px', fontSize: '15px', marginTop: '-2.5px' }}>{user && user.username}</p>
                                         </Link>
                                         <Link to={`/user/${user && user.uid}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                            <p className='notiP' style={{ fontSize: '12px', color: 'rgb(161, 148, 148)' }}>{content}</p>
+                                            <p className='notiP' style={{ fontSize: '14px', color: 'rgb(161, 148, 148)' }}>{content}</p>
                                         </Link>
                                     </div>
-                                    <p className='notiP' style={{ fontSize: '11px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
+                                    <p className='notiP' style={{ fontSize: '13px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px' }}><ReactTimeAgo date={Date.parse(props.date)} locale="en-US" /></p>
                                 </div>
                             </div>
                             <div className="postnotif" style={{border:context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)',padding:'0 15px',borderRadius:'8px',marginTop:'10px',marginBlock:'8px',borderLeft:context.dark?'8px solid #5e5d5d':'8px solid red'}}>
-                               { newNot&& <PostCard showprofile={true} key={newNot.postid} summary={newNot.summary} id={newNot.postid} uid={newNot.uid} date={newNot.timestamp} content={newNot.title} fontSm={true} tags={[]}/>}
+                               { newNot&& <PostCard showprofile={true} key={newNot.postid} not={true} summary={newNot.summary} id={newNot.postid} uid={newNot.uid} date={newNot.timestamp} content={newNot.title} fontSm={true} tags={[]}/>}
                             </div>
                         </div>
 

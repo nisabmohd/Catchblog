@@ -83,46 +83,43 @@ export const UserCard = (props) => {
     }
 
     return (
-        <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px', }}>
-            <div style={{ display: 'flex', flexDirection: 'row', width: '79%', alignItems: 'center', marginBottom: '13px' }} className="userdetails">
-                <Link style={{ color: 'inherit', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} to={`/user/${props.uid}`}><img style={{ width: '40px', borderRadius: '50%' }} src={user && user.img} alt="" /></Link>
-                <div className="name">
-                    <Link style={{ color: 'inherit', textDecoration: 'none' }} to={`/user/${props.uid}`}><p style={{
+        <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px', width: '490px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', width: '50%', alignItems: 'center', marginBottom: '13px' }} className="userdetails">
+                <Link style={{ color: 'inherit', textDecoration: 'none', display: 'flex',  }} to={`/user/${props.uid}`}><img style={{ width: '45px', borderRadius: '35%' }} src={user && user.img} alt="" /></Link>
+                <div className="name" style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                    <Link style={{ color: 'inherit', textDecoration: 'none' }} to={`/user/${props.uid}`}>
+                        <p style={{
                         fontStyle: 'normal',
                         fontWeight: '700',
-                        fontSize: '12px',
+                        fontSize: '17px',
                         lineHeight: '24px',
-                        marginLeft: '21px'
+                        marginLeft: '21px',
+                        whiteSpace:'nowrap',
+                        marginTop:'-10px'
                     }}>{user && user.username}</p></Link>
-                    <div className="joined" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '-27.85px', marginLeft: '21px' }}>
-                        <p style={{
-                            fontStyle: 'normal',
-                            fontWeight: '500',
-                            fontSize: '10.85px',
-                            lineHeight: '24px'
-                        }}>Joined :</p>
-                        <p style={{
-                            fontStyle: 'normal',
-                            fontWeight: '600',
-                            fontSize: '9.85px',
-                            lineHeight: '24px',
-                            marginLeft: '7px'
-                        }}>{user && user.joined.slice(0, 10)}</p>
+                    <div className="button" style={{ width: '99%',marginTop:'-25px',marginLeft:'2px' }}>
+                        {
+                            props.uid === context.auth.uid ? <button onClick={() => navigate('/settings')} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'gray', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px', }} variant="outlined">Edit Profile</button>
+                                :
+                                !iFollow ? <button onClick={follow} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px',}} variant="outlined">Follow</button> :
+                                    <button onClick={unfollow} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px',}} variant="outlined">Unfollow</button>
+                        }
                     </div>
                 </div>
             </div>
+                <p style={{marginLeft:'65px',marginTop:'-33px',fontSize:'15px',color:'inherit'}}>{user && user.summary}</p>
             <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-23px' }}>
                 <div className="followings" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '500',
-                        fontSize: '11px',
+                        fontSize: '14px',
                         lineHeight: '24px',
                     }}>Followings : </p>
                     <p onClick={() => handleClickOpen1()} style={{
                         fontStyle: 'normal',
                         fontWeight: '600',
-                        fontSize: '11px',
+                        fontSize: '13px',
                         lineHeight: '24px',
                         marginLeft: '7px',
                         cursor: 'pointer'
@@ -143,16 +140,16 @@ export const UserCard = (props) => {
                                             <div className="header" style={{ width: '100%' }}>
                                                 <div className="textheader" style={{ width: '100%' }}>
                                                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                        <img style={{ width: '40px', borderRadius: '50%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
+                                                        <img style={{ width: '46px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                         <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '13px'}}>{item.username}</p>
-                                                                        <p style={{ fontSize: '10.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '4px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
+                                                                        <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                        <p style={{ fontSize: '11.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
+                                                                        <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-8px', width: '120%' }}>{item.summary}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -172,13 +169,13 @@ export const UserCard = (props) => {
                     <p style={{
                         fontStyle: 'normal',
                         fontWeight: '500',
-                        fontSize: '11px',
+                        fontSize: '14px',
                         lineHeight: '24px',
                     }}>Followers : </p>
                     <p onClick={() => handleClickOpen()} style={{
                         fontStyle: 'normal',
                         fontWeight: '600',
-                        fontSize: '11px',
+                        fontSize: '13px',
                         lineHeight: '24px',
                         marginLeft: '7px',
                         cursor: 'pointer'
@@ -199,16 +196,16 @@ export const UserCard = (props) => {
                                         <div className="header" style={{ width: '100%' }}>
                                             <div className="textheader" style={{ width: '100%' }}>
                                                 <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                    <img style={{ width: '38px', borderRadius: '50%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
+                                                    <img style={{ width: '46px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                     <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                         <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                             <div>
                                                                 <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                    <p style={{ margin: '0', marginRight: '5px', fontSize: '13px'}}>{item.username}</p>
-                                                                    <p style={{ fontSize: '10.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                    <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
+                                                                    <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                 </div>
                                                                 <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                    <p style={{ fontSize: '11.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
+                                                                    <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -225,17 +222,8 @@ export const UserCard = (props) => {
                 </Dialog>
             </div>
 
-            <div className="summary" style={{ fontSize: '11.85px', width: '99%', color: 'rgb(161, 148, 148)', marginTop: '-1.95px', marginBottom: '-7px' }}>
-                {user && user.summary}
-            </div>
-            <div className="button" style={{ width: '99%', marginTop: '26px' }}>
-                {
-                    props.uid === context.auth.uid ? <button onClick={() => navigate('/settings')} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer',fontSize:'11.85px' }} variant="outlined">Edit Profile</button>
-                        :
-                        !iFollow ? <button onClick={follow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' ,fontSize:'11.85px'}} variant="outlined">Follow</button> :
-                            <button onClick={unfollow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '-9px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer' ,fontSize:'11.85px'}} variant="outlined">Unfollow</button>
-                }
-            </div>
+            
+
         </div >
     )
 }

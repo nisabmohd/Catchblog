@@ -1,21 +1,20 @@
 import { Box } from "@mui/material"
 import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { url } from "../baseurl"
 import { PostCard } from "../components/PostCard"
-import { Recommended } from "../components/Recommended"
 import InfiniteScroll from "react-infinite-scroll-component";
-import { AppContext } from "../App"
 import { PostCradSkeleton } from "../components/PostCradSkeleton"
-import { RecommendedSketon } from "../components/RecommendedSketon"
+import { useContext } from "react"
+import { AppContext } from "../App"
 
 const loadingarr = [1, 2, 3, 4]
 export const Home = () => {
+    const context=useContext(AppContext)
     const [post, setPost] = useState([])
     const [page, setPage] = useState(0)
     const [more, setMore] = useState(false)
     const [loading, setLoading] = useState(true)
-    const context = useContext(AppContext)
     useEffect(() => {
         async function fetch() {
             setLoading(true)
@@ -45,7 +44,7 @@ export const Home = () => {
     }
 
     return (
-        <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px' }} className="container homecontainer">
+        <Box style={{ backgroundColor: 'palette.text.primary', marginBottom: '39px',marginTop:'-12px'}} className="container homecontainer">
             <div className="container-left">
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton />)
@@ -66,14 +65,6 @@ export const Home = () => {
                         })
                     }
                 </InfiniteScroll>
-            </div>
-            <div className="container-right hideright">
-                {/* <Top /> */}
-                {
-                    loading ?
-                        <RecommendedSketon /> :
-                        <Recommended uid={context.auth.uid} />
-                }
             </div>
 
         </Box>

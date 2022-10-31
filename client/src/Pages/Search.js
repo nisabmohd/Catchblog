@@ -4,11 +4,10 @@ import axios from 'axios'
 import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { AppContext } from '../App'
-import { Recommended } from '../components/Recommended'
 import { Box,Skeleton } from '@mui/material'
 import InfiniteScroll from "react-infinite-scroll-component";
 import { PostCradSkeleton } from '../components/PostCradSkeleton'
-import { RecommendedSketon } from '../components/RecommendedSketon'
+import SearchBar from '../components/SearchBar'
 
 const loadingarr = [1, 2, 3, 4]
 export const Search = () => {
@@ -50,13 +49,14 @@ export const Search = () => {
         }
     }
     return (
-        <div className='container'>
+        <div className='container' style={{marginTop:'32px'}}>
             <div className="container-left">
+                <SearchBar/>
 
                 {
                     <>
-                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Serach User</button>
-                        <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Serach Post</button>
+                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Search User</button>
+                        <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Search Post</button>
                     </>
                 }
                 {loading && <Skeleton style={{ height: '30px', width: '195px',marginBottom:'9px' }} />}
@@ -69,7 +69,7 @@ export const Search = () => {
                 {
                     loading === false && post.length === 0 ? <Box style={{ width: '100%', height: '10vh', display: 'flex', alignContent: 'center', marginTop: '10px' }}><h5 style={{ margin: 'auto' }} >Nothing to see here</h5></Box> : <></>
                 }
-                {post.length !== 0 && <h5 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h5>}
+                {post.length !== 0 && <h4 style={{ marginBottom: '11px' }}> Showing Posts Results for ' {searchParams.get("q")} '</h4>}
 
                 <InfiniteScroll
                     dataLength={post.length}
@@ -83,16 +83,6 @@ export const Search = () => {
                     })}
                 </InfiniteScroll>
 
-            </div>
-            <div className="container-right hideright">
-                {/* <Top /> */}
-                {
-                    loading ?
-                        <>
-                            <RecommendedSketon />
-
-                        </> : <Recommended uid={context.auth.uid} />
-                }
             </div>
         </div>
     )

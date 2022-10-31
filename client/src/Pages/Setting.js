@@ -124,7 +124,7 @@ export const Setting = () => {
             <img style={{ width: '35px', borderRadius: "50%", marginTop: '15px', marginRight: '19px' }} src={img} alt="" />
             <label style={{ margin: '0', fontSize: '13px', marginTop: '15px', cursor: 'pointer' }} htmlFor="imgup">Upload an image</label>
           </div>
-          <button onClick={() => saveProfile()} style={{ fontFamily: 'Poppins', width: '220px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '40px', borderRadius: '5px', cursor: 'pointer', marginTop: '50px', marginBottom: '35px' }} variant="outlined">Save</button>
+          <button onClick={() => saveProfile()} style={{ fontFamily: 'IBM Plex Sans', width: '220px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '40px', borderRadius: '5px', cursor: 'pointer', marginTop: '50px', marginBottom: '35px' }} variant="outlined">Save</button>
         </div>
       </div>
     </div>

@@ -1,19 +1,19 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// import { AppContext } from '../App'
+import { AppContext } from '../App'
 import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { UserCard } from '../components/UserCard'
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Box,  } from '@mui/material'
+import { Box, } from '@mui/material'
 import { PostCradSkeleton } from '../components/PostCradSkeleton'
 import { UserCardSkleton } from '../components/UserCardSkleton'
 
 const loadingarr = [1, 2, 3, 4]
 
 export const User = () => {
-    // const context = useContext(AppContext)
+    const context = useContext(AppContext)
     const params = useParams()
     const [user, setUser] = useState()
     const [post, setPosts] = useState([])
@@ -57,8 +57,11 @@ export const User = () => {
         })
     }
     return (
-        <div className='container homecontainer'>
+        <div className='container homecontainer' style={{ marginTop: '22px' }}>
             <div className="container-left">
+                <div className="user" style={{ width: '100%', backgroundColor:context.dark?'#2b2b2b':'#fafafa', borderRadius: '11px', padding: '10px 20px' }}>
+                    <UserCard uid={user?.uid} />
+                </div>
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton key={item} />)
 
@@ -78,10 +81,6 @@ export const User = () => {
                         })
                     }
                 </InfiniteScroll>
-            </div>
-            <div className="container-right">
-                {loading && <UserCardSkleton/>}
-                {user && loading===false && <UserCard uid={user.uid} />}
             </div>
         </div>
     )

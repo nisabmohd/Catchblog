@@ -18,22 +18,23 @@ export const PostCard = (props) => {
     }, [props.uid])
 
     return (
-        <div className={`card`} style={{ width: '95%', padding: '22px 0px', margin: '8px 0', borderBottom: props.showprofile?"":context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingTop: '10px' }}>
+        <div className={`card`} style={{ width: '95%', padding: '22px 20px', margin: props.not?'1px 0':'30px 0',}}>
             <div className="header">
                 <div className="textheader">
-                   {!props.showprofile && <Postcarduser uid={props.uid} img={user && user.img} name={user && user.username} date={props.date} />}
+                    {!props.showprofile && <Postcarduser uid={props.uid} img={user && user.img} name={user && user.username} date={props.date} />}
                 </div>
             </div>
-            <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '9px' }}>
+            <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '7px' }}>
                 <Link to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <p style={{ fontSize: '19px', marginBottom: '3px', marginTop: '6px', fontWeight: '600' }}>{props.content}</p>
-                    <p className='pararesp' style={{ fontSize: '13px', }}>{props.summary && props.summary}</p>
+                    <p style={{ fontSize: props.not?'19px':'26px', marginBottom: '1px', marginTop: '6px', fontWeight: '800' }}>{props.content}</p>
+                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-6px',marginTop:'8px' }} className="labels">
+                        {props.tags?.map(item => {
+                            return item ? <Chip key={new Date() + item} dark={context.dark} name={item} /> : <></>
+                        })}
+                    </div>
+                    <p className='pararesp' style={{ fontSize: props.not?'14.5px':'15.75px',letterSpacing:'0.5px', }}>{props.summary && props.summary}</p>
                 </Link>
-                <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-6px'}} className="labels">
-                    {props.tags?.map(item => {
-                        return item ? <Chip key={new Date() + item} dark={context.dark} name={item} /> : <></>
-                    })}
-                </div>
+
             </div>
         </div>
     )

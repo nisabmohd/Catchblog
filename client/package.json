@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@uiw/react-md-editor": "^3.18.1",
     "axios": "^0.27.2",
+    "dateformat": "^5.0.3",
     "firebase": "^9.9.4",
     "markdown-to-jsx": "^7.1.7",
     "millify": "^5.0.0",
@@ -27,6 +28,7 @@
     "react-simplemde-editor": "^5.0.2",
     "react-syntax-highlighter": "^15.5.0",
     "react-time-ago": "^7.2.1",
+    "title-case": "^3.0.3",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
