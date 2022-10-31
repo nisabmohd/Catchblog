@@ -56,7 +56,9 @@ $ npm start
 
 ## Overview
 
-<img src="./images/123.png" />
+<img src="./images/home.png" />
+<img src="./images/post.png" />
+<img src="./images/profile.png" />
 
 #### Reset Password functionality :
 
