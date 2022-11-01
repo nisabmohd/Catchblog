@@ -1,12 +1,10 @@
 import { Skeleton } from '@mui/material'
-import React, { useContext } from 'react'
-import { AppContext } from '../App'
+import React, {  } from 'react'
 
 export const NotifySkeleton = () => {
-    const context = useContext(AppContext)
 
     return (
-        <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '95%',borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '15px' ,paddingTop:'14px'}}>
+        <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '95%', paddingBottom: '19px' ,paddingTop:'19px'}}>
             <div >
                 <Skeleton style={{ width: '40px', height: '40px', borderRadius: '35%', marginRight: '12px' }} variant="circular" width={36} height={36} />
             </div>

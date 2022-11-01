@@ -58,7 +58,7 @@ export const SearchUser = () => {
                 {loading && <Skeleton style={{ height: '30px', width: '195px', marginBottom: '15px' }} />}
 
                 {
-                    loading && loadingarr.map(item => <div style={{ borderBottom: context.dark ? '1px solid rgb(39 39 39)' : '1px solid rgb(238 238 238)', paddingBottom: '14px', paddingTop: '14px' }}><PostcardUserSkeleton imglength={40} /></div>)
+                    loading && loadingarr.map(item => <div style={{ paddingBottom: '14px', paddingTop: '14px' }}><PostcardUserSkeleton imglength={40} /></div>)
                 }
 
 
