@@ -6,7 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios'
 import { url } from '../baseurl'
 import { PostcardUserSkeleton } from '../components/PostcardUserSkeleton'
-import Search from '../components/SearchBar';
 import SearchBar from '../components/SearchBar';
 
 const loadingarr = [1, 2, 3, 4]
