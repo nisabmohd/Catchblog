@@ -56,7 +56,7 @@ export const Navbar = () => {
 
                         <div className="tags">
                             <IconButton className='smicons' onClick={()=>navigate('/search')} sx={{ margin: '0 5px' }}><SearchIcon sx={{ fontSize: '26px' }} /></IconButton>
-                            <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon sx={{ fontSize: '26px' }} /> : <NightlightOutlinedIcon sx={{ fontSize: '26px' }} />}</IconButton>
+                            <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon sx={{ fontSize: '25px' }} /> : <NightlightOutlinedIcon sx={{ fontSize: '23px' }} />}</IconButton>
 
                             {
                                 context.hasNotification ? <IconButton onClick={() => navigate('/notifications')} style={{ borderRadius: '50%', width: '40px' }}><Badge className='smicons' sx={{ margin: '0 5px' }} variant="dot" color="error" overlap="circular" >
