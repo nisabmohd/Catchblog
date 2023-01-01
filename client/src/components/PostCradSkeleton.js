@@ -6,7 +6,7 @@ import { PostcardUserSkeleton } from './PostcardUserSkeleton'
 export const PostCradSkeleton = () => {
     const context = useContext(AppContext)
     return (
-        <div className={`card`} style={{ width: '95%', padding: '15px 0px', margin: '19px 0', paddingTop: '36px', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '12px', paddingBottom: '32px', paddingLeft: '19px' }}>
+        <div className={`card`} style={{ width: '100%', padding: '15px 0px', margin: '19px 0', paddingTop: '36px', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '12px', paddingBottom: '32px', paddingLeft: '19px' }}>
             <div className="header">
                 <div className="textheader">
                     <PostcardUserSkeleton />
