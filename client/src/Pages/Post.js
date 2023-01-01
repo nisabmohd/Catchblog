@@ -170,13 +170,13 @@ export const Post = () => {
               </>
           }
           {loading ? <div className="complete-left" style={{ marginTop: '5vh' }}>
-            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
+            <div className="posthandle posthandleskeleton" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '230px' : '200px' }}>
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px', }} />
               <Skeleton style={{ width: '22px', height: '40px' }} />
             </div>
           </div> : <div className="complete-left" style={{ marginTop: '5vh' }}>
-            <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '23%' : '20%' }}>
+            <div className="posthandle" style={{ padding: '2px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: uid && uid === context.auth.uid ? '230px' : '200px' }}>
               {uid && uid !== context.auth.uid ?
                 <>
                   {iLiked ?
