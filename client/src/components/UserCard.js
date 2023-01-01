@@ -107,7 +107,7 @@ export const UserCard = (props) => {
                     </div>
                 </div>
             </div>
-            <p style={{ marginLeft: '65px', marginTop: '-33px', fontSize: '13.75px', color: 'inherit' }}>{user && user.summary}</p>
+            <p style={{ marginLeft: '65px', marginTop: '-33px', fontSize: '13.75px', color: 'gray' }}>{user && user.summary}</p>
             <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-13px' }}>
                 <div className="followings" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <p style={{

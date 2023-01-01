@@ -70,8 +70,6 @@ $ npm start
 | ------------------------------------- | ---------------------------------- |
 | <img src="./images/home-lg.png" />    | <img src="./images/home.png" />    |
 | <img src="./images/post-lg.png" />    | <img src="./images/post.png" />    |
-| <img src="./images/profile-lg.png" /> | <img src="./images/profile.png" /> |
-
 #### Reset Password functionality :
 
 <img src="./images/mail.png" width="30%">
