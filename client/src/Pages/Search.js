@@ -4,7 +4,7 @@ import axios from 'axios'
 import { url } from '../baseurl'
 import { PostCard } from '../components/PostCard'
 import { AppContext } from '../App'
-import { Box,Skeleton } from '@mui/material'
+import { Box, Skeleton } from '@mui/material'
 import InfiniteScroll from "react-infinite-scroll-component";
 import { PostCradSkeleton } from '../components/PostCradSkeleton'
 import SearchBar from '../components/SearchBar'
@@ -49,17 +49,17 @@ export const Search = () => {
         }
     }
     return (
-        <div className='container' style={{marginTop:'32px'}}>
+        <div className='container' style={{ marginTop: '32px' }}>
             <div className="container-left">
-                <SearchBar/>
+                <SearchBar />
 
                 {
                     <>
-                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Search User</button>
-                        <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'IBM Plex Sans', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Search Post</button>
+                        <button onClick={() => navigate(`/searchuser?q=${searchParams.get("q")}`)} className='searchbtn ml-5' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: context.dark ? 'white' : 'black', border: 'none', outline: 'none', background: 'transparent', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px' }} variant="outlined">Search User</button>
+                        <button onClick={() => navigate(`/search?q=${searchParams.get("q")}`)} className='searchbtn' style={{ fontFamily: 'Poppins', minWidth: 'fit-content', width: '125px', color: 'white', border: 'none', outline: 'none', background: 'rgb(66 66 66)', height: '33px', borderRadius: '5px', cursor: 'pointer', marginRight: '15px', marginBottom: '19px' }} variant="outlined">Search Post</button>
                     </>
                 }
-                {loading && <Skeleton style={{ height: '30px', width: '195px',marginBottom:'9px' }} />}
+                {loading && <Skeleton style={{ height: '30px', width: '195px', marginBottom: '9px' }} />}
 
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton />)

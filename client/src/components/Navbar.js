@@ -42,12 +42,12 @@ export const Navbar = () => {
     };
 
     return (
-        <div >
+        <div style={{ backgroundColor: context.dark ? "#282828" : 'white' }} >
             <div className="container">
                 <div className="navbar">
                     <div className="left">
                         <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center' }} ><span className='logohide'>CATCHBLOG</span><span className='hideshow'>CB</span> <DataObjectIcon sx={{ marginLeft: "9px", marginBottom: '-2px', fontSize: '29px' }} /></h2>
+                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '18px' }} ><span className='logohide'>CATCHBLOG</span><span className='hideshow'>CB</span> <DataObjectIcon sx={{ marginLeft: "9px", marginBottom: '-2px', fontSize: '29px' }} /></h2>
                         </Link>
                     </div>
 
@@ -55,7 +55,7 @@ export const Navbar = () => {
                         <IconButton style={{ borderRadius: '50%', width: '40px' }} onClick={redirect} className='smicons' sx={{ margin: '0 5px' }}><i style={{ fontSize: '19px', marginBottom: '-4px' }} className="fi fi-rr-edit"></i></IconButton>
 
                         <div className="tags">
-                            <IconButton className='smicons' onClick={()=>navigate('/search')} sx={{ margin: '0 5px' }}><SearchIcon sx={{ fontSize: '26px' }} /></IconButton>
+                            <IconButton className='smicons' onClick={() => navigate('/search')} sx={{ margin: '0 5px' }}><SearchIcon sx={{ fontSize: '26px' }} /></IconButton>
                             <IconButton className='smicons' onClick={() => context.handledark()} sx={{ margin: '0 5px' }}>{context.dark ? <WbSunnyOutlinedIcon sx={{ fontSize: '25px' }} /> : <NightlightOutlinedIcon sx={{ fontSize: '23px' }} />}</IconButton>
 
                             {
@@ -74,10 +74,10 @@ export const Navbar = () => {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem sx={{ fontFamily: 'IBM Plex Sans', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}><AccountCircleIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Profile</MenuItem>
-                                <MenuItem sx={{ fontFamily: 'IBM Plex Sans', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/saved`); handleClose() }}><BookmarkAddedIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Saved</MenuItem>
-                                <MenuItem sx={{ fontFamily: 'IBM Plex Sans', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/settings`); handleClose() }}><SettingsIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Settings</MenuItem>
-                                <MenuItem sx={{ fontFamily: 'IBM Plex Sans', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}><LogoutIcon sx={{ marginRight: '8px', fontSize: '21px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Logout</MenuItem>
+                                <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/user/${context.auth.uid}`); handleClose() }}><AccountCircleIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Profile</MenuItem>
+                                <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/saved`); handleClose() }}><BookmarkAddedIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Saved</MenuItem>
+                                <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { navigate(`/settings`); handleClose() }}><SettingsIcon sx={{ marginRight: '8px', fontSize: '22px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Settings</MenuItem>
+                                <MenuItem sx={{ fontFamily: 'Poppins', fontSize: '13.8px', letterSpacing: '0.45px' }} onClick={() => { context.handlelogout(); navigate('/login'); handleClose() }}><LogoutIcon sx={{ marginRight: '8px', fontSize: '21px', color: context.dark ? 'white' : 'gray', marginLeft: '-6px' }} />Logout</MenuItem>
                             </Menu>
                             <IconButton onClick={handleClick} className='smicons' sx={{ margin: '0 5px' }}><img style={{ width: '30px', borderRadius: '50%' }} src={context.auth.img} alt="" /></IconButton>
 

@@ -3,7 +3,7 @@ import { Post } from "./Pages/Post";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import {
   BrowserRouter,
   Routes,
@@ -27,12 +27,14 @@ import { url } from "./baseurl";
 
 export const AppContext = React.createContext()
 function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [dark, setDark] = useState(() => {
     const isDark = localStorage.getItem('dark')
     if (isDark) {
       if (isDark === 'true') return true
       return false
     }
+    return prefersDarkMode
   })
   const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')));
   const [hasNotification, setHaveNotification] = useState(false)
@@ -67,7 +69,7 @@ function App() {
       <AppContext.Provider value={contextValue} >
         <ThemeProvider theme={darkTheme}>
           <CssBaseline>
-            <Box >
+            <div style={{ backgroundColor: !dark ? '#f5f7fb' : "#181818", minHeight: '100vh', backgroundAttachment: 'fixed' }} >
               {
                 auth ?
                   <>
@@ -91,7 +93,7 @@ function App() {
                     <Route path="/*" element={<Login />} />
                   </Routes>
               }
-            </Box>
+            </div>
           </CssBaseline>
         </ThemeProvider>
       </AppContext.Provider>

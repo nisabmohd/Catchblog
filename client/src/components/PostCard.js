@@ -18,7 +18,7 @@ export const PostCard = (props) => {
     }, [props.uid])
 
     return (
-        <div className={`card`} style={{ width: '95%', padding: '15px 20px', margin: props.not?'1px 0':'30px 0',}}>
+        <div className={`card`} style={{ width: '100%', padding: '20px 20px', margin: props.not ? '1px 0' : '25px 0', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '12px', paddingTop: '23px', paddingBottom: '9px', }}>
             <div className="header">
                 <div className="textheader">
                     {!props.showprofile && <Postcarduser uid={props.uid} img={user && user.img} name={user && user.username} date={props.date} />}
@@ -26,13 +26,13 @@ export const PostCard = (props) => {
             </div>
             <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '7px' }}>
                 <Link to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <p style={{ fontSize: props.not?'19px':'25px', marginBottom: '1px', marginTop: '6px', fontWeight: '800' }}>{props.content}</p>
-                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-6px',marginTop:'8px' }} className="labels">
+                    <p style={{ fontSize: props.not ? '19px' : '25px', marginBottom: '1px', marginTop: '6px', fontWeight: '800' }}>{props.content}</p>
+                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-6px', marginTop: '8px' }} className="labels">
                         {props.tags?.map(item => {
                             return item ? <Chip key={new Date() + item} dark={context.dark} name={item} /> : <></>
                         })}
                     </div>
-                    <p className='pararesp' style={{ fontSize: props.not?'14.5px':'15.25px',letterSpacing:'0.5px', }}>{props.summary && props.summary}</p>
+                    <p className='pararesp' style={{ fontSize: props.not ? '14.5px' : '15.25px', letterSpacing: '0.5px', }}>{props.summary && props.summary}</p>
                 </Link>
 
             </div>

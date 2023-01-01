@@ -85,29 +85,29 @@ export const UserCard = (props) => {
     return (
         <div className="user-card" style={{ marginTop: '12px', borderRadius: '10px', width: '490px' }}>
             <div style={{ display: 'flex', flexDirection: 'row', width: '50%', alignItems: 'center', marginBottom: '13px' }} className="userdetails">
-                <Link style={{ color: 'inherit', textDecoration: 'none', display: 'flex',  }} to={`/user/${props.uid}`}><img style={{ width: '45px', borderRadius: '35%' }} src={user && user.img} alt="" /></Link>
-                <div className="name" style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                <Link style={{ color: 'inherit', textDecoration: 'none', display: 'flex', }} to={`/user/${props.uid}`}><img style={{ width: '45px', borderRadius: '35%' }} src={user && user.img} alt="" /></Link>
+                <div className="name" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <Link style={{ color: 'inherit', textDecoration: 'none' }} to={`/user/${props.uid}`}>
                         <p style={{
-                        fontStyle: 'normal',
-                        fontWeight: '700',
-                        fontSize: '15.85px',
-                        lineHeight: '24px',
-                        marginLeft: '21px',
-                        whiteSpace:'nowrap',
-                        marginTop:'-10px'
-                    }}>{user && user.username}</p></Link>
-                    <div className="button" style={{ width: '99%',marginTop:'-25px',marginLeft:'2px' }}>
+                            fontStyle: 'normal',
+                            fontWeight: '700',
+                            fontSize: '15.85px',
+                            lineHeight: '24px',
+                            marginLeft: '21px',
+                            whiteSpace: 'nowrap',
+                            marginTop: '-10px'
+                        }}>{user && user.username}</p></Link>
+                    <div className="button" style={{ width: '99%', marginTop: '-25px', marginLeft: '2px' }}>
                         {
-                            props.uid === context.auth.uid ? <button onClick={() => navigate('/settings')} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'gray', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px', }} variant="outlined">Edit</button>
+                            props.uid === context.auth.uid ? <button onClick={() => navigate('/settings')} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '0px', color: 'gray', outline: 'none', cursor: 'pointer', fontSize: '13.45px', marginLeft: '9px', border: 'none', background: 'transparent', height: '27px', borderRadius: '5px', }} variant="outlined">Edit</button>
                                 :
-                                !iFollow ? <button onClick={follow} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px',}} variant="outlined">Follow</button> :
-                                    <button onClick={unfollow} className="followbtn" style={{ fontFamily: 'IBM Plex Sans', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px',marginLeft:'9px',border:'none',background:'transparent',height:'27px',borderRadius:'5px',}} variant="outlined">Unfollow</button>
+                                !iFollow ? <button onClick={follow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px', marginLeft: '9px', border: 'none', background: 'transparent', height: '27px', borderRadius: '5px', }} variant="outlined">Follow</button> :
+                                    <button onClick={unfollow} className="followbtn" style={{ fontFamily: 'Poppins', width: 'inherit', marginTop: '0px', color: 'inherit', outline: 'none', cursor: 'pointer', fontSize: '13.45px', marginLeft: '9px', border: 'none', background: 'transparent', height: '27px', borderRadius: '5px', }} variant="outlined">Unfollow</button>
                         }
                     </div>
                 </div>
             </div>
-                <p style={{marginLeft:'65px',marginTop:'-33px',fontSize:'13.75px',color:'inherit'}}>{user && user.summary}</p>
+            <p style={{ marginLeft: '65px', marginTop: '-33px', fontSize: '13.75px', color: 'inherit' }}>{user && user.summary}</p>
             <div className="other-details" style={{ display: 'flex', flexDirection: 'row', width: '100%', marginTop: '-13px' }}>
                 <div className="followings" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <p style={{
@@ -222,7 +222,7 @@ export const UserCard = (props) => {
                 </Dialog>
             </div>
 
-            
+
 
         </div >
     )

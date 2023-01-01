@@ -7,11 +7,17 @@ body {
 }
 
 * {
-    font-family: 'IBM Plex Sans', sans-serif;
+    /* font-family: 'Carme', sans-serif; */
+    font-family: 'Poppins';
 }
+
 
 .hiddennavtab {
     display: none !important;
+}
+
+.markdown img {
+    border-radius: 11px;
 }
 
 .container {
@@ -34,7 +40,7 @@ body {
 }
 
 .container-left {
-    width: 70%;
+    width: 73%;
     margin: auto;
 }
 
@@ -120,7 +126,8 @@ body {
 
     .card {
         width: 97% !important;
-        margin-left: 2px !important;
+        margin: auto !important;
+        margin-top: 18px !important;
     }
 
     .container-left {

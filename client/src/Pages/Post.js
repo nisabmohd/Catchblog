@@ -128,13 +128,10 @@ export const Post = () => {
   }
 
   return (
-    <Box style={{ marginBottom: '39px', marginTop: '22px' }} className="container">
+    <Box style={{ paddingBottom: '39px', marginTop: '28px', }} className="container">
       <Toaster />
 
-      <div className="container-left" style={{}}>
-
-
-
+      <div className="container-left" style={{ backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '11px', paddingInline: '18px' }}>
 
         <div className="markdown">
 
@@ -189,15 +186,15 @@ export const Post = () => {
                 </>
                 :
                 <></>}
-              {uid && uid !== context.auth.uid && <p style={{fontSize:'13px',marginLeft:'-19px',color:'#bfbfbf'}}>{millify(likes)}</p>}
+              {uid && uid !== context.auth.uid && <p style={{ fontSize: '13px', marginLeft: '-19px', color: '#bfbfbf' }}>{millify(likes)}</p>}
 
               {
                 uid && uid === context.auth.uid ?
-                  <> <><IconButton disabled><FavoriteBorderIcon /></IconButton><p style={{fontSize:'13px',marginLeft:'-15px',color:'#bfbfbf'}}>{millify(likes)}</p></> <IconButton onClick={() => navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton>
-                  
-                   </> : !iSaved ? <><IconButton onClick={save}> <BookmarkAddOutlinedIcon /></IconButton>   </> : <><IconButton onClick={unsave}> <BookmarkAddedOutlinedIcon color="primary" /></IconButton></>
+                  <> <><IconButton disabled><FavoriteBorderIcon /></IconButton><p style={{ fontSize: '13px', marginLeft: '-15px', color: '#bfbfbf' }}>{millify(likes)}</p></> <IconButton onClick={() => navigate(`/editor/${postid}`)}><EditIcon /></IconButton><IconButton onClick={handleClickOpen}><DeleteOutlineIcon /></IconButton>
+
+                  </> : !iSaved ? <><IconButton onClick={save}> <BookmarkAddOutlinedIcon /></IconButton>   </> : <><IconButton onClick={unsave}> <BookmarkAddedOutlinedIcon color="primary" /></IconButton></>
               }
-              {uid && uid !== context.auth.uid &&<p style={{fontSize:'13px',marginLeft:'-19px',color:'#bfbfbf'}}>{millify(saved)}</p>}
+              {uid && uid !== context.auth.uid && <p style={{ fontSize: '13px', marginLeft: '-19px', color: '#bfbfbf' }}>{millify(saved)}</p>}
               <IconButton onClick={share}><IosShareIcon color="action" /></IconButton>
             </div>
           </div>
@@ -208,22 +205,22 @@ export const Post = () => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle sx={{ fontFamily: 'IBM Plex Sans' }} id="alert-dialog-title">
+            <DialogTitle sx={{ fontFamily: 'Poppins' }} id="alert-dialog-title">
               {"Delete This Post?"}
             </DialogTitle>
             <DialogContent>
-              <DialogContentText sx={{ fontFamily: 'IBM Plex Sans', fontSize: '14px' }} id="alert-dialog-description">
+              <DialogContentText sx={{ fontFamily: 'Poppins', fontSize: '14px' }} id="alert-dialog-description">
                 Are you sure you want to delete this post permanently
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button sx={{ fontFamily: 'IBM Plex Sans', fontSize: '14px' }} color="error" onClick={() => { deletepost(); handleClose(); }}>Delete</Button>
-              <Button sx={{ fontFamily: 'IBM Plex Sans', color: 'inherit', fontSize: '14px' }} onClick={handleClose} autoFocus>
+              <Button sx={{ fontFamily: 'Poppins', fontSize: '14px' }} color="error" onClick={() => { deletepost(); handleClose(); }}>Delete</Button>
+              <Button sx={{ fontFamily: 'Poppins', color: 'inherit', fontSize: '14px' }} onClick={handleClose} autoFocus>
                 Cancel
               </Button>
             </DialogActions>
           </Dialog>
-          <div className="user" style={{ width: '100%', backgroundColor: context.dark ? '#2b2b2b' : '#fafafa', borderRadius: '11px', padding: '10px 20px', marginTop: '6vh' }}>
+          <div className="user" style={{ width: '100%', backgroundColor: !context.dark ? '#f5f7fb' : "#181818", borderRadius: '11px', padding: '10px 20px', marginTop: '6vh', marginBottom: '2vh' }}>
             <UserCard uid={uid} />
           </div>
         </div>

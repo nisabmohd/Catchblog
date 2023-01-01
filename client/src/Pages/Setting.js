@@ -107,24 +107,24 @@ export const Setting = () => {
         <div className="useredit" style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ margin: '15px 0', marginBottom: '35px' }}>Settings</h3>
 
-          <p style={{ margin: '0', fontSize: '13px' }}>Enter Username</p>
-          <input type="text" placeholder='Enter Username' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px' }} value={username} onChange={e => setUsername(e.target.value)} />
-          <p style={{ margin: '0', fontSize: '13px', marginTop: '12px' }}>Enter Email</p>
+          <p style={{ margin: '0', fontSize: '15px' }}>Enter Username</p>
+          <input type="text" placeholder='Enter Username' style={{ background: context.dark ? 'rgb(66 66 66)' : 'white', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px', fontSize: '15px' }} value={username} onChange={e => setUsername(e.target.value)} />
+          <p style={{ margin: '0', fontSize: '15px', marginTop: '12px' }}>Enter Email</p>
 
-          <input type="text" placeholder='Enter Email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px' }} value={email} onChange={e => setEmail(e.target.value)} />
-          <p style={{ margin: '0', fontSize: '13px', marginTop: '12px' }}>Enter Bio</p>
+          <input type="text" placeholder='Enter Email' style={{ background: context.dark ? 'rgb(66 66 66)' : 'white', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px', fontSize: '15px' }} value={email} onChange={e => setEmail(e.target.value)} />
+          <p style={{ margin: '0', fontSize: '15px', marginTop: '12px' }}>Enter Bio</p>
 
-          <textarea placeholder='Enter Bio' style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '147px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '10px', paddingTop: '9px', resize: 'none', width: '95%', marginBottom: '14px' }} value={bio} spellCheck="false" onChange={e => setBio(e.target.value)} />
+          <textarea placeholder='Enter Bio' style={{ background: context.dark ? 'rgb(66 66 66)' : 'white', height: '147px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '10px', paddingTop: '9px', resize: 'none', width: '95%', marginBottom: '14px', fontSize: '15px' }} value={bio} spellCheck="false" onChange={e => setBio(e.target.value)} />
           <p style={{ margin: '0', fontSize: '13px', marginTop: '12px', color: 'red' }}>Enter Password (FIll only incase you want to reset password)</p>
-          <input onChange={e => setPass(e.target.value)} type="text" placeholder='Enter password' value={pass ? pass : ''} style={{ background: context.dark ? 'rgb(66 66 66)' : 'rgb(248 248 248)', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px' }} />
-          <p style={{ margin: '0', fontSize: '13px', marginTop: '23px' }}>Profile img</p>
+          <input onChange={e => setPass(e.target.value)} type="text" placeholder='Enter password' value={pass ? pass : ''} style={{ background: context.dark ? 'rgb(66 66 66)' : 'white', height: '47px', outline: 'none', border: 'none', borderRadius: '5px', color: 'inherit', marginTop: '5px', paddingLeft: '14px', width: '95%', marginBottom: '14px', fontSize: '15px' }} />
+          <p style={{ margin: '0', fontSize: '15px', marginTop: '23px' }}>Profile img</p>
 
           <input onChange={(e) => onChangeImage(e)} type="file" id='imgup' hidden />
           <div className="imgupload" style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <img style={{ width: '35px', borderRadius: "50%", marginTop: '15px', marginRight: '19px' }} src={img} alt="" />
-            <label style={{ margin: '0', fontSize: '13px', marginTop: '15px', cursor: 'pointer' }} htmlFor="imgup">Upload an image</label>
+            <img style={{ width: '35px', borderRadius: "14%", marginTop: '15px', marginRight: '19px' }} src={img} alt="" />
+            <label style={{ margin: '0', fontSize: '15px', marginTop: '15px', cursor: 'pointer' }} htmlFor="imgup">Upload an image</label>
           </div>
-          <button onClick={() => saveProfile()} style={{ fontFamily: 'IBM Plex Sans', width: '220px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '40px', borderRadius: '5px', cursor: 'pointer', marginTop: '50px', marginBottom: '35px' }} variant="outlined">Save</button>
+          <button onClick={() => saveProfile()} style={{ fontFamily: 'Poppins', width: '220px', color: context.dark ? 'black' : 'white', border: 'none', outline: 'none', background: context.dark ? 'white' : 'rgb(66 66 66)', height: '40px', borderRadius: '5px', cursor: 'pointer', marginTop: '50px', marginBottom: '35px' }} variant="outlined">Save</button>
         </div>
       </div>
     </div>

@@ -56,11 +56,12 @@ export const User = () => {
         })
     }
     return (
-        <div className='container homecontainer' style={{ marginTop: '22px' }}>
+        <div className='container homecontainer' style={{ marginTop: '28px' }}>
             <div className="container-left">
-                <div className="user" style={{ width: '100%', backgroundColor:context.dark?'#2b2b2b':'#fafafa', borderRadius: '11px', padding: '10px 20px' }}>
+                <div className="user" style={{ width: '100%', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '11px', padding: '10px 20px' }}>
                     <UserCard uid={user?.uid} />
                 </div>
+                <h3 style={{ marginTop: '3vh', marginBottom: '-5px' }}>Posts</h3>
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton key={item} />)
 
