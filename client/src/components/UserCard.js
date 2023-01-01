@@ -134,7 +134,7 @@ export const UserCard = (props) => {
                         <div style={{ width: '500px', height: '700px', padding: '18px 18px' }} className="width500">
                             <h4>Followings</h4>
                             {
-                                loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} /></div>) : showFollings.length !== 0 && showFollings.map(item => {
+                                loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px', padding: '18px' }}><PostcardUserSkeleton key={item} /></div>) : showFollings.length !== 0 && showFollings.map(item => {
                                     return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
                                         <div className={`card cardnotify`} style={{ width: '95%', padding: '2px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(72 72 72)' : '1px solid rgb(238 238 238)', paddingBottom: '11.5px', paddingTop: '11px' }}>
                                             <div className="header" style={{ width: '100%' }}>
@@ -190,7 +190,7 @@ export const UserCard = (props) => {
                     <div style={{ width: '500px', height: '700px', padding: '18px 18px' }} className="width500">
                         <h4>Followers</h4>
                         {
-                            loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} /></div>) : showFoll.length !== 0 && showFoll.map(item => {
+                            loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px', padding: '18px' }}><PostcardUserSkeleton key={item} /></div>) : showFoll.length !== 0 && showFoll.map(item => {
                                 return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
                                     <div className={`card cardnotify`} style={{ width: '95%', padding: '2px 0px', margin: '8px 0', borderBottom: context.dark ? '1px solid rgb(72 72 72)' : '1px solid rgb(238 238 238)', paddingBottom: '11.5px', paddingTop: '11px' }}>
                                         <div className="header" style={{ width: '100%' }}>
