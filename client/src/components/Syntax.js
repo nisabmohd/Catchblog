@@ -12,7 +12,7 @@ export const Syntax = (props) => {
     }, [props.children])
     try {
         return (
-            <div style={{ overflow: 'hidden', fontSize: '16px', fontFamily: 'Poppins' }}>
+            <div className="syntax" style={{ overflow: 'hidden', fontSize: '15px', fontFamily: 'Poppins' }}>
                 <SyntaxHighlighter language='java' style={context.dark ? darcula : oneLight}>
                     {JSON.parse(JSON.stringify(state))}
                 </SyntaxHighlighter>

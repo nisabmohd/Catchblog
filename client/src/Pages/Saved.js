@@ -30,7 +30,7 @@ export const Saved = () => {
   return (
     <div className='container homecontainer' style={{ marginTop: '12px' }}>
       <div className="container-left">
-        <h3 style={{ marginTop: '3vh', marginBottom: '-5px' }}>Saved Posts</h3>
+        <h3 style={{ marginTop: '3vh', marginBottom: '-5px', marginLeft: '1vw' }}>Saved Posts</h3>
         {
           loading && loadingarr.map(item => <PostCradSkeleton />)
         }

@@ -11,6 +11,9 @@ body {
     font-family: 'Poppins';
 }
 
+.markdown h1 {
+    margin-bottom: 28px;
+}
 
 .hiddennavtab {
     display: none !important;
@@ -231,6 +234,7 @@ body {
 
     .pararesp {
         width: 100% !important;
+        font-size: 13px !important;
     }
 
     .homecontainer {
@@ -245,6 +249,31 @@ body {
         margin-right: 12px;
         width: 33% !important;
         margin-left: 9px !important;
+    }
+
+    .logo h2 {
+        margin-left: 0 !important;
+        font-size: 22px !important;
+    }
+
+    .title_content_resp {
+        font-size: 16.5px !important;
+    }
+
+    .chip-resp {
+        font-size: 11px !important;
+    }
+
+    .markdown p {
+        font-size: 13px !important;
+    }
+
+    .markdown h1 {
+        font-size: 19px !important;
+    }
+
+    .syntax {
+        font-size: 13px !important;
     }
 }
 

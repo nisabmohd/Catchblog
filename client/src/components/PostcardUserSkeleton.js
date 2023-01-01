@@ -6,7 +6,7 @@ import { AppContext } from '../App'
 export const PostcardUserSkeleton = (props) => {
     const context = useContext(AppContext)
     return (
-        <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '12px', marginTop: '-14px', padding: props.search && '18px' }}>
+        <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', backgroundColor: context.dark ? '#282828' : props.dialog ? '#e3e0e0' : '#ffff', borderRadius: '12px', marginTop: '-14px', padding: props.search && '18px' }}>
             <div >
                 <Skeleton style={{ width: props.imglength || '40px', height: props.imglength || '40px', borderRadius: '35%', marginRight: '12px' }} variant="circular" width={36} height={36} />
             </div>

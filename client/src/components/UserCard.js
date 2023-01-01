@@ -126,27 +126,38 @@ export const UserCard = (props) => {
                     }}>{user && millify(following)}</p>
                     <span style={{ marginLeft: '11.5px', color: context.dark ? '#444444' : '#d4d3d3' }}>|</span>
                     <Dialog
+                        PaperProps={{
+                            style: {
+                                minHeight: '22%',
+                                maxHeight: '55%',
+                                padding: '9px 5px',
+                                overflowY: 'auto',
+                                minWidth: '455px',
+                                borderRadius: '7px',
+                                backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
+                            }
+                        }}
                         open={open1}
                         onClose={handleClose1}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <div style={{ width: '500px', height: '700px', padding: '18px 18px' }} className="width500">
-                            <h4>Followings</h4>
+                        <div style={{ padding: '18px 18px', width: '100%' }} className="width500">
+                            <h4 style={{ marginBottom: '6px', marginTop: '-5px' }}>Followings</h4>
                             {
-                                loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} /></div>) : showFollings.length !== 0 && showFollings.map(item => {
+                                loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} dialog={true} /></div>) : showFollings.length !== 0 && showFollings.map(item => {
                                     return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                        <div className={`card cardnotify`} style={{ width: '95%', padding: '2px 0px', margin: '8px 0', paddingBottom: '11.5px', paddingTop: '11px' }}>
+                                        <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', margin: '8px 0', paddingBottom: '11.5px', paddingTop: '11px' }}>
                                             <div className="header" style={{ width: '100%' }}>
                                                 <div className="textheader" style={{ width: '100%' }}>
                                                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                        <img style={{ width: '46px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
+                                                        <img style={{ width: '36px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                         <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
                                                                         <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
-                                                                        <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                        <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span style={{ marginLeft: '29px', marginTop: '6px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
                                                                         <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-8px', width: '120%' }}>{item.summary}</p>
@@ -182,27 +193,38 @@ export const UserCard = (props) => {
                     }}>{user && millify(followers)}</p>
                 </div>
                 <Dialog
+                    PaperProps={{
+                        style: {
+                            minHeight: '22%',
+                            maxHeight: '55%',
+                            padding: '9px 5px',
+                            overflowY: 'auto',
+                            minWidth: '455px',
+                            borderRadius: '7px'
+                            , backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
+                        }
+                    }}
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <div style={{ width: '500px', height: '700px', padding: '18px 18px' }} className="width500">
-                        <h4>Followers</h4>
+                    <div style={{ padding: '18px 18px', width: '100%', }} className="width500">
+                        <h4 style={{ marginBottom: '6px', marginTop: '-5px' }}>Followers</h4>
                         {
-                            loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} /></div>) : showFoll.length !== 0 && showFoll.map(item => {
+                            loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} dialog={true} /></div>) : showFoll.length !== 0 && showFoll.map(item => {
                                 return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                    <div className={`card cardnotify`} style={{ width: '95%', padding: '2px 0px', margin: '8px 0', paddingBottom: '11.5px', paddingTop: '11px' }}>
+                                    <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', margin: '8px 0', paddingBottom: '13.5px', paddingTop: '21px', backgroundColor: context.dark ? '#282828' : '#e3e0e0', paddingLeft: '18px', borderRadius: '11px', }}>
                                         <div className="header" style={{ width: '100%' }}>
                                             <div className="textheader" style={{ width: '100%' }}>
                                                 <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
-                                                    <img style={{ width: '46px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
+                                                    <img style={{ width: '36px', borderRadius: '35%', marginRight: '16px', marginTop: '0px' }} src={item.img} alt="" />
                                                     <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                         <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                             <div>
                                                                 <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
                                                                     <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
-                                                                    <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                    <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span style={{ marginLeft: '29px', marginBottom: '-3.4px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                 </div>
                                                                 <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
                                                                     <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>

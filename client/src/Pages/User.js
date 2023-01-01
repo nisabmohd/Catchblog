@@ -61,7 +61,7 @@ export const User = () => {
                 <div className="user" style={{ width: '100%', backgroundColor: context.dark ? '#282828' : '#ffff', borderRadius: '11px', padding: '10px 20px' }}>
                     <UserCard uid={user?.uid} />
                 </div>
-                <h3 style={{ marginTop: '3vh', marginBottom: '-5px' }}>Posts</h3>
+                <h3 style={{ marginTop: '3vh', marginBottom: '-5px', marginLeft: '1vw' }}>Posts</h3>
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton key={item} />)
 

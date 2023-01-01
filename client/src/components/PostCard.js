@@ -26,7 +26,7 @@ export const PostCard = (props) => {
             </div>
             <div className="content" style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: '7px' }}>
                 <Link to={`/post/${props.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <p style={{ fontSize: props.not ? '19px' : '25px', marginBottom: '1px', marginTop: '6px', fontWeight: '800' }}>{props.content}</p>
+                    <p className='title_content_resp' style={{ fontSize: props.not ? '19px' : '25px', marginBottom: '1px', marginTop: '6px', fontWeight: '800' }}>{props.content}</p>
                     <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-6px', marginTop: '8px' }} className="labels">
                         {props.tags?.map(item => {
                             return item ? <Chip key={new Date() + item} dark={context.dark} name={item} /> : <></>

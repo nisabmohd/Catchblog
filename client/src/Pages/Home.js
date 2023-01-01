@@ -43,7 +43,7 @@ export const Home = () => {
     return (
         <Box style={{ backgroundColor: 'palette.text.primary', paddingBottom: '39px', marginTop: '0px' }} className="container homecontainer">
             <div className="container-left">
-                <h3 style={{ marginTop: '3vh', marginBottom: '-5px' }}>All Posts</h3>
+                <h3 style={{ marginTop: '3vh', marginBottom: '-5px', marginLeft: '1vw' }}>All Posts</h3>
                 {
                     loading && loadingarr.map(item => <PostCradSkeleton />)
                 }
