@@ -133,6 +133,7 @@ export const UserCard = (props) => {
                                 padding: '9px 5px',
                                 overflowY: 'auto',
                                 minWidth: '375px',
+                                maxWidth: '375px',
                                 borderRadius: '7px',
                                 backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                             }
@@ -200,6 +201,7 @@ export const UserCard = (props) => {
                             padding: '9px 5px',
                             overflowY: 'auto',
                             minWidth: '375px',
+                            maxWidth: '375px',
                             borderRadius: '7px'
                             , backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                         }
