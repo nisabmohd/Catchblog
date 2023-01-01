@@ -80,7 +80,7 @@ export const Reset = () => {
         <div className="containerlogin">
             <Toaster />
             <div className="leftlogin">
-                <img style={{ marginTop: '-40px', minWidth: '400px', zIndex: '-99', width: '85%' }} src={loginimg} alt="" />
+                <img style={{ marginTop: '-40px', minWidth: '400px', width: '85%' }} src={loginimg} alt="" />
             </div>
             <div className="rightlogin">
                 <div className="headerlogin">

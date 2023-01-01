@@ -64,7 +64,7 @@ export const Login = () => {
         <div className="containerlogin">
             <Toaster />
             <div className="leftlogin">
-                <img style={{ marginTop: '-15px', minWidth: '400px', zIndex: '-99', width: '75%', marginBottom: '0px' }} src={loginimg} alt="" />
+                <img style={{ marginTop: '-15px', minWidth: '400px', width: '75%', marginBottom: '0px' }} src={loginimg} alt="" />
             </div>
             <div className="rightlogin">
                 <div className="headerlogin">
