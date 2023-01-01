@@ -47,7 +47,9 @@ export const Navbar = () => {
                 <div className="navbar">
                     <div className="left">
                         <Link to="/" className="logo" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '18px' }} ><span className='logohide'>CATCHBLOG</span><span className='hideshow'>CB</span> <DataObjectIcon sx={{ marginLeft: "9px", marginBottom: '-2px', fontSize: '29px' }} /></h2>
+                            <h2 style={{ fontSize: '24px', width: '185px', display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '18px' }} >
+                                <DataObjectIcon sx={{ marginBottom: '-2px', fontSize: '38px', marginRight: '10px', color: 'gray' }} />
+                                <span className='logohide'><span >catch</span><span>blog</span></span><span className='hideshow'>cb</span> </h2>
                         </Link>
                     </div>
 
