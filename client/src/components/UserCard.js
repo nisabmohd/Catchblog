@@ -132,8 +132,8 @@ export const UserCard = (props) => {
                                 maxHeight: '55%',
                                 padding: '9px 5px',
                                 overflowY: 'auto',
-                                minWidth: '375px',
-                                maxWidth: '375px',
+                                minWidth: '400px',
+                                maxWidth: '400px',
                                 borderRadius: '7px',
                                 backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                             }
@@ -157,11 +157,11 @@ export const UserCard = (props) => {
                                                             <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                                 <div>
                                                                     <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                        <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
-                                                                        <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span style={{ marginLeft: '29px', marginTop: '6px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                        <p style={{ margin: '0', marginRight: '15px', fontSize: '15px', }}>{item.username}</p>
+                                                                        <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: 'auto' }}><span style={{ marginBottom: '-6.4px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                     </div>
                                                                     <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                        <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-8px', width: '120%' }}>{item.summary}</p>
+                                                                        <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item?.summary.length > 26 ? item.summary.slice(0, 26) + " ..." : item.summary}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -200,8 +200,8 @@ export const UserCard = (props) => {
                             maxHeight: '55%',
                             padding: '9px 5px',
                             overflowY: 'auto',
-                            minWidth: '375px',
-                            maxWidth: '375px',
+                            minWidth: '400px',
+                            maxWidth: '400px',
                             borderRadius: '7px'
                             , backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                         }
@@ -224,12 +224,12 @@ export const UserCard = (props) => {
                                                     <div className="detailsposts" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%' }}>
                                                         <div className="firstbox" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                                                             <div>
-                                                                <div className="userdet" style={{ display: 'flex', flexDirection: 'row', }}>
-                                                                    <p style={{ margin: '0', marginRight: '5px', fontSize: '15px' }}>{item.username}</p>
-                                                                    <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: '7px' }}><span style={{ marginLeft: '29px', marginBottom: '-3.4px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
+                                                                <div className="userdet" style={{ display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                                    <p style={{ margin: '0', marginRight: '15px', fontSize: '15px', }}>{item.username}</p>
+                                                                    <p style={{ fontSize: '12.55px', color: 'rgb(161, 148, 148)', margin: '0', marginTop: '0px', minWidth: 'fit-content', marginLeft: 'auto' }}><span style={{ marginBottom: '-6.4px' }}>Joined</span> :{item.joined.slice(0, 10)}</p>
                                                                 </div>
                                                                 <div className="summary" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', marginTop: '12px', width: 'inherit' }}>
-                                                                    <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item.summary}</p>
+                                                                    <p style={{ fontSize: '13.95px', margin: 0, marginTop: '-6px', width: '120%' }}>{item?.summary.length > 26 ? item.summary.slice(0, 26) + " ..." : item.summary}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
