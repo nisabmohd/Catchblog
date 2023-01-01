@@ -132,7 +132,7 @@ export const UserCard = (props) => {
                                 maxHeight: '55%',
                                 padding: '9px 5px',
                                 overflowY: 'auto',
-                                minWidth: '455px',
+                                minWidth: '375px',
                                 borderRadius: '7px',
                                 backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                             }
@@ -142,12 +142,12 @@ export const UserCard = (props) => {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <div style={{ padding: '18px 18px', width: '100%' }} className="width500">
+                        <div style={{ padding: '18px 18px', width: '100%' }} className="">
                             <h4 style={{ marginBottom: '6px', marginTop: '-5px' }}>Followings</h4>
                             {
                                 loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} dialog={true} /></div>) : showFollings.length !== 0 && showFollings.map(item => {
                                     return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                        <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', margin: '8px 0', paddingBottom: '11.5px', paddingTop: '11px' }}>
+                                        <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', paddingBottom: '11.5px', paddingTop: '21px', backgroundColor: context.dark ? '#282828' : '#e3e0e0', paddingLeft: '18px', borderRadius: '11px', margin: '18px 0' }}>
                                             <div className="header" style={{ width: '100%' }}>
                                                 <div className="textheader" style={{ width: '100%' }}>
                                                     <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
@@ -199,7 +199,7 @@ export const UserCard = (props) => {
                             maxHeight: '55%',
                             padding: '9px 5px',
                             overflowY: 'auto',
-                            minWidth: '455px',
+                            minWidth: '375px',
                             borderRadius: '7px'
                             , backgroundColor: !context.dark ? '#f5f7fb !important' : "#181818 !important",
                         }
@@ -209,12 +209,12 @@ export const UserCard = (props) => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <div style={{ padding: '18px 18px', width: '100%', }} className="width500">
+                    <div style={{ padding: '18px 18px', width: '100%', }} className="">
                         <h4 style={{ marginBottom: '6px', marginTop: '-5px' }}>Followers</h4>
                         {
                             loading ? loadingarr.map(item => <div style={{ marginTop: '26px', marginBottom: '23px' }}><PostcardUserSkeleton key={item} search={true} dialog={true} /></div>) : showFoll.length !== 0 && showFoll.map(item => {
                                 return <Link key={item.uid} to={`/user/${item.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '99' }}>
-                                    <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', margin: '8px 0', paddingBottom: '13.5px', paddingTop: '21px', backgroundColor: context.dark ? '#282828' : '#e3e0e0', paddingLeft: '18px', borderRadius: '11px', }}>
+                                    <div className={`card cardnotify`} style={{ width: '100%', padding: '2px 7px', margin: '18px 0', paddingBottom: '13.5px', paddingTop: '21px', backgroundColor: context.dark ? '#282828' : '#e3e0e0', paddingLeft: '18px', borderRadius: '11px', }}>
                                         <div className="header" style={{ width: '100%' }}>
                                             <div className="textheader" style={{ width: '100%' }}>
                                                 <div className='post-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', width: '100%' }}>
