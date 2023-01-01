@@ -57,7 +57,7 @@ export const SearchUser = () => {
                 {loading && <Skeleton style={{ height: '30px', width: '195px', marginBottom: '15px' }} />}
 
                 {
-                    loading && loadingarr.map(item => <div style={{ paddingBottom: '14px', paddingTop: '14px' }}><PostcardUserSkeleton imglength={40} /></div>)
+                    loading && loadingarr.map(item => <div style={{ paddingBottom: '14px', paddingTop: '14px' }}><PostcardUserSkeleton search={true} imglength={40} /></div>)
                 }
 
 

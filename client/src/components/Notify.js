@@ -42,7 +42,7 @@ export const Notify = (props) => {
     return (
         props &&
             (props.type === 1 || props.type === 2) ? <Link to={`/post/${props.postid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-            <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
+            <div className={`card cardnotify`} style={{ width: '95%', padding: '16px 16px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
                 <div className="header">
                     <div className="textheader">
                         <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -67,7 +67,7 @@ export const Notify = (props) => {
             </div>
         </Link> :
             props.type === 3 ? <Link to={`/user/${props.uid}`} style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
+                <div className={`card cardnotify`} style={{ width: '95%', padding: '16px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
                     <div className="header">
                         <div className="textheader">
                             <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -91,7 +91,7 @@ export const Notify = (props) => {
                     </div>
                 </div>
             </Link> : <div style={{ color: 'inherit', textDecoration: 'none', zIndex: '-99' }}>
-                <div className={`card cardnotify`} style={{ width: '95%', padding: '8px 0px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
+                <div className={`card cardnotify`} style={{ width: '95%', padding: '16px', margin: '14px 0', paddingBottom: '10px', backgroundColor: context.dark ? '#282828' : '#ffff', paddingInline: '15px', borderRadius: '11px' }}>
                     <div className="header">
                         <div className="textheader">
                             <div className='not-usercard' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
